@@ -53,14 +53,14 @@ var initCoreInvitation = function initCoreInvitation() {
   });
 
   // tampilkan nama tamu
-  var guestName = satuMomen.dataset.guest;
+  var guestName = wedStyle.dataset.guest;
   var guestNameSlot = document.getElementById("guestNameSlot");
   if (guestName && guestNameSlot) {
     guestNameSlot.innerHTML = guestName;
   }
 
   // tampilkan nama group
-  var groupName = satuMomen.dataset.group;
+  var groupName = wedStyle.dataset.group;
   var groupNameSlot = document.getElementById("groupNameSlot");
   if (groupName && groupNameSlot) {
     groupNameSlot.innerHTML = groupName;
@@ -578,18 +578,18 @@ window.copyText = copyText;
 window.playMusic = playMusic;
 window.showLightbox = showLightbox;
 window.closeLightbox = closeLightbox;
-var satuMomen = document.getElementById("satuMomen");
+var wedStyle = document.getElementById("wedStyle");
 var lang = document.documentElement.lang;
 
 // loader
 document.addEventListener("DOMContentLoaded", function () {
   var loader = document.getElementById("loader");
-  var satuMomen = document.getElementById("satuMomen");
-  if (loader && satuMomen) {
+  var wedStyle = document.getElementById("wedStyle");
+  if (loader && wedStyle) {
     window.addEventListener("load", function () {
       setTimeout(function () {
         loader.style.display = "none";
-        satuMomen.style.display = "block"; // Gunakan "block" bukan "inherit"
+        wedStyle.style.display = "block"; // Gunakan "block" bukan "inherit"
       }, 100);
     });
 
@@ -597,7 +597,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
       if (loader.style.display !== "none") {
         loader.style.display = "none";
-        satuMomen.style.display = "block";
+        wedStyle.style.display = "block";
       }
     }, 5000);
   }
@@ -605,6 +605,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // rsvp
 var btnRsvp = document.getElementsByClassName("btn-rsvp");
+var closeRsvp = document.getElementsByClassName("close-rsvp-btn");
+
 var rsvpPlaceholder = (_document$querySelect = document.querySelector(".rsvp-placeholder")) !== null && _document$querySelect !== void 0 ? _document$querySelect : null;
 var checkRSVPForm = setInterval(function () {
   var rsvpForm = document.querySelector(".rsvp-form");
@@ -624,6 +626,11 @@ for (var i = 0; i < btnRsvp.length; i++) {
   }
 }
 
+
+closeRsvp[0].addEventListener('click', function () {
+  closeModal(rsvpModal);
+},false);
+
 // resize canvas
 var resizeWorkspace = function resizeWorkspace() {
   var workspace = document.getElementById("workspace-container");
@@ -637,7 +644,7 @@ var resizeWorkspace = function resizeWorkspace() {
   var scale = clientHeight < clientWidth ? clientHeight : clientWidth;
   var newHeight = 414 / 9 * (hightRes < 16 || window.screen.width > 430 ? 16 : hightRes);
   canvas.style.height = "".concat(newHeight, "px");
-  satuMomen.style.height = "".concat(newHeight, "px");
+  wedStyle.style.height = "".concat(newHeight, "px");
   zoom.style.transform = "scale(".concat(scale, ") translate(0px,0px)");
 };
 resizeWorkspace();
@@ -658,10 +665,10 @@ var isTouchDevice = function isTouchDevice() {
 isTouchDevice();
 
 // Detect slide
-var slides = document.querySelectorAll(".satumomen_slide");
-var menus = document.querySelectorAll(".satumomen_menu_item");
+var slides = document.querySelectorAll(".wedstyle_slide");
+var menus = document.querySelectorAll(".wedstyle_menu_item");
 var smMenu = document.getElementById("smMenu");
-var menuContainer = document.querySelector(".satumomen_menu_list");
+var menuContainer = document.querySelector(".wedstyle_menu_list");
 var menuWidth = menus.length < 5 ? smMenu.offsetWidth / menus.length : smMenu.offsetWidth / 5;
 var currentSlide = 0;
 var resetAllSlide = function resetAllSlide() {

@@ -40,15 +40,13 @@ export default function RootLayout({
         <meta name="color-scheme" content="light only" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="google" content="notranslate" />
-        <title>Wedding - Art Blue Java</title>
-        <meta name="title" content="Wedding  - Art Blue Java" />
-        <meta name="description" content="Undangna adat jawa / java wayang tanpa foto dengan warna biru dan art style - Undangan Online: Undangan digital modern untuk pernikahan dan acara spesial lainnya." />
-        <link rel="icon" type="image/x-icon" href="https://satumomen.com/favicon.ico" />
+        <title>Wedding - Nuri & Rahadian</title>
+        <meta name="title" content="Wedding - Nuri & Rahadian" />
+        <meta name="description" content="Undangan Wedding Nuri & Rahadian" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://satumomen.com/preview/art-blue-java" />
-        <meta property="og:title" content="Wedding  - Art Blue Java" />
-        <meta property="og:description" content="Undangna adat jawa / java wayang tanpa foto dengan warna biru dan art style - Undangan Online: Undangan digital modern untuk pernikahan dan acara spesial lainnya." />
-        <meta property="og:image" content="https://satumomen.com/themes/art-blue-java/art-blue-java.webp" />
+        <meta property="og:title" content="Wedding - Nuri & Rahadian" />
+        <meta property="og:description" content="Undangan Wedding Nuri & Rahadian" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/"  />
@@ -57,9 +55,8 @@ export default function RootLayout({
             {
                 "@context": "https://schema.org/",
                 "@type": "Product",
-                "name": "Wedding  - Art Blue Java",
-                "image": "https://satumomen.com/themes/art-blue-java/art-blue-java.webp",
-                "description": "Undangna adat jawa / java wayang tanpa foto dengan warna biru dan art style - Undangan Online: Undangan digital modern untuk pernikahan dan acara spesial lainnya.",
+                "name": "Wedding - Nuri & Rahadian",
+                "description": "Undangan Wedding Nuri & Rahadian",
                 "brand": {
                     "@type": "Brand",
                     "name": "Satu Momen"
@@ -80,14 +77,6 @@ export default function RootLayout({
                     "@type": "AggregateRating",
                     "ratingValue": "4.9",
                     "reviewCount": "579"
-                },
-                "offers": {
-                    "@type": "Offer",
-                    "url": "https://satumomen.com/harga",
-                    "priceCurrency": "IDR",
-                    "price": "85000",
-                    "availability": "https://schema.org/InStock",
-                    "itemCondition": "https://schema.org/NewCondition"
                 }
             }
         </script> */}

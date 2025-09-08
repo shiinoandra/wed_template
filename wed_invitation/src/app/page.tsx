@@ -2,48 +2,61 @@
 
 import Image from "next/image";
 import { useEffect } from "react";
-import Script from 'next/script'
+import { useState } from "react";
+import { useRef } from "react";
 
+import Script from 'next/script'
+import FormModal  from "./rsvpForm";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
-  // useEffect(() => {
-  //   function handleWindowLoad() {
-  //     // Create first script
-  //     const script1 = document.createElement("script");
-  //     script1.src = "/scripts/themesv2.js";
-  //     script1.async = true;
 
-  //     script1.onload = () => {
-  //       // Load second script after first one is done
-  //       const script2 = document.createElement("script");
-  //       script2.src = "/scripts/theme-app.js";
-  //       script2.async = true;
-  //       document.body.appendChild(script2);
 
-  //       // Cleanup script2
-  //       return () => {
-  //         document.body.removeChild(script2);
-  //       };
-  //     };
+  const nameRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const attendRef = useRef<HTMLSelectElement>(null);
+  const commentRef = useRef<HTMLTextAreaElement>(null);
 
-  //     document.body.appendChild(script1);
-  //     console.log("script theme loaded")
+  const [loading, setLoading] = useState(false);
 
-  //     // Cleanup script1
-  //     return () => {
-  //       document.body.removeChild(script1);
-  //     };
-  //   }
+  const searchParams = useSearchParams();
+  const name = searchParams.get("name") || "Tamu Undangan"; // default if no param
+  const type = searchParams.get("type") || "1";
 
-  //   // Wait until window is fully loaded
-  //   window.addEventListener("load", handleWindowLoad);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
-  //   return () => {
-  //     window.removeEventListener("load", handleWindowLoad);
-  //   };
-  // }, []);
+    
+    e.preventDefault(); // stop browser reload ✅
+    const formData = {
+      name: nameRef.current?.value || "",
+      phone: phoneRef.current?.value || "",
+      attend: attendRef.current?.value || "",
+      comment: commentRef.current?.value || "",
+    };
+    setLoading(true);
+  
+    try {
+      const res = await fetch("/api/save-rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+  
+      if (!res.ok) throw new Error("Failed to save");
+      alert("RSVP saved to CSV ✅");
+      if (nameRef.current) nameRef.current.value = "";
+      if (phoneRef.current) phoneRef.current.value = "";
+      if (attendRef.current) attendRef.current.value = "Hadir";
+      if (commentRef.current) commentRef.current.value = "";    } catch (err) {
+      console.error(err);
+      alert("❌ Failed to save RSVP");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  return (
+
+return (
     
 <div>
     <main id="app">
@@ -51,16 +64,17 @@ export default function Home() {
     <div id="loader" className="loader-wrapper" style={{display: 'none'}}>
       <span className="loader"><span className="loader-inner" /></span>
     </div>
-    {/* <audio id="music" loop="loop" autoPlay="autoplay"><source src="https://assets.satumomen.com/musics/jawa-happy-javanese-backsound-mp3cutnet.mp3" /></audio> */}
+    <audio id="music" loop autoPlay><source src="https://assets.satumomen.com/musics/jawa-happy-javanese-backsound-mp3cutnet.mp3" /></audio> 
+
     <div id="workspace-container" className="position-fixed h-100 w-100" style={{overflow: 'hidden'}}>
       <div id="panZoom" className="position-fixed h-100 w-100" style={{inset: 0, transformOrigin: '50% 50%', transform: 'scale(1.68886) translate(0px, 0px)'}}>
         <div className="h-100 w-100 d-flex align-items-center justify-content-center">
           <div className="canvas not-open" style={{height: 736}}>
-            <div id="satuMomen" data-guest="Nama Tamu" data-group="VIP" style={{height: 736, display: 'block'}}>
-              <div className="satumomen_track">
-                <ul className="satumomen_list">
-                  <li className="satumomen_slide satumomen_cover" style={{}}>
-                    <div className="container-mobile cover" style={{backgroundImage: 'url("https://satumomen.com/themes/art-blue-java/bg.webp")'}}>
+            <div id="wedStyle" data-guest={decodeURIComponent(name)} data-group="VIP" style={{height: 736, display: 'block'}}>
+              <div className="wedstyle_track">
+                <ul className="wedstyle_list">
+                  <li className="wedstyle_slide wedstyle_list" style={{}}>
+                    <div className="container-mobile cover" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
                         <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -89,7 +103,7 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/bl-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
@@ -104,10 +118,10 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/br-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-                        <img src="/bm.webp" alt="frame" className="frame-br w-100 animate__animated animate__fadeInUp animate__slower" style={{animationDelay: '1s'}} />
+                        
                         <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                         <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
@@ -115,9 +129,9 @@ export default function Home() {
                         <div className="w-100 pt-5">
                           <div className="text-center animate__animated animate__zoomIn animate__slower mt-5 mb-3" style={{lineHeight: 1}}>
                             <div className="editable mb-2" style={{fontSize: '14.4px'}}>The Wedding Of</div>
-                            <div className="color-accent editable font-latin" style={{fontSize: 80}}>Dinda</div>
+                            <div className="color-accent editable font-latin" style={{fontSize: 80}}>Nuri</div>
                             <div className="editable font-latin mb-2" style={{fontSize: 30}}>&amp;</div>
-                            <div className="color-accent editable mb-2 font-latin" style={{fontSize: 80}}>Fahmi</div>
+                            <div className="color-accent editable mb-2 font-latin" style={{fontSize: 80}}>Rahadian</div>
                           </div>
                           <div className="text-center mx-auto" style={{maxWidth: 280}}>
                             <div className="text-center mb-3 py-3 px-2 animate__animated animate__zoomIn animate__slower" style={{backgroundColor: 'rgba(225, 219, 203, 0.67)', border: '2px solid var(--inv-border)', borderRadius: '0.5rem'}}>
@@ -125,7 +139,7 @@ export default function Home() {
                                 Kepada Yth;<br />
                                 Bapak/Ibu/Saudara/i
                               </div>
-                              <div id="guestNameSlot" className="editable color-accent h5 font-weight-bold mb-1 animate__animated animate__fadeInUp animate__slower" style={{fontSize: 16}}>Nama Tamu</div>
+                              <div id="guestNameSlot" className="editable color-accent h5 font-weight-bold mb-1 animate__animated animate__fadeInUp animate__slower" style={{fontSize: 16}}>{decodeURIComponent(name)}</div>
                             </div>
                             <button className="btn-open-invitation btn btn-primary rounded-pill mb-4 animate__animated animate__fadeInUp animate__slow" style={{fontSize: 14}}>Open Invitation</button>
                           </div>
@@ -133,8 +147,8 @@ export default function Home() {
                       </div>
                     </div>
                   </li>
-                  <li className="satumomen_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("https://satumomen.com/themes/art-blue-java/bg.webp")'}}>
+                  <li className="wedstyle_slide" style={{display: 'none'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
                         <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -163,7 +177,7 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/bl-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
@@ -178,38 +192,38 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/br-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-                        <img src="/bm.webp" alt="frame" className="frame-br w-100 animate__animated animate__fadeInUp animate__slower" style={{animationDelay: '1s'}} />
+                        
                         <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                         <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="position-relative h-100 w-100 flex-column d-flex justify-content-center align-items-center" style={{paddingBottom: '30%'}}>
-                        <div className="text-center editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize: '14.4px'}}>✤ Undangan Manten ✤</div>
-                        <div className="pt-3 d-flex align-items-center justify-content-center mb-2 mx-auto animate__animated animate__zoomIn animate__slower" style={{height: 112, width: 60, backgroundImage: 'url("https://assets.satumomen.com/images/galleries/27897-gallery-1672939613.png")', backgroundRepeat: 'no-repeat', backgroundSize: 'contain', backgroundPosition: 'center center'}}>
-                          <div className="editable text-left font-latin" style={{fontSize: 60, lineHeight: 1, transform: 'translate(2px, 9px)'}}>D</div>
-                          <div className="editable text-right font-latin" style={{fontSize: 60, lineHeight: 1, transform: 'translate(-8px, 33px)'}}>F</div>
+                        <div className="text-center editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize: '14.4px'}}>🏵 Undangan Pernikahan 🏵</div>
+                        <div className="pt-3 d-flex align-items-center justify-content-center mb-2 mx-auto animate__animated animate__zoomIn animate__slower" style={{height: 112, width: 60, backgroundImage: 'url("/gunungan-isi.png")', backgroundRepeat: 'no-repeat', backgroundSize: 'contain', backgroundPosition: 'center center'}}>
+                          <div className="editable text-left font-latin" style={{fontSize: 60, lineHeight: 1, transform: 'translate(2px, 9px)'}}>N</div>
+                          <div className="editable text-right font-latin" style={{fontSize: 60, lineHeight: 1, transform: 'translate(-8px, 33px)'}}>R</div>
                         </div>
                         <div className="w-100 d-flex align-items-center justify-content-center">
                           <div className="text-right animate__animated animate__fadeInLeft animate__slower" style={{width: '40%', animationDelay: '1500ms'}}>
-                            <div className="editable color-accent font-accent" style={{fontSize: 40, lineHeight: 1}}>Dinda</div>
-                            <div className="editable" style={{fontSize: '14.4px'}}>Palembang</div>
+                            <div className="editable color-accent font-accent" style={{fontSize: 40, lineHeight: 1}}>Nuri</div>
                           </div>
                           <div className="editable px-2 font-latin animate__animated animate__zoomIn animate__slower" style={{fontSize: 60, animationDelay: '500ms'}}>&amp;</div>
                           <div className="text-left animate__animated animate__fadeInRight animate__slower" style={{width: '40%', animationDelay: '1500ms'}}>
-                            <div className="editable color-accent font-accent" style={{lineHeight: 1, fontSize: 40}}>Fahmi</div>
-                            <div className="editable" style={{fontSize: '14.4px'}}>Surakarta</div>
+                            <div className="editable color-accent font-accent" style={{lineHeight: 1, fontSize: 40}}>Rahadian</div>
                           </div>
                         </div>
+                        {type === "1" && (
                         <div className="image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{height: 'auto', width: 230, overflow: 'hidden', position: 'absolute', bottom: '-30px'}}>
-                          <img src="/301467-gallery-rNpYuhv9jd.png" alt="301467-gallery-rNpYuhv9jd.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
+                          <img className="nr_render" src="/wedding_nr.webp" alt="wedding_nr.webp" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                         </div>
+                        )}
                       </div>
                     </div>
                   </li>
-                  <li className="satumomen_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("https://satumomen.com/themes/art-blue-java/bg.webp")'}}>
+                  <li className="wedstyle_slide" style={{display: 'none'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
                         <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -238,7 +252,7 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/bl-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
@@ -253,17 +267,17 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/br-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-                        <img src="/bm.webp" alt="frame" className="frame-br w-100 animate__animated animate__fadeInUp animate__slower" style={{animationDelay: '1s'}} />
+                        
                         <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                         <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="h-100 d-flex flex-column justify-content-center align-items-center">
                         <div className="animate__animated animate__fadeInDown animate__slower">
                           <div className="image-editable" style={{width: 158, height: 89, margin: 'auto', overflow: 'hidden', paddingBottom: 20}}>
-                            <img src="/27897-gallery-1672939613.png" alt="27897-gallery-1672939613.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
+                            <img src="/gunungan-isi.png" alt="gunungan-isi.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                           </div>
                         </div>
                         <div className="text-center">
@@ -280,8 +294,8 @@ export default function Home() {
                       </div>
                     </div>
                   </li>
-                  <li className="satumomen_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("https://satumomen.com/themes/art-blue-java/bg.webp")'}}>
+                  <li className="wedstyle_slide" style={{display: 'none'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
                         <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -310,7 +324,7 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/bl-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
@@ -325,10 +339,10 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/br-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-                        <img src="/bm.webp" alt="frame" className="frame-br w-100 animate__animated animate__fadeInUp animate__slower" style={{animationDelay: '1s'}} />
+                        
                         <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                         <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
@@ -336,34 +350,35 @@ export default function Home() {
                         <div>
                           <div>
                             <div className="image-editable mb-3 animate__animated animate__fadeInLeft animate__slower" style={{height: 100, width: 100, margin: 'auto', borderRadius: '100%', overflow: 'hidden'}}>
-                              <img src="/female-1-1687991981.webp" alt="female-1-1687991981.webp" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+                              <img src="/cpw.jpg" alt="cpw.jpg" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
                             </div>
                             <div className="text-center animate__animated animate__fadeInLeft animate__slower" style={{position: 'relative'}}>
-                              <div className="editable color-accent h4 mb-2 font-accent" style={{fontSize: 24}}>Rahmi Nur Aini, S.Ars.L</div>
+                              <div className="editable color-accent h4 mb-2 font-accent" style={{fontSize: 24}}>Nuri Handayani S.Hum, MM</div>
                               <div className="editable" style={{fontSize: '14.4px'}}>
-                                Putri Kedua dari<br />
-                                Bapak Yusransyah (Is Dunia Barusa)<br />
-                                &amp; Ibu Ferynita(Nyanyak)
+                                Putri dari<br />
+                                Bapak Ir. Sudarmadi, MM<br />
+                                &amp; Ibu dr. Indra Andriani
                               </div>
                             </div>
                             <div className="editable mb-3 text-center animate__animated animate__fadeIn animate__slower font-photograph-signature" style={{fontSize: 30}}>dengan</div>
                             <div className="text-center animate__animated animate__fadeInRight animate__slower" style={{position: 'relative'}}>
-                              <div className="editable color-accent h4 mb-2 font-accent" style={{fontSize: 24}}>Fariz Naufal, S.Ak</div>
+                              <div className="editable color-accent h4 mb-2 font-accent" style={{fontSize: 24}}>Rahadian Adinegoro, S.Kom, B.InfTech</div>
                               <div className="editable mb-1" style={{fontSize: '14.4px'}}>
-                                Putra Kedua dari<br />
-                                Bapak Muhrojin&amp; Ibu Endah Setyawati
+                                Putra dari<br />
+                                Bapak Rosichin, SE, MM, M.Si<br />
+                                &amp; Ibu Tuti Hartati, SE, M.Si
                               </div>
                             </div>
                             <div className="image-editable mt-3 animate__animated animate__fadeInRight animate__slower" style={{height: 100, width: 100, margin: 'auto', borderRadius: '100%', overflow: 'hidden'}}>
-                              <img src="/male-1-1687991959.webp" alt="male-1-1687991959.webp" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+                              <img src="/cpp.jpg" alt="cpp.jpg" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li className="satumomen_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("https://satumomen.com/themes/art-blue-java/bg.webp")'}}>
+                  <li className="wedstyle_slide" style={{display: 'none'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
                         <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -392,7 +407,7 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/bl-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
@@ -407,42 +422,42 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/br-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-                        <img src="/bm.webp" alt="frame" className="frame-br w-100 animate__animated animate__fadeInUp animate__slower" style={{animationDelay: '1s'}} />
+                        
                         <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                         <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="d-flex justify-content-center flex-column align-items-center" style={{height: '100%'}}>
                         <div className="animate__animated animate__fadeInDown animate__slower">
                           <div className="image-editable" style={{width: 158, height: 89, margin: 'auto', overflow: 'hidden', paddingBottom: 20}}>
-                            <img src="/27897-gallery-1672939613.png" alt="27897-gallery-1672939613.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
+                            <img src="/gunungan-isi.png" alt="gunungan-isi.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                           </div>
                         </div>
                         <div className="text-center animate__animated animate__fadeInDown animate__slower">
-                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>✤ Akad Pernikahan ✤</div>
-                          <div className="editable" style={{fontSize: 14}}>Pukul 08.00 WIB - Selesai</div>
+                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Akad Nikah 🏵</div>
+                          <div className="editable" style={{fontSize: 14}}>Pukul 07.00 - 08.30 WIB</div>
                         </div>
                         <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
-                          <div className="editable color-accent font-accent" style={{fontSize: 50, lineHeight: '1.2'}}>23.06.24</div>
+                          <div className="editable color-accent font-accent" style={{fontSize: 50, lineHeight: '1.2'}}>12.10.25</div>
                         </div>
                         <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
-                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>✤ Kediaman Wanita ✤</div>
+                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
                           <div className="editable" style={{fontSize: 14}}>
-                            Perum KCVRI<br />
-                            Blok A. No. 09 RT 01/RW 07
+                            Jl. Harsono RM No.3 Ragunan<br />
+                            Pasar Minggu, Jakarta Selatan
                           </div>
                         </div>
                         <div className="mt-3 image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{height: 'auto', width: 130, overflow: 'hidden'}}>
-                          <img src="/301467-gallery-FMgCPTNp2h.png" alt="301467-gallery-FMgCPTNp2h.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
+                          <img src="/simple_house.png" alt="simple_house.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li className="satumomen_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("https://satumomen.com/themes/art-blue-java/bg.webp")'}}>
+                  <li className="wedstyle_slide" style={{display: 'none'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
                         <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -471,7 +486,7 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/bl-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
@@ -486,42 +501,42 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/br-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-                        <img src="/bm.webp" alt="frame" className="frame-br w-100 animate__animated animate__fadeInUp animate__slower" style={{animationDelay: '1s'}} />
+                        
                         <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                         <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="d-flex justify-content-center flex-column align-items-center" style={{height: '100%'}}>
                         <div className="animate__animated animate__fadeInDown animate__slower">
                           <div className="image-editable" style={{width: 158, height: 89, margin: 'auto', overflow: 'hidden', paddingBottom: 20}}>
-                            <img src="/27897-gallery-1672939613.png" alt="27897-gallery-1672939613.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
+                            <img src="/gunungan-isi.png" alt="gunungan-isi.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                           </div>
                         </div>
                         <div className="text-center animate__animated animate__fadeInDown animate__slower">
-                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>✤ Akad Pernikahan ✤</div>
-                          <div className="editable" style={{fontSize: 14}}>Pukul 08.00 WIB - Selesai</div>
+                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Resepsi 🏵</div>
+                          <div className="editable" style={{fontSize: 14}}>Pukul 11.00 - 13.00 WIB</div>
                         </div>
                         <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
-                          <div className="editable color-accent font-accent" style={{fontSize: 50, lineHeight: '1.2'}}>23.06.24</div>
+                          <div className="editable color-accent font-accent" style={{fontSize: 50, lineHeight: '1.2'}}>12.10.25</div>
                         </div>
                         <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
-                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>✤ Kediaman Wanita ✤</div>
+                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
                           <div className="editable" style={{fontSize: 14}}>
-                            Perum KCVRI<br />
-                            Blok A. No. 09 RT 01/RW 07
+                            Jl. Harsono RM No.3 Ragunan<br />
+                            Pasar Minggu, Jakarta Selatan
                           </div>
                         </div>
                         <div className="mt-3 image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{height: 'auto', width: 130, overflow: 'hidden'}}>
-                          <img src="/301467-gallery-FMgCPTNp2h.png" alt="301467-gallery-FMgCPTNp2h.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
+                          <img src="/simple_house.png" alt="simple_house.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li className="satumomen_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("https://satumomen.com/themes/art-blue-java/bg.webp")'}}>
+                  <li className="wedstyle_slide" style={{display: 'none'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
                         <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -550,7 +565,7 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/bl-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
@@ -565,24 +580,41 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/br-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-                        <img src="/bm.webp" alt="frame" className="frame-br w-100 animate__animated animate__fadeInUp animate__slower" style={{animationDelay: '1s'}} />
+                        
                         <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                         <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="d-flex justify-content-center align-items-center" style={{height: '100%'}}>
                         <div style={{width: '100%'}}>
                           <div>
-                            <div className="animate__animated animate__fadeInDown animate__slow" style={{width: '100%', margin: 'auto auto 20px', borderRadius: 10, overflow: 'hidden', paddingBottom: '100%', position: 'relative'}}>
-                              <iframe width="100%" height="100%" allowFullScreen src="/place.html" className="maps-embed" style={{border: 0, position: 'absolute'}} />
-                            </div>
+                          <div
+                                  className="animate__animated animate__fadeInDown animate__slow"
+                                  style={{
+                                    width: "100%",
+                                    margin: "auto auto 20px",
+                                    borderRadius: 10,
+                                    overflow: "hidden",
+                                    paddingBottom: "100%",
+                                    position: "relative"
+                                  }}
+                                >
+                                  <iframe
+                                    width="100%"
+                                    height="100%"
+                                    allowFullScreen
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.752517861053!2d106.82233819999999!3d-6.296218399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f20122238cb1%3A0x7da32d9e4f29d2cf!2sAuditorium%20of%20the%20Ministry%20of%20Agriculture!5e0!3m2!1sen!2sid!4v1757252608929!5m2!1sen!2sid"
+                                    className="maps-embed"
+                                    style={{ border: 0, position: "absolute" }}
+                                  />
+                                </div>
                             <button className="btn-maps btn btn-sm btn-pilled btn-block btn-accent mt-1 mb-4">Edit Denah Lokasi</button>
                             <div className="text-center animate__animated animate__fadeInUp animate__slow">
-                              <div className="editable font-weight-bold" style={{fontSize: 14}}>Harmony Banquet Halls</div>
-                              <div className="editable mb-3" style={{fontSize: 14}}>Jl. KH. R. Abdullah Bin Nuh, RT. 06/RW. 02, Curugmekar, Kec. Bogor Barat, Kota Bogor, Jawa Barat</div>
-                              <a href="https://www.google.com/maps/place/?q=-6.558613899999999,106.77036269999999" target="_blank" rel="noreferrer noopener" className="btn-maps-link mx-auto btn btn-primary rounded-pill animate__animated animate__fadeInUp animate__slow" style={{gap: 8, maxWidth: 200}}>
+                              <div className="editable font-weight-bold" style={{fontSize: 14}}>Auditorium Departemen Pertanian</div>
+                              <div className="editable mb-3" style={{fontSize: 14, marginLeft:"50px",marginRight:"50px"}}>Departemen Pertanian Gedung F, Jalan R.M Harsono No. 3, Ragunan, Pasar Minggu, RT.5/RW.7,  Ragunan, Ps. Minggu, Kota Jakarta Selatan, 125500</div>
+                              <a href="https://maps.app.goo.gl/UuyPBf9xyxjHB4Q9A" target="_blank" rel="noreferrer noopener" className="btn-maps-link mx-auto btn btn-primary rounded-pill animate__animated animate__fadeInUp animate__slow" style={{gap: 8, maxWidth: 200}}>
                                 Petunjuk Ke Lokasi
                               </a>
                             </div>
@@ -591,8 +623,8 @@ export default function Home() {
                       </div>
                     </div>
                   </li>
-                  <li className="satumomen_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("https://satumomen.com/themes/art-blue-java/bg.webp")'}}>
+                  <li className="wedstyle_slide" style={{display: 'none'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
                         <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -621,7 +653,7 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/bl-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
@@ -636,10 +668,10 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/br-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-                        <img src="/bm.webp" alt="frame" className="frame-br w-100 animate__animated animate__fadeInUp animate__slower" style={{animationDelay: '1s'}} />
+                        
                         <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                         <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
@@ -647,7 +679,7 @@ export default function Home() {
                         <div style={{width: '100%'}}>
                           <div className="animate__animated animate__fadeInDown animate__slower">
                             <div className="image-editable" style={{width: 158, height: 89, margin: 'auto', overflow: 'hidden', paddingBottom: 20}}>
-                              <img src="/27897-gallery-1672939613.png" alt="27897-gallery-1672939613.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
+                              <img src="/gunungan-isi.png" alt="gunungan-isi.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                             </div>
                           </div>
                           <div className="text-center">
@@ -664,8 +696,8 @@ export default function Home() {
                       </div>
                     </div>
                   </li>
-                  <li className="satumomen_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("https://satumomen.com/themes/art-blue-java/bg.webp")'}}>
+                  <li className="wedstyle_slide" style={{display: 'none'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
                         <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -694,7 +726,7 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/bl-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
@@ -709,10 +741,10 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/br-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-                        <img src="/bm.webp" alt="frame" className="frame-br w-100 animate__animated animate__fadeInUp animate__slower" style={{animationDelay: '1s'}} />
+                        
                         <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                         <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
@@ -722,40 +754,35 @@ export default function Home() {
                           <div className="editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize: '14.4px'}}>
                             Terima kasih telah menambah semangat kegembiraan pernikahan kami dengan kehadiran dan hadiah indah Anda.
                           </div>
-                          <div style={{display: 'flex', gap: 8}}>
-                            <button className="btn-gift btn btn-block btn-primary rounded-pill animate__animated animate__fadeInUp animate__slow" style={{maxWidth: 150, margin: 'auto', fontSize: '14.4px'}}>
-                              Cashless
-                            </button>
-                          </div>
-                          <div className="gift-container mt-3 p-4 rounded animate__animated animate__zoomIn animate__slow" style={{display: 'none'}}>
+                          <div className="gift-container mt-3 p-4 rounded animate__animated animate__zoomIn animate__slow">
                             <div className="d-flex">
                               <div className="mx-auto">
                                 <div className="d-flex align-items-center mb-3">
                                   <div className="image-editable bg-white rounded" style={{width: 80, height: 50, overflow: 'hidden'}}>
-                                    <img src="/logo-bca-biru-1687975058.png" alt="no-image.jpg" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
+                                    <img src="/BCA_logo.png" alt="no-image.jpg" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                                   </div>
                                   <div className="text-left pl-2">
-                                    <div className="editable account-number font-weight-bold h5 mb-0">12345678</div>
+                                    <div className="editable account-number font-weight-bold h5 mb-0">5540807703</div>
                                     {/* <button type="button" className="btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5" data-text={12345678} onClick="copyText(event)" style={{fontFamily: 'sans-serif', borderRadius: 4}}> */}
                                     <button type="button" className="btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5"  style={{fontFamily: 'sans-serif', borderRadius: 4}}>
 
                                       Salin Rekening
                                     </button>
-                                    <div className="editable" style={{fontSize: '14.4px'}}>BCA : Atas Nama Rekening</div>
+                                    <div className="editable" style={{fontSize: '14.4px'}}>BCA : a/n Nuri Handayani</div>
                                   </div>
                                 </div>
                                 <div className="d-flex align-items-center">
                                   <div className="image-editable bg-white rounded" style={{width: 80, height: 50, overflow: 'hidden'}}>
-                                    <img src="/bni-1704123714.jpg" alt="no-image.jpg" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
+                                    <img src="/BNI_logo.webp" alt="no-image.jpg" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                                   </div>
                                   <div className="text-left pl-2">
-                                    <div className="editable account-number font-weight-bold h5 mb-0" style={{fontSize: 18}}>12345678</div>
+                                    <div className="editable account-number font-weight-bold h5 mb-0" style={{fontSize: 18}}>0346961267</div>
                                     {/* <button type="button" className="btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5" data-text={12345678} onclick="copyText(event)" style={{fontFamily: 'sans-serif', borderRadius: 4}}> */}
                                     <button type="button" className="btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5" data-text={12345678}  style={{fontFamily: 'sans-serif', borderRadius: 4}}>
 
                                       Salin Rekening
                                     </button>
-                                    <div className="editable" style={{fontSize: '14.4px'}}>BCA : Atas Nama</div>
+                                    <div className="editable" style={{fontSize: '14.4px'}}>BNI : a/n Nuri Handayani</div>
                                   </div>
                                 </div>
                               </div>
@@ -765,8 +792,8 @@ export default function Home() {
                       </div>
                     </div>
                   </li>
-                  <li className="satumomen_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("https://satumomen.com/themes/art-blue-java/bg.webp")'}}>
+                  <li className="wedstyle_slide" style={{display: 'none'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
                         <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -795,7 +822,7 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/bl-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
@@ -810,10 +837,10 @@ export default function Home() {
                         </div>
                         <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
                           <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/br-3.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-                        <img src="/bm.webp" alt="frame" className="frame-br w-100 animate__animated animate__fadeInUp animate__slower" style={{animationDelay: '1s'}} />
+                        
                         <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                         <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
@@ -828,15 +855,15 @@ export default function Home() {
                               <div>
                                 <div className="editable" style={{textDecoration: 'underline', fontSize: 13}}>Keluarga</div>
                                 <div className="editable font-weight-bold" style={{fontSize: 13}}>
-                                  Bapak H. Roni Nahroni<br />
-                                  dan Ibu Hj. Siti Zainab
+                                  Bapak Ir. Sudarmadi, MM<br />
+                                  &amp; Ibu dr. Indra Andriani
                                 </div>
                               </div>
                               <div>
                                 <div className="editable" style={{textDecoration: 'underline', fontSize: 13}}>Keluarga</div>
                                 <div className="editable font-weight-bold" style={{fontSize: 13}}>
-                                  Bapak Ir. Juhrani<br />
-                                  dan Ibu Juniati, S.Km
+                                  Bapak Rosichin, SE, MM, M.Si<br />
+                                  &amp; Ibu Tuti Hartati, SE, M.Si
                                 </div>
                               </div>
                             </div>
@@ -856,24 +883,24 @@ export default function Home() {
                 </ul>
               </div>
             </div>
-            <div id="smMenu" className="satumomen_menu">
-              <ul className="satumomen_menu_list">
-                <li className="satumomen_menu_item active" style={{maxWidth: '82.8px'}}><i className="icon ph-fill ph-envelope" style={{color: 'currentcolor'}} /> <span>Opening</span></li>
-                <li className="satumomen_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph-fill ph-star-and-crescent" style={{color: 'currentcolor'}} /> <span>Greeting</span></li>
-                <li className="satumomen_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph-fill ph-article" style={{color: 'currentcolor'}} /> <span>Quotes</span></li>
-                <li className="satumomen_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph-fill ph-heart" style={{color: 'currentcolor'}} /> <span>Mempelai</span></li>
-                <li className="satumomen_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph-fill ph-clock" style={{color: 'currentcolor'}} /> <span>Akad</span></li>
-                <li className="satumomen_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph-fill ph-clock" style={{color: 'currentcolor'}} /> <span>Resepsi</span></li>
-                <li className="satumomen_menu_item" style={{maxWidth: '82.8px'}}>
+            <div id="smMenu" className="wedstyle_menu">
+              <ul className="wedstyle_menu_list">
+                <li className="wedstyle_menu_item active" style={{maxWidth: '82.8px'}}><i className="icon ph ph-envelope" style={{color: 'currentcolor'}} /> <span>Opening</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-star-and-crescent" style={{color: 'currentcolor'}} /> <span>Greeting</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-article" style={{color: 'currentcolor'}} /> <span>Quotes</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-heart" style={{color: 'currentcolor'}} /> <span>Mempelai</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-clock" style={{color: 'currentcolor'}} /> <span>Akad</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-clock" style={{color: 'currentcolor'}} /> <span>Resepsi</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}>
                   <svg width={24} height={24} fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd" d="M8.532 2.937a6.89 6.89 0 0 1 7.034.058C17.71 4.327 19.012 6.705 19 9.26c-.05 2.54-1.447 4.929-3.193 6.775a18.727 18.727 0 0 1-3.358 2.82 1.173 1.173 0 0 1-.408.144.82.82 0 0 1-.39-.119 18.515 18.515 0 0 1-4.839-4.547A9.28 9.28 0 0 1 5 9.134c-.001-2.562 1.347-4.928 3.532-6.197Zm1.262 7.258a2.378 2.378 0 0 0 2.198 1.497 2.339 2.339 0 0 0 1.683-.701c.446-.454.696-1.07.694-1.713a2.423 2.423 0 0 0-1.462-2.243 2.346 2.346 0 0 0-2.594.52 2.455 2.455 0 0 0-.519 2.64Z" fill="currentColor" />
                     <ellipse opacity=".4" cx={12} cy={21} rx={5} ry={1} fill="currentColor" />
                   </svg>
                   <span>Maps</span>
                 </li>
-                <li className="satumomen_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph-fill ph-chat-circle-text" style={{color: 'currentcolor'}} /> <span>RSVP</span></li>
-                <li className="satumomen_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph-fill ph-gift" style={{color: 'currentcolor'}} /> <span>Gift</span></li>
-                <li className="satumomen_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph-fill ph-mosque" style={{color: 'currentcolor'}} /> <span>Thanks</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-chat-circle-text" style={{color: 'currentcolor'}} /> <span>RSVP</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-gift" style={{color: 'currentcolor'}} /> <span>Gift</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-mosque" style={{color: 'currentcolor'}} /> <span>Thanks</span></li>
               </ul>
             </div>
             <div className="floating-action d-flex align-items-end flex-column">
@@ -914,18 +941,18 @@ export default function Home() {
     </div>
     <div id="lightboxWrapper" className="lightbox-wrapper">
       <div className="lightbox-list" />
-      <a href="https://satumomen.com/preview/art-blue-java#" id="lightboxCloseBtn" className="btn-lightbox">
+      <a href="##" id="lightboxCloseBtn" className="btn-lightbox">
         <svg xmlns="http://www.w3.org/2000/svg" height={24} width={24} viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L8.586 10 4.293 5.707a1 1 0 0 1 0-1.414z" clipRule="evenodd" />
         </svg>
       </a>
       <div className="lightbox-navigation">
-        <a href="https://satumomen.com/preview/art-blue-java#" id="lightboxPrevBtn" data-index={0} className="lightbox-arrow">
+        <a href="##" id="lightboxPrevBtn" data-index={0} className="lightbox-arrow">
           <svg xmlns="http://www.w3.org/2000/svg" height={24} width={24} fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m15 19-7-7 7-7" />
           </svg>
         </a>
-        <a href="https://satumomen.com/preview/art-blue-java#" id="lightboxNextBtn" data-index={0} className="lightbox-arrow">
+        <a href="##" id="lightboxNextBtn" data-index={0} className="lightbox-arrow">
           <svg xmlns="http://www.w3.org/2000/svg" height={24} width={24} fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m9 5 7 7-7 7" />
           </svg>
@@ -959,7 +986,7 @@ export default function Home() {
             <hr style={{marginTop: '1rem', marginBottom: '1rem', borderWidth: '2px 0px 0px', borderTopStyle: 'dashed', borderRightStyle: 'initial', borderBottomStyle: 'initial', borderLeftStyle: 'initial', borderTopColor: 'rgba(0, 0, 0, 0.1)', borderRightColor: 'initial', borderBottomColor: 'initial', borderLeftColor: 'initial', borderImage: 'initial'}} />
             <div style={{marginBottom: 10}}>
               <div style={{color: 'rgb(178, 178, 178)'}}>Nama</div>
-              <div>Nama Tamu</div>
+              <div>{decodeURIComponent(name)}</div>
             </div>
           </div>
           {/* <button onclick="if (!window.__cfRLUnblockHandlers) return false; closeModal(qrModal)" type="button" className="btn btn-close"> */}
@@ -971,53 +998,32 @@ export default function Home() {
         </div>
       </div>
     </div>
+
+    {/* RSVP MODAL FORM */}
+
     <div id="rsvpModal" tabIndex={-1} role="dialog" aria-labelledby="rsvpModal" className="modal fade">
       <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content p-4" style={{height: '100%'}}>
+        <div className="modal-content p-4" style={{height: '50%'}}>
           <div className="rsvp-form show">
             <div className="mb-4"><div className="font-accent h4 text-center">RSVP</div></div>
-            <form className="pt-2">
-              <div>
+            <form className="pt-2" onSubmit={handleSubmit}>
+            <div>
                 <div className="form-group mb-2">
-                  <label htmlFor="inputname" className="small mb-1">Nama</label> <input aria-hidden="false" id="inputname" type="text" placeholder="Nama" required className="form-control" />
+                  <label htmlFor="inputname" className="small mb-1">Nama</label> 
+                  <input ref={nameRef} aria-hidden="false" id="inputname" type="text" placeholder="Nama" required className="form-control" />
                 </div>
               </div>
               <div>
                 <div className="form-group mb-2">
-                  <label htmlFor="inputgroup_name" className="small mb-1">Grup</label> <input aria-hidden="false" id="inputgroup_name" type="text" placeholder="Grup" className="form-control" />
-                </div>
-              </div>
-              <div>
-                <div className="form-group mb-2">
-                  <label htmlFor="inputphone" className="small mb-1">No WhatsApp</label>
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="btn bg-white border dropdown-toggle">+62</button>
-                      <div className="dropdown-menu shadow">
-                        <span className="dropdown-item"><input type="search" placeholder="Search Country..." className="form-control form-control-sm" /></span>
-                        <button type="button" className="dropdown-item active">
-                          Indonesia +62
-                        </button>
-                        <button type="button" className="dropdown-item">
-                          Australia +61
-                        </button>
-                        <button type="button" className="dropdown-item">
-                          Austria +43
-                        </button>
-                      </div>
-                    </div>
-                    <input aria-hidden="false" id="inputphone" type="number" required placeholder="No WhatsApp" className="form-control" />
-                  </div>
+                  <label htmlFor="inputphone" className="small mb-1">No WhatsApp</label> 
+                  <input ref={phoneRef}  aria-hidden="false" id="inputphone" type="number" required placeholder="No WhatsApp" className="form-control"  />
                 </div>
               </div>
               <div>
                 <div className="form-group mb-2">
                   <label htmlFor="inputattendance" className="small mb-1">Kehadiran</label>
-                  <select id="inputattendance" required className="form-control">
-                    <option>
-                      Kehadiran
-                    </option>
-                    <option value="Hadir">
+                  <select ref={attendRef}  id="inputattendance" defaultValue="Hadir" required className="form-control">
+                    <option  value="Hadir">
                       Hadir
                     </option>
                     <option value="Tidak Hadir">
@@ -1030,68 +1036,13 @@ export default function Home() {
               </div>
               <div>                      </div>
               <div className="form-group mb-2">
-                <label htmlFor="inputcomment" className="small mb-1">Komentar atau Ucapan</label> <textarea id="inputcomment" rows={3} placeholder="Komentar atau Ucapan" required className="form-control" defaultValue={""} />
+                <label htmlFor="inputcomment" className="small mb-1">Komentar atau Ucapan</label> 
+                <textarea ref={commentRef} id="inputcomment" rows={3} placeholder="Komentar atau Ucapan" required className="form-control" />
               </div>
-              <button type="submit" className="btn btn-primary rounded-pill btn-block mt-4 mb-2"><span>Kirim</span></button>
+              <button className="btn btn-primary rounded-pill btn-block mt-4 mb-2" type="submit" ><span>Kirim</span></button>
             </form>
-            <div className="comment border-top mt-4 py-4">
-              <div className="comment-item">
-                <div className="d-flex">
-                  <img src="/saved_resource" alt="Radit" loading="lazy" className="avatar rounded-circle" style={{height: 30, width: 30}} />
-                  <div className="ml-2 text-left">
-                    <p className="mb-0 font-weight-bold">
-                      Radit
-                      <span className="badge alert-info">Hadir</span>
-                    </p>
-                    <p className="mb-0">Selamat</p>
-                    <small>19 August 2025 at 21.46</small>
-                  </div>
-                </div>
-              </div>
-              <div className="comment-item">
-                <div className="d-flex">
-                  <img src="/saved_resource(1)" alt="Nama Tamu" loading="lazy" className="avatar rounded-circle" style={{height: 30, width: 30}} />
-                  <div className="ml-2 text-left">
-                    <p className="mb-0 font-weight-bold">
-                      Nama Tamu
-                      <span className="badge alert-info">Tidak Hadir</span>
-                    </p>
-                    <p className="mb-0">hyjj</p>
-                    <small>9 August 2025 at 12.57</small>
-                  </div>
-                </div>
-              </div>
-              <div className="comment-item">
-                <div className="d-flex">
-                  <img src="/saved_resource(2)" alt="Nama Tamuss" loading="lazy" className="avatar rounded-circle" style={{height: 30, width: 30}} />
-                  <div className="ml-2 text-left">
-                    <p className="mb-0 font-weight-bold">
-                      Nama Tamuss
-                      <span className="badge alert-info">Hadir</span>
-                    </p>
-                    <p className="mb-0">Sjjsbbs</p>
-                    <small>12 July 2025 at 21.36</small>
-                  </div>
-                </div>
-              </div>
-              <div className="comment-item">
-                <div className="d-flex">
-                  <img src="/saved_resource(1)" alt="Nama Tamu" loading="lazy" className="avatar rounded-circle" style={{height: 30, width: 30}} />
-                  <div className="ml-2 text-left">
-                    <p className="mb-0 font-weight-bold">
-                      Nama Tamu
-                      <span className="badge alert-info">Tidak Hadir</span>
-                    </p>
-                    <p className="mb-0">ok</p>
-                    <small>9 July 2025 at 13.35</small>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-          {/* <button onclick="if (!window.__cfRLUnblockHandlers) return false; closeModal(rsvpModal)" type="button" className="btn btn-close"> */}
-          <button type="button" className="btn btn-close">
-
+          <button type="button"  style={{position:"relative", bottom:"-50px"}} className="close-rsvp-btn btn btn-close">
             <svg xmlns="http://www.w3.org/2000/svg" height="42px" width="42px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12" />
             </svg>
@@ -1099,23 +1050,11 @@ export default function Home() {
         </div>
       </div>
     </div>
+
+    {/* ENDOF RSVP MODAL */}
+
+
   </main>
-  {/* illegal */}
-  <div id="illegal" className="container-mobile" style={{background: '#ffffff', zIndex: 9999, minHeight: '100vh', display: 'none', justifyContent: 'center', alignItems: 'center'}}>
-    <div className="modal-body modal-body d-flex flex-column align-items-center">
-      <div className="mb-4 text-center">
-        <svg width={90} height={90} fill="none">
-          <path d="M36 28.024A18.05 18.05 0 0025.022 39M59.999 28.024A18.05 18.05 0 0170.975 39" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-          <ellipse cx="37.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor" />
-          <ellipse cx="58.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor" />
-          <path d="M24.673 75.42a9.003 9.003 0 008.879 5.563m-8.88-5.562A8.973 8.973 0 0124 72c0-7.97 9-18 9-18s9 10.03 9 18a9 9 0 01-8.448 8.983m-8.88-5.562C16.919 68.817 12 58.983 12 48c0-19.882 16.118-36 36-36s36 16.118 36 36-16.118 36-36 36a35.877 35.877 0 01-14.448-3.017" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M41.997 71.75A14.94 14.94 0 0148 70.5c2.399 0 4.658.56 6.661 1.556a3 3 0 003.999-4.066 12 12 0 00-10.662-6.49 11.955 11.955 0 00-7.974 3.032c1.11 2.37 1.917 4.876 1.972 7.217z" fill="currentColor" />
-        </svg>
-        <h2 className="mb-3">Jangan Bikin Aku Sedih</h2>
-        <p>Kamu didapati mencoba menghapus watermark secara ilegal.</p>
-      </div>
-    </div>
-  </div>
   <div className="modal fade" id="notSupport" tabIndex={-1} role="dialog" aria-labelledby="notSupport" aria-hidden="true">
     <div className="modal-dialog modal-dialog-centered">
       <div className="modal-content" style={{borderRadius: '0.8rem'}}>
@@ -1138,10 +1077,10 @@ export default function Home() {
       </div>
     </div>
   </div>
-  <Script
+  {/* <Script
     src="/scripts/theme-app.js"
     strategy="afterInteractive"
-  />
+  /> */}
   <Script
   src="/scripts/themesv2.js"
   strategy="afterInteractive"
