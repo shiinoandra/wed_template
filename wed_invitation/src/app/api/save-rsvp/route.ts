@@ -1,19 +1,9 @@
 import { NextResponse, NextRequest } from "next/server";
+import { getRequestContext } from "@cloudflare/next-on-pages";
 
 export const runtime = "edge";
 
-// Define the Cloudflare context interface
-interface CloudflareContext {
-  env: {
-    RSVP_DB: D1Database;
-  };
-  params: Promise<Record<string, string>>;
-}
-
-export async function POST(
-  req: NextRequest,
-  context: CloudflareContext
-) {
+export async function POST(req: NextRequest) {
   try {
     const body: {
       name: string;
@@ -24,12 +14,9 @@ export async function POST(
 
     const { name, phone, attend, comment } = body;
 
-    // Access the D1 database from the Cloudflare environment
-    const db = context.env.RSVP_DB;
-    
-    if (!db) {
-      throw new Error("Database not available");
-    }
+    // Get Cloudflare context
+    const { env } = getRequestContext();
+    const db = env.RSVP_DB as D1Database;
 
     await db
       .prepare(
