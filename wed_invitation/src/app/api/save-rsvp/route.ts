@@ -1,9 +1,12 @@
 import { NextResponse, NextRequest } from "next/server";
-import { getRequestContext } from "@cloudflare/next-on-pages";
 
 export const runtime = "edge";
 
-export async function POST(req: NextRequest) {
+export async function POST(
+  req: NextRequest,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  context: any
+) {
   try {
     const body: {
       name: string;
@@ -14,9 +17,12 @@ export async function POST(req: NextRequest) {
 
     const { name, phone, attend, comment } = body;
 
-    // Get Cloudflare context
-    const { env } = getRequestContext();
-    const db = env.RSVP_DB as D1Database;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const db = (context as any).env?.RSVP_DB;
+    
+    if (!db) {
+      throw new Error("Database not available");
+    }
 
     await db
       .prepare(
