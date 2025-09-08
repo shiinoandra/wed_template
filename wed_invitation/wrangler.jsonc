@@ -25,7 +25,7 @@
     
     "d1_databases": [
       {
-        "binding": "`rsvp-db>",
+        "binding": "RSVP_DB",
         "database_name": "rsvp-db",
         "database_id": "f8578309-6657-4a72-aaee-d6a42b90af02"
       }

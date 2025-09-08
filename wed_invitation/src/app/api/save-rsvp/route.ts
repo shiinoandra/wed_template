@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
-import { getRequestContext } from "@cloudflare/next-on-pages";
 
-export const runtime = "edge"; // required for D1
+export const runtime = "edge";
 
-export async function POST(req: Request) {
+export async function POST(
+  req: Request,
+  context: { env: { RSVP_DB: D1Database } }
+) {
   try {
     const body: {
       name: string;
@@ -14,10 +16,8 @@ export async function POST(req: Request) {
 
     const { name, phone, attend, comment } = body;
 
-    // Correctly typed DB binding
-    const db = getRequestContext().env.DB as D1Database;
-
-    await db
+    // Use your D1 binding
+    await context.env.RSVP_DB
       .prepare(
         `INSERT INTO rsvp (name, phone, attend, comment) VALUES (?, ?, ?, ?)`
       )
@@ -25,10 +25,10 @@ export async function POST(req: Request) {
       .run();
 
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Error saving RSVP:", error);
+  } catch (err) {
+    console.error("Error saving RSVP:", err);
     return NextResponse.json(
-      { success: false, error: "Failed to save" },
+      { success: false, error: "Failed to save RSVP" },
       { status: 500 }
     );
   }
