@@ -2,7 +2,10 @@ import { NextResponse } from "next/server";
 
 export const runtime = "edge";
 
-export async function POST(req: Request, context: any) {
+export async function POST(
+  req: Request,
+  context: { env: { RSVP_DB: D1Database } } // 👈 inline type here
+) {
   try {
     const body: {
       name: string;
@@ -13,7 +16,6 @@ export async function POST(req: Request, context: any) {
 
     const { name, phone, attend, comment } = body;
 
-    // Use your D1 binding (variable name must match Cloudflare dashboard binding)
     await context.env.RSVP_DB
       .prepare(
         `INSERT INTO rsvp (name, phone, attend, comment) VALUES (?, ?, ?, ?)`
