@@ -683,11 +683,11 @@ return (
                             </div>
                           </div>
                           <div className="text-center">
-                            <div className="editable font-latin color-accent h4 mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize: "28.8px"}}>Do\'a Untuk Pengantin</div>
+                            <div className="editable font-latin color-accent h4 mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize: "28.8px"}}>Doa Untuk Pengantin</div>
                             <div className="editable mb-4 animate__animated animate__fadeInUp animate__slower" style={{fontSize: "14.4px"}}>
-                              \"Semoga Allah memberkahimu di waktu bahagia dan memberkahimu di waktu susah, dan mengumpulkan kalian berdua dalam kebaikan\"<br />
+                              Semoga Allah memberkahimu di waktu bahagia dan memberkahimu di waktu susah, dan mengumpulkan kalian berdua dalam kebaikan<br />
                               <br />
-                              [HR. Abu Daud]
+                              HR. Abu Daud
                             </div>
                             <div className="editable mb-4 animate__animated animate__fadeInUp animate__slower">Tekan tombol dibawah ini untuk mengirim ucapan dan konfirmasi kehadiran</div>
                             <button className="btn-rsvp btn btn-primary rounded-pill mb-4 animate__animated animate__fadeInUp animate__slow" style={{fontSize: 20}}>Konfirmasi &amp; Kirim Ucapan</button>
@@ -850,7 +850,7 @@ return (
                             <div className="editable mb-2 animate__animated animate__fadeInDown animate__slower" style={{fontSize: 14}}>
                               Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan doa restu kepada kedua mempelai.
                             </div>
-                            <div className="editable mb-3 animate__animated animate__fadeInDown animate__slower font-italic" style={{fontSize: 16}}>Wassalamu\'alaikum Warahmatullahi Wabarakatuh</div>
+                            <div className="editable mb-3 animate__animated animate__fadeInDown animate__slower font-italic" style={{fontSize: 16}}>Wassalamualaikum Warahmatullahi Wabarakatuh</div>
                             <div className="text-center d-flex align-items-center justify-content-center animate__animated animate__fadeInDown animate__slow" style={{gap: 14, lineHeight: '1.2'}}>
                               <div>
                                 <div className="editable" style={{textDecoration: 'underline', fontSize: 13}}>Keluarga</div>
