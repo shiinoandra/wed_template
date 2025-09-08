@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
+import { Suspense } from "react"
+
 
 import Script from 'next/script'
 import FormModal  from "./rsvpForm";
@@ -57,8 +59,10 @@ export default function Home() {
 
 
 return (
-    
+  
 <div>
+<Suspense>
+
     <main id="app">
     <div id="modalOverlay" className="modal-backdrop fade" style={{display: 'none'}} />
     <div id="loader" className="loader-wrapper" style={{display: 'none'}}>
@@ -1085,7 +1089,8 @@ return (
   src="/scripts/themesv2.js"
   strategy="afterInteractive"
 />
-</div>
+</Suspense>
 
+</div>
   );
 }
