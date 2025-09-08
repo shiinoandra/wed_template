@@ -142,11 +142,9 @@
 // }
 
 import { NextResponse, NextRequest } from "next/server";
+import { getRequestContext } from "@cloudflare/next-on-pages";
 
 export const runtime = "edge";
-
-// Declare the global D1 database
-declare const RSVP_DB: D1Database;
 
 export async function POST(req: NextRequest) {
   try {
@@ -159,19 +157,23 @@ export async function POST(req: NextRequest) {
 
     const { name, phone, attend, comment } = body;
 
-    // Check if global RSVP_DB is available
-    if (typeof RSVP_DB === 'undefined') {
+    // Get Cloudflare request context
+    const { env } = getRequestContext();
+    
+    if (!env.RSVP_DB) {
       return NextResponse.json(
-        { success: false, error: "RSVP_DB global not available" },
+        { success: false, error: "RSVP_DB not found in environment" },
         { status: 500 }
       );
     }
 
+    const db = env.RSVP_DB as D1Database;
+
     // Test database connection
-    const testResult = await RSVP_DB.prepare("SELECT 1 as test").first();
+    const testResult = await db.prepare("SELECT 1 as test").first();
     console.log("DB test:", testResult);
 
-    const result = await RSVP_DB
+    const result = await db
       .prepare(
         `INSERT INTO rsvp (name, phone, attend, comment) VALUES (?, ?, ?, ?)`
       )
