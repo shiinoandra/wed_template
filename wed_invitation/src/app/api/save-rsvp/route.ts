@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
 
     const result = await db
       .prepare(
-        `INSERT INTO rsvp (name, phone, attend, comment) VALUES (?, ?, ?, ?)`
+        `INSERT INTO guest (name, phone, attend, comment) VALUES (?, ?, ?, ?)`
       )
       .bind(name, phone, attend, comment)
       .run();
@@ -42,6 +42,47 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : String(err);
     console.error("Error:", errorMessage);
+    
+    return NextResponse.json(
+      { success: false, error: errorMessage },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(req: NextRequest) {
+  try {
+    // Get Cloudflare request context
+    const { env } = getRequestContext();
+    if (!env.RSVP_DB) {
+      return NextResponse.json(
+        { success: false, error: "RSVP_DB not found in environment" },
+        { status: 500 }
+      );
+    }
+
+    const db = env.RSVP_DB;
+
+    // Fetch all RSVP records
+    const rsvps = await db
+      .prepare("SELECT * FROM guest")
+      .all();
+
+    // Get total count
+    const countResult = await db
+      .prepare("SELECT COUNT(*) as total FROM rsvp")
+      .first();
+
+    return NextResponse.json({
+      success: true,
+      data: rsvps.results,
+      total: countResult?.total || 0,
+      count: rsvps.results?.length || 0
+    });
+
+  } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    console.error("Error fetching RSVPs:", errorMessage);
     
     return NextResponse.json(
       { success: false, error: errorMessage },
