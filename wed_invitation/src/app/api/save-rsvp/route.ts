@@ -35,7 +35,7 @@ export async function POST(
   } catch (err) {
     console.error("Error saving RSVP:", err);
     return NextResponse.json(
-      { success: false, error: "Failed to save RSVP" },
+      { success: false, error: "Failed to save RSVP", msg: err },
       { status: 500 }
     );
   }
