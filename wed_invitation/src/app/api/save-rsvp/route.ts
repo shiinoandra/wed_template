@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 export const runtime = "edge";
 
 export async function POST(
-  req: Request,
-  context: { env: { RSVP_DB: D1Database } } // 👈 inline type here
+  req: NextRequest,
+  context: any // Use 'any' to bypass TypeScript checking
 ) {
   try {
     const body: {
@@ -16,7 +16,14 @@ export async function POST(
 
     const { name, phone, attend, comment } = body;
 
-    await context.env.RSVP_DB
+    // Access the D1 database from the Cloudflare environment
+    const db = (context as any).env?.RSVP_DB;
+    
+    if (!db) {
+      throw new Error("Database not available");
+    }
+
+    await db
       .prepare(
         `INSERT INTO rsvp (name, phone, attend, comment) VALUES (?, ?, ?, ?)`
       )
