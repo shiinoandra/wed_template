@@ -2,9 +2,17 @@ import { NextResponse, NextRequest } from "next/server";
 
 export const runtime = "edge";
 
+// Define the Cloudflare context interface
+interface CloudflareContext {
+  env: {
+    RSVP_DB: D1Database;
+  };
+  params: Promise<Record<string, string>>;
+}
+
 export async function POST(
   req: NextRequest,
-  context: any // Use 'any' to bypass TypeScript checking
+  context: CloudflareContext
 ) {
   try {
     const body: {
@@ -17,7 +25,7 @@ export async function POST(
     const { name, phone, attend, comment } = body;
 
     // Access the D1 database from the Cloudflare environment
-    const db = (context as any).env?.RSVP_DB;
+    const db = context.env.RSVP_DB;
     
     if (!db) {
       throw new Error("Database not available");
