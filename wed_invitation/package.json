@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "set NODE_ENV=production & npm build",
+    "build": "set NODE_ENV=production & npm run build",
     "start": "next start",
     "lint": "eslint"
   },
