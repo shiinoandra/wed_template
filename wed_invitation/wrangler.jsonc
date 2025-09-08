@@ -22,11 +22,12 @@
         "service": "wed-invitation",
       },
     ],
-    "r2_buckets": [
-      // Create a R2 binding with the binding name "NEXT_INC_CACHE_R2_BUCKET"
-      // {
-      //   "binding": "NEXT_INC_CACHE_R2_BUCKET",
-      //   "bucket_name": "<BUCKET_NAME>",
-      // },
-    ],
+    
+    "d1_databases": [
+      {
+        "binding": "`rsvp-db>",
+        "database_name": "rsvp-db",
+        "database_id": "f8578309-6657-4a72-aaee-d6a42b90af02"
+      }
+    ]
   }
