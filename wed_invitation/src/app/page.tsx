@@ -13,6 +13,9 @@ import { useSearchParams } from "next/navigation";
 export default function Home() {
 
 
+  const [submitState, setSubmitState] = useState('form'); // 'form', 'success', 'error'
+  const [errorMessage, setErrorMessage] = useState('');
+
   const nameRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const attendRef = useRef<HTMLSelectElement>(null);
@@ -35,7 +38,7 @@ export default function Home() {
       comment: commentRef.current?.value || "",
     };
     setLoading(true);
-  
+    setSubmitState('form'); // Reset any previous error state    
     try {
       const res = await fetch("/api/save-rsvp", {
         method: "POST",
@@ -44,17 +47,24 @@ export default function Home() {
       });
   
       if (!res.ok) throw new Error("Failed to save");
-      alert("RSVP saved to CSV ✅");
+      setSubmitState('success');
       if (nameRef.current) nameRef.current.value = "";
       if (phoneRef.current) phoneRef.current.value = "";
       if (attendRef.current) attendRef.current.value = "Hadir";
       if (commentRef.current) commentRef.current.value = "";    } catch (err) {
       console.error(err);
-      alert("❌ Failed to save RSVP");
+      setSubmitState('error');
+      setErrorMessage('Gagal mengirim RSVP. Silakan coba lagi.');
     } finally {
       setLoading(false);
     }
   };
+  
+  const resetModalState = () => {
+    setSubmitState('form');
+    setErrorMessage('');
+  };
+
 
 
 return (
@@ -999,12 +1009,50 @@ return (
         </div>
       </div>
     </div>
+{/* RSVP MODAL FORM */}
 
-    {/* RSVP MODAL FORM */}
-
-    <div id="rsvpModal" tabIndex={-1} role="dialog" aria-labelledby="rsvpModal" className="modal fade">
+<div id="rsvpModal" tabIndex={-1} role="dialog" aria-labelledby="rsvpModal" className="modal fade">
       <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content p-4" style={{height: '50%'}}>
+        <div className="modal-content p-4" style={{height: '60%'}}>
+        <button type="button" className="close-rsvp-btn btn" style={{position:"relative",left:"380px",width:"60px"}}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>          
+        {/* Error Banner */}
+          {submitState === 'error' && (
+            <div className="alert alert-danger alert-dismissible mb-3" role="alert">
+              <div className="d-flex align-items-center">
+                <svg className="me-2" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                <span>{errorMessage}</span>
+              </div>
+              <button 
+                type="button" 
+                className="btn-close" 
+                onClick={() => setSubmitState('form')}
+                aria-label="Close"
+              ></button>
+            </div>
+          )}
+
+          {/* Success State */}
+          {submitState === 'success' ? (
+            <div className="text-center py-4">
+              <div className="mb-4">
+                <svg 
+                  className="text-success" 
+                  width="64" 
+                  height="64" 
+                  fill="currentColor" 
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+              </div>
+              <h4 className="font-accent text-success mb-3">Terima Kasih!</h4>
+              <p className="text-muted">
+                Terima kasih untuk konfirmasi kedatangan dan pesannya
+              </p>
+            </div>
+          ) : (
           <div className="rsvp-form show">
             <div className="mb-4"><div className="font-accent h4 text-center">RSVP</div></div>
             <form className="pt-2" onSubmit={handleSubmit}>
@@ -1040,19 +1088,31 @@ return (
                 <label htmlFor="inputcomment" className="small mb-1">Komentar atau Ucapan</label> 
                 <textarea ref={commentRef} id="inputcomment" rows={3} placeholder="Komentar atau Ucapan" required className="form-control" />
               </div>
-              <button className="btn btn-primary rounded-pill btn-block mt-4 mb-2" type="submit" ><span>Kirim</span></button>
-            </form>
+              <button 
+                className="btn btn-primary rounded-pill btn-block mt-4 mb-2" 
+                type="submit"
+                disabled={loading}
+              >
+                <span>
+                  {loading ? (
+                    <>
+                      <span className="spinner-border spinner-border-sm me-2" style={{marginRight:"5%"}} role="status" aria-hidden="true"></span>
+                      Mengirim...
+                    </>
+                  ) : (
+                    'Kirim'
+                  )}
+                </span>
+              </button>
+           </form>
           </div>
-          <button type="button"  style={{position:"relative", bottom:"-50px"}} className="close-rsvp-btn btn btn-close">
-            <svg xmlns="http://www.w3.org/2000/svg" height="42px" width="42px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </button>
+          )}
         </div>
       </div>
     </div>
 
     {/* ENDOF RSVP MODAL */}
+
 
 
   </main>
