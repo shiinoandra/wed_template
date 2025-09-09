@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
 
     const result = await db
       .prepare(
-        `INSERT INTO guest (name, phone, attend, comment,timestamp) VALUES (?, ?, ?, ?)`
+        `INSERT INTO guest (name, phone, attend, comment,timestamp) VALUES (?, ?, ?, ?,?)`
       )
       .bind(name, phone, attend, comment,timestamp)
       .run();
