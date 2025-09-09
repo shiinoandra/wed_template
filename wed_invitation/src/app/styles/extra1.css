@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("../fonts/javassoul/style.css");
 @import url("../fonts/laraboyok/style.css");
+@import url("../fonts/louis/louis.css");
+
 :root {
     --inv-bg: #f7f7f7;
     --inv-base: #49312b;
@@ -10,7 +12,7 @@
     --menu-inactive: #265875;
     --menu-active: #265875;
     --btn-color: #ffffff;
-    --font-base: "Work Sans", sans-serif;
+    --font-base: "Louis George", sans-serif;
     --font-accent: "Laraboyok", serif;
     --font-latin: "Javassoul", serif;
 }
