@@ -67,3 +67,59 @@
 .cover .frame::after {
     display: none;
 }
+
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+
+    background-color:rgba(0, 0, 0, 0) !important;
+  }
+
+  .card .card-body .wishes {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox, Safari 18.2+, Chromium 121+ */
+  }
+
+  .card .card-body .wishes::-webkit-scrollbar { 
+    display: none;  /* Older Safari and Chromium */
+}
+  
+  /* Instead of: div > .card .card-body .wishes .wish */
+  .card .card-body .wishes .wish {
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+  }
+  
+  .card .card-body .wishes {
+    text-align: left;
+    max-height: 32rem;
+    overflow: auto;
+    padding-right: 1rem;
+    color: var(--color-dark);
+  }
+  
+  .card .card-body .wishes .wish .wish-badge {
+    background-color: var(--color-light);
+    width: 35px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+  }
+  
+  .card .card-body .wishes .wish .wish-description {
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    position: relative;
+  }
+
+

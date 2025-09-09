@@ -7,11 +7,20 @@ import { useRef } from "react";
 
 
 import Script from 'next/script'
-import FormModal  from "./rsvpForm";
+import FormModal from "./rsvpForm";
 import { useSearchParams } from "next/navigation";
 
-export default function Home() {
 
+type Wish = {
+  id: number;
+  name: string;
+  phone: string,
+  comment: string;
+  timestamp: string;
+};
+
+
+export default function Home() {
 
   const [submitState, setSubmitState] = useState('form'); // 'form', 'success', 'error'
   const [errorMessage, setErrorMessage] = useState('');
@@ -26,6 +35,43 @@ export default function Home() {
   const searchParams = useSearchParams();
   const name = searchParams.get("name") || "Tamu Undangan"; // default if no param
   const type = searchParams.get("type") || "1";
+
+  const [wishes, setWishes] = useState<Wish[]>([]);
+
+  // Function to generate avatar background color based on name
+  const getAvatarColor = (name: String) => {
+    const colors = [
+      '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
+      '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9'
+    ];
+    const index = name.charCodeAt(0) % colors.length;
+    return colors[index];
+  };
+
+
+  // Function to get first letter of name
+  const getInitial = (name: String) => {
+    return name ? name.charAt(0).toUpperCase() : 'U';
+  };
+
+    // Fetch pesan
+    useEffect(() => {
+      async function fetchWishes() {
+        try {
+          setLoading(true);
+          const res = await fetch("/api/save-rsvp", { cache: "no-store" });
+          const json = await res.json();
+          if (json.success) {
+            setWishes(json.data);  // ✅ use API response
+          }
+        } catch (error) {
+          console.error("Error fetching wishes:", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+      fetchWishes();
+    }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -634,6 +680,7 @@ return (
                       </div>
                     </div>
                   </li>
+                  {/* BEGIN RSVP SECTION */}
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
@@ -707,6 +754,131 @@ return (
                       </div>
                     </div>
                   </li>
+                  {/* END RSVP SECTION */}
+                    {/* BEGIN PESAN SECTION  */}
+                    <li className="wedstyle_slide" style={{ display: 'none' }}>
+                        <div className="container-mobile" style={{ backgroundImage: 'url("bg.png")' }}>
+                          <div className="frame">
+                            <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                            <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                            <div className="frame-tl w-100 only-cover" style={{ transform: 'scale(1.2)', transformOrigin: 'center top' }}>
+                              <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{ animationDelay: '1.5s' }} />
+                            </div>
+                            <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
+                              <div className="animate-left" style={{ transform: 'translate(-5%, 145%)' }}>
+                                <img src="/tl-2.webp" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom', animationDelay: '120ms' }} />
+                              </div>
+                            </div>
+                            <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
+                              <div className="animate-right" style={{ transform: 'translate(5%, 145%)' }}>
+                                <img src="/tr-2.webp" alt="frame" className="w-100" style={{ transformOrigin: 'right bottom', animationDelay: '120ms' }} />
+                              </div>
+                            </div>
+                            <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{ animationDelay: '2.5s' }}>
+                              <div className="animate-left" style={{ transform: 'translate(-29%, -85%)' }}>
+                                <img src="/bl-1.webp" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom' }} />
+                              </div>
+                            </div>
+                            <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{ animationDelay: '2.2s' }}>
+                              <div className="animate-left" style={{ transform: 'translate(-27%, -87%)' }}>
+                                <img src="/sinta.webp" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom', animationDelay: '100ms' }} />
+                              </div>
+                            </div>
+                            <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{ animationDelay: '2s' }}>
+                              <div className="animate-left" style={{ transform: 'translate(-16%, -70%)' }}>
+                                <img src="/flol-3.png" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom', animationDelay: '300ms' }} />
+                              </div>
+                            </div>
+                            <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{ animationDelay: '2.5s' }}>
+                              <div className="animate-right" style={{ transform: 'translate(29%, -85%)' }}>
+                                <img src="/br-1.webp" alt="frame" className="w-100" style={{ transformOrigin: 'right bottom' }} />
+                              </div>
+                            </div>
+                            <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{ animationDelay: '2.2s' }}>
+                              <div className="animate-right" style={{ transform: 'translate(27%, -87%)' }}>
+                                <img src="/rama.webp" alt="frame" className="w-100" style={{ transformOrigin: 'right bottom', animationDelay: '100ms' }} />
+                              </div>
+                            </div>
+                            <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{ animationDelay: '2s' }}>
+                              <div className="animate-right" style={{ transform: 'translate(16%, -70%)' }}>
+                                <img src="/flor-3.png" alt="frame" className="w-100" style={{ transformOrigin: 'right bottom', animationDelay: '300ms' }} />
+                              </div>
+                            </div>
+
+                            <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
+                            <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
+                          </div>
+                          <div className="watermark d-flex flex-column" style={{ height: '100%' }}>
+                            <div className="mt-auto" style={{ width: '100%', height: "100%" }}>
+                              <div className="text-center">
+                                {/* <div className="editable mb-2 animate__animated animate__fadeInDown animate__slower" style={{fontSize: 14}}>
+                              Pesan
+                            </div> */}
+                                {/* <div className="editable mb-3 animate__animated animate__fadeInDown animate__slower font-italic" style={{fontSize: 16}}>Wassalamualaikum Warahmatullahi Wabarakatuh</div> */}
+
+                                <div className="text-center d-flex align-items-center justify-content-center animate__animated animate__fadeInDown animate__slow" style={{ gap: 14, lineHeight: '1.2' }}>
+                                  <div className="comment card  mt-2 py-2 pr-2" style={{ border: "0 !important", height: "100%" }}>
+                                    <div className="card-body mt-0 p-0 text-left" style={{ width: "100%", height: "100%", overflow: "hidden" }}>
+                                      <div style={{ height: "100%", maxHeight: "550px", overflowY: "auto", padding: "10px", }} className="wishes has-animate" data-anim="zoom-in-up" id="wishes-container" data-load-animation="true">
+                                        {loading ? (
+                                          <p className="font-latin color-accent h4 m-5 editable animate__animated animate__fadeInDown animate__slower"
+                                            style={{ textAlign: "center", fontSize: "1.5rem" }}>
+                                            Memuat pesan...
+                                          </p>
+                                        ) : (
+                                          <>
+                                            {wishes.length === 0 && (
+                                              <p className="font-latin color-accent h4 m-5 editable animate__animated animate__fadeInDown animate__slower"
+                                                style={{ textAlign: "center", fontSize: "1.5rem" }}>
+                                                Belum ada pesan
+                                              </p>
+                                            )}
+
+                                            {wishes.map((wish) => (
+                                              <div
+                                                key={wish.name + wish.phone}
+                                                className="wish comment mt-0"
+                                                style={{ background: "rgba(255,255,255,0.0)" }}
+                                              >
+                                                <div
+                                                  className="avatar wish-badge rounded-circle d-flex align-items-center justify-content-center text-white font-weight-bold me-3"
+                                                  style={{
+                                                    height: "40px",
+                                                    width: "40px",
+                                                    backgroundColor: getAvatarColor(wish.name),
+                                                    fontSize: "16px",
+                                                    minWidth: "40px",
+                                                  }}
+                                                >
+                                                  {getInitial(wish.name)}
+                                                </div>
+                                                <div className="wish-description">
+                                                  <h6
+                                                    style={{ fontSize: "1.05rem", textDecoration: "underline" }}
+                                                    className="notranslate"
+                                                  >
+                                                    {wish.name}
+                                                  </h6>
+                                                  <p>{wish.comment}</p>
+                                                  <small className="text-muted">{wish.timestamp}</small>
+                                                </div>
+                                              </div>
+                                            ))}
+                                          </>
+                                        )}
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      {/* END PESAN SECTION */}
+                  {/* BEGIN GIFT SECTION */}
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
@@ -803,6 +975,7 @@ return (
                       </div>
                     </div>
                   </li>
+                  {/* END GIFT SECTION */}
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
@@ -910,6 +1083,7 @@ return (
                   <span>Maps</span>
                 </li>
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-chat-circle-text" style={{color: 'currentcolor'}} /> <span>RSVP</span></li>
+                <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-book-open-text" style={{ color: 'currentcolor' }} /> <span>Pesan</span></li>
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-gift" style={{color: 'currentcolor'}} /> <span>Gift</span></li>
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-mosque" style={{color: 'currentcolor'}} /> <span>Thanks</span></li>
               </ul>
