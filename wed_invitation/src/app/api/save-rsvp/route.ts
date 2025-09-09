@@ -10,10 +10,18 @@ export async function POST(req: NextRequest) {
       phone: string;
       attend: string;
       comment: string;
-      timestamp:string;
     } = await req.json();
 
-    const { name, phone, attend, comment,timestamp } = body;
+    const { name, phone, attend, comment } = body;
+
+      // Generate readable timestamp
+      const now = new Date();
+      const timestamp = now.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      }); 
+      // Example: "09 September 2025"
 
     // Get Cloudflare request context
     const { env } = getRequestContext();
