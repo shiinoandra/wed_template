@@ -202,19 +202,19 @@ return (
                       </div>
                       <div className="position-relative h-100 w-100 flex-column d-flex justify-content-center align-items-center" style={{paddingBottom: '30%'}}>
                         <div className="text-center editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize: '14.4px'}}>🏵 Undangan Pernikahan 🏵</div>
-                        <div className="pt-3 d-flex align-items-center justify-content-center mb-2 mx-auto animate__animated animate__zoomIn animate__slower" style={{height: 112, width: 60, backgroundImage: 'url("/gunungan-isi.png")', backgroundRepeat: 'no-repeat', backgroundSize: 'contain', backgroundPosition: 'center center'}}>
+                        <div className="pt-3 d-flex align-items-center justify-content-center mb-2 mx-auto animate__animated animate__zoomIn animate__slower" style={{height: 112, width: 60, marginBottom:"25px !important", backgroundImage: 'url("/gunungan-isi.png")', backgroundRepeat: 'no-repeat', backgroundSize: 'contain', backgroundPosition: 'center center'}}>
                           <div className="editable text-left font-latin" style={{fontSize: 60, lineHeight: 1, transform: 'translate(2px, 9px)'}}>N</div>
                           <div className="editable text-right font-latin" style={{fontSize: 60, lineHeight: 1, transform: 'translate(-8px, 33px)'}}>R</div>
                         </div>
-                        <div className="w-100 d-flex align-items-center justify-content-center">
-                          <div className="text-right animate__animated animate__fadeInLeft animate__slower" style={{width: '40%', animationDelay: '1500ms'}}>
-                            <div className="editable color-accent font-accent" style={{fontSize: 40, lineHeight: 1}}>Nuri</div>
+                        <div className="w-100 d-flex flex-column align-items-center justify-content-center">
+                          <div className="text-center animate__animated animate__fadeInUp animate__slower" style={{animationDelay:"1500ms"}}>
+                              <div className="editable color-accent font-accent" style={{fontSize:"40px",lineHeight:1}}>Nuri</div>
                           </div>
-                          <div className="editable px-2 font-latin animate__animated animate__zoomIn animate__slower" style={{fontSize: 60, animationDelay: '500ms'}}>&amp;</div>
-                          <div className="text-left animate__animated animate__fadeInRight animate__slower" style={{width: '40%', animationDelay: '1500ms'}}>
-                            <div className="editable color-accent font-accent" style={{lineHeight: 1, fontSize: 40}}>Rahadian</div>
+                          <div className="editable font-latin animate__animated animate__zoomIn animate__slower" style={{margin:"-10px",fontSize:"40px",animationDelay:"500ms"}}>&amp;</div>
+                          <div className="text-center animate__animated animate__fadeInDown animate__slower" style={{animationDelay:"1500ms"}}>
+                              <div className="editable color-accent font-accent" style={{lineHeight:1,fontSize:"40px"}}>Rahadian</div>
                           </div>
-                        </div>
+</div>
                         {type === "1" && (
                         <div className="image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{height: 'auto', width: 230, overflow: 'hidden', position: 'absolute', bottom: '-30px'}}>
                           <img className="nr_render" src="/wedding_nr.webp" alt="wedding_nr.webp" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
