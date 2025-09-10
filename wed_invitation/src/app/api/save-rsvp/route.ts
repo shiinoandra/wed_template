@@ -14,6 +14,15 @@ export async function POST(req: NextRequest) {
 
     const { name, phone, attend, comment } = body;
 
+      // Generate readable timestamp
+      const now = new Date();
+      const timestamp = now.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      }); 
+      // Example: "09 September 2025"
+
     // Get Cloudflare request context
     const { env } = getRequestContext();
     
@@ -32,9 +41,9 @@ export async function POST(req: NextRequest) {
 
     const result = await db
       .prepare(
-        `INSERT INTO guest (name, phone, attend, comment) VALUES (?, ?, ?, ?)`
+        `INSERT INTO guest (name, phone, attend, comment,timestamp) VALUES (?, ?, ?, ?,?)`
       )
-      .bind(name, phone, attend, comment)
+      .bind(name, phone, attend, comment,timestamp)
       .run();
 
     return NextResponse.json({ success: true, result });
@@ -70,7 +79,7 @@ export async function GET(req: NextRequest) {
 
     // Get total count
     const countResult = await db
-      .prepare("SELECT COUNT(*) as total FROM rsvp")
+      .prepare("SELECT COUNT(*) as total FROM guest")
       .first();
 
     return NextResponse.json({
