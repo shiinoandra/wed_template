@@ -503,7 +503,7 @@ return (
                         </div>
                         <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
-                          <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.10.25</div>
+                          <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.Okt.25</div>
                         </div>
                         <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
@@ -580,7 +580,7 @@ return (
                         </div>
                         <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
-                          <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.10.25</div>
+                          <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.Okt.25</div>
                         </div>
                         <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
@@ -812,19 +812,19 @@ return (
                             </div> */}
                                 {/* <div className="editable mb-3 animate__animated animate__fadeInDown animate__slower font-italic" style={{fontSize: 16}}>Wassalamualaikum Warahmatullahi Wabarakatuh</div> */}
 
-                                <div className="text-center d-flex align-items-center justify-content-center animate__animated animate__fadeInDown animate__slow" style={{ gap: 14, lineHeight: '1.2' }}>
+                                <div className="text-center d-flex align-items-center justify-content-center" style={{ gap: 14, lineHeight: '1.2' }}>
                                   <div className="comment card  mt-2 py-2 pr-2" style={{ border: "0 !important", height: "100%" }}>
                                     <div className="card-body mt-0 p-0 text-left" style={{ width: "100%", height: "100%", overflow: "hidden" }}>
                                       <div style={{ height: "100%", maxHeight: "550px", overflowY: "auto", padding: "10px", }} className="wishes has-animate" data-anim="zoom-in-up" id="wishes-container" data-load-animation="true">
                                         {loading ? (
-                                          <p className="font-latin color-accent h4 m-5 editable animate__animated animate__fadeInDown animate__slower"
+                                          <p className="font-latin color-accent h4 m-5 editable "
                                             style={{ textAlign: "center", fontSize: "1.5rem" }}>
                                             Memuat pesan...
                                           </p>
                                         ) : (
                                           <>
                                             {wishes.length === 0 && (
-                                              <p className="font-latin color-accent h4 m-5 editable animate__animated animate__fadeInDown animate__slower"
+                                              <p className="font-latin color-accent h4 m-5 editable "
                                                 style={{ textAlign: "center", fontSize: "1.5rem" }}>
                                                 Belum ada pesan
                                               </p>
@@ -1214,7 +1214,7 @@ return (
 <div id="rsvpModal" tabIndex={-1} role="dialog" aria-labelledby="rsvpModal" className="modal fade">
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content p-4" style={{height: '80%'}}>
-        <button type="button" className="close-rsvp-btn btn" style={{position:"relative",left:"83%", top:"-5%",width:"60px"}}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>          
+        <button type="button" className="close-rsvp-btn btn" style={{position:"relative",left:"83%",width:"60px"}}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>          
         {/* Error Banner */}
           {submitState === 'error' && (
             <div className="alert alert-danger alert-dismissible mb-3" role="alert">
