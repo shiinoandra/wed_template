@@ -34,7 +34,7 @@ export default function Home() {
 
   const searchParams = useSearchParams();
   const name = searchParams.get("name") || "Tamu Undangan"; // default if no param
-  const type = searchParams.get("type") || "1";
+  const invitationType = searchParams.get("type") || "1";
   const [copiedAccount, setCopiedAccount] = useState("");
 
   const [wishes, setWishes] = useState<Wish[]>([]);
@@ -263,7 +263,7 @@ return (
                               <div className="editable color-accent font-accent" style={{lineHeight:1,fontSize:"40px"}}>Rahadian</div>
                           </div>
 </div>
-                        {type === "1" && (
+                        {invitationType !== "1" && (
                         <div className="image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{height: 'auto', width: 230, overflow: 'hidden', position: 'absolute', bottom: '-120px'}}>
                           <img className="nr_render" src="/wedding_nr.webp" alt="wedding_nr.webp" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                         </div>
@@ -746,45 +746,45 @@ return (
                               <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{ animationDelay: '1.5s' }} />
                             </div>
                             <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                              <div className="animate-left" style={{ transform: 'translate(-5%, 145%)' }}>
-                                <img src="/tl-2.webp" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom', animationDelay: '120ms' }} />
-                              </div>
-                            </div>
-                            <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                              <div className="animate-right" style={{ transform: 'translate(5%, 145%)' }}>
-                                <img src="/tr-2.webp" alt="frame" className="w-100" style={{ transformOrigin: 'right bottom', animationDelay: '120ms' }} />
-                              </div>
-                            </div>
-                            <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{ animationDelay: '2.5s' }}>
-                              <div className="animate-left" style={{ transform: 'translate(-29%, -85%)' }}>
-                                <img src="/bl-1.webp" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom' }} />
-                              </div>
-                            </div>
-                            <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{ animationDelay: '2.2s' }}>
-                              <div className="animate-left" style={{ transform: 'translate(-27%, -87%)' }}>
-                                <img src="/sinta.webp" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom', animationDelay: '100ms' }} />
-                              </div>
-                            </div>
-                            <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{ animationDelay: '2s' }}>
-                              <div className="animate-left" style={{ transform: 'translate(-16%, -70%)' }}>
-                                <img src="/flol-3.png" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom', animationDelay: '300ms' }} />
-                              </div>
-                            </div>
-                            <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{ animationDelay: '2.5s' }}>
-                              <div className="animate-right" style={{ transform: 'translate(29%, -85%)' }}>
-                                <img src="/br-1.webp" alt="frame" className="w-100" style={{ transformOrigin: 'right bottom' }} />
-                              </div>
-                            </div>
-                            <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{ animationDelay: '2.2s' }}>
-                              <div className="animate-right" style={{ transform: 'translate(27%, -87%)' }}>
-                                <img src="/rama.webp" alt="frame" className="w-100" style={{ transformOrigin: 'right bottom', animationDelay: '100ms' }} />
-                              </div>
-                            </div>
-                            <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{ animationDelay: '2s' }}>
-                              <div className="animate-right" style={{ transform: 'translate(16%, -70%)' }}>
-                                <img src="/flor-3.png" alt="frame" className="w-100" style={{ transformOrigin: 'right bottom', animationDelay: '300ms' }} />
-                              </div>
-                            </div>
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          </div>
+                        </div>
+                        <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
+                          <div className="animate-left" style={{transform: 'translate(-29%, -85%)'}}>
+                            <img src="/bl-1.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.2s'}}>
+                          <div className="animate-left" style={{transform: 'translate(-27%, -87%)'}}>
+                            <img src="/sinta.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '100ms'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
+                          <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
+                          <div className="animate-right" style={{transform: 'translate(29%, -85%)'}}>
+                            <img src="/br-1.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.2s'}}>
+                          <div className="animate-right" style={{transform: 'translate(27%, -87%)'}}>
+                            <img src="/rama.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '100ms'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
+                          <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                          </div>
+                        </div>
 
                             <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
                             <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
@@ -1089,7 +1089,9 @@ return (
                 </li>
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-chat-circle-text" style={{color: 'currentcolor'}} /> <span>RSVP</span></li>
                 <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-book-open-text" style={{ color: 'currentcolor' }} /> <span>Pesan</span></li>
+                {invitationType !== "1" && (
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-gift" style={{color: 'currentcolor'}} /> <span>Gift</span></li>
+                )}
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-mosque" style={{color: 'currentcolor'}} /> <span>Thanks</span></li>
               </ul>
             </div>

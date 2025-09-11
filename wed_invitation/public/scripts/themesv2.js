@@ -78,19 +78,20 @@ var initCoreInvitation = function initCoreInvitation() {
     // Trigger event yang bisa ditangkap dari luar
     document.dispatchEvent(new Event("showGiftEvent"));
   };
-  var giftContainer = document.getElementsByClassName('gift-container');
-  for (var i = 0; i < giftContainer.length; i++) {
-    giftContainer[i].style.display = "none";
-  }
-  var btnGift = document.getElementsByClassName('btn-gift');
-  var _loop = function _loop(_i) {
-    btnGift[_i].onclick = function () {
-      showGift(_i);
-    };
-  };
-  for (var _i = 0; _i < btnGift.length; _i++) {
-    _loop(_i);
-  }
+
+  // var giftContainer = document.getElementsByClassName('gift-container');
+  // for (var i = 0; i < giftContainer.length; i++) {
+  //   giftContainer[i].style.display = "none";
+  // }
+  // var btnGift = document.getElementsByClassName('btn-gift');
+  // var _loop = function _loop(_i) {
+  //   btnGift[_i].onclick = function () {
+  //     showGift(_i);
+  //   };
+  // };
+  // for (var _i = 0; _i < btnGift.length; _i++) {
+  //   _loop(_i);
+  // }
 
   // modal
   var body = document.getElementsByTagName("BODY")[0];
