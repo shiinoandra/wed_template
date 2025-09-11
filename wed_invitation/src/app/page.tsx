@@ -265,11 +265,11 @@ return (
                         </div>
                         <div className="w-100 d-flex flex-column align-items-center justify-content-center">
                           <div className="text-center animate__animated animate__fadeInUp animate__slower" style={{animationDelay:"1500ms"}}>
-                              <div className="editable color-accent font-accent" style={{fontSize:"40px",lineHeight:1}}>Nuri</div>
+                              <div className="editable color-accent font-indo" style={{fontSize:"40px",lineHeight:1}}>Nuri</div>
                           </div>
                           <div className="editable font-latin animate__animated animate__zoomIn animate__slower" style={{margin:"-10px",fontSize:"40px",animationDelay:"500ms"}}>&amp;</div>
                           <div className="text-center animate__animated animate__fadeInDown animate__slower" style={{animationDelay:"1500ms"}}>
-                              <div className="editable color-accent font-accent" style={{lineHeight:1,fontSize:"40px"}}>Rahadian</div>
+                              <div className="editable color-accent font-indo" style={{lineHeight:1,fontSize:"40px"}}>Rahadian</div>
                           </div>
 </div>
                         {invitationType === "3" && (
@@ -408,7 +408,7 @@ return (
                               <img src="/cpw.jpg" alt="cpw.jpg" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
                             </div>
                             <div className="text-center animate__animated animate__fadeInLeft animate__slower" style={{position: 'relative'}}>
-                              <div className="editable color-accent h4 mb-2 font-accent" style={{fontSize: 24}}>Nuri Handayani S.Hum, MM</div>
+                              <div className="editable color-accent h4 mb-2 font-indo" style={{fontSize: 24}}>Nuri Handayani S.Hum, MM</div>
                               <div className="editable" style={{fontSize: '14.4px'}}>
                                 Putri dari<br />
                                 Bapak Ir. Sudarmadi, MM<br />
@@ -417,7 +417,7 @@ return (
                             </div>
                             <div className="editable mb-3 text-center animate__animated animate__fadeIn animate__slower font-photograph-signature" style={{fontSize: 30}}>dengan</div>
                             <div className="text-center animate__animated animate__fadeInRight animate__slower" style={{position: 'relative'}}>
-                              <div className="editable color-accent h4 mb-2 font-accent" style={{fontSize: 24}}>Rahadian Adinegoro, S.Kom, B.InfTech</div>
+                              <div className="editable color-accent h4 mb-2 font-indo" style={{fontSize: 24}}>Rahadian Adinegoro, S.Kom, B.InfTech</div>
                               <div className="editable mb-1" style={{fontSize: '14.4px'}}>
                                 Putra dari<br />
                                 Bapak Rosichin, SE, MM, M.Si<br />
@@ -494,7 +494,7 @@ return (
                         </div>
                         <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
-                          <div className="editable color-accent font-accent" style={{fontSize: 50, lineHeight: '1.2'}}>12.10.25</div>
+                          <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.10.25</div>
                         </div>
                         <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
@@ -571,7 +571,7 @@ return (
                         </div>
                         <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
-                          <div className="editable color-accent font-accent" style={{fontSize: 50, lineHeight: '1.2'}}>12.10.25</div>
+                          <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.10.25</div>
                         </div>
                         <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
@@ -1245,7 +1245,7 @@ return (
             </div>
           ) : (
           <div className="rsvp-form show">
-            <div className="mb-4"><div className="font-accent h4 text-center">RSVP</div></div>
+            <div className="mb-4"><div className="font-indo h4 text-center">RSVP</div></div>
             <form className="pt-2" onSubmit={handleSubmit}>
             <div>
                 <div className="form-group mb-2">
