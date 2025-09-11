@@ -159,54 +159,22 @@ return (
                   <li className="wedstyle_slide wedstyle_list" style={{}}>
                     <div className="container-mobile cover" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
-                        <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-5%, 145%)'}}>
-                            <img src="/tl-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(5%, 145%)'}}>
-                            <img src="/tr-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
-                          <div className="animate-left" style={{transform: 'translate(-29%, -85%)'}}>
-                            <img src="/bl-1.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.2s'}}>
-                          <div className="animate-left" style={{transform: 'translate(-27%, -87%)'}}>
-                            <img src="/sinta.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '100ms'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
-                          <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
-                          <div className="animate-right" style={{transform: 'translate(29%, -85%)'}}>
-                            <img src="/br-1.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.2s'}}>
-                          <div className="animate-right" style={{transform: 'translate(27%, -87%)'}}>
-                            <img src="/rama.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '100ms'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
-                          <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         
-                        <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                        <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="d-flex justify-content-center align-items-center" style={{height: '100%', width: '100%', backgroundSize: 'cover', zIndex: 2, position: 'relative'}}>
                         <div className="w-100 pt-5">
@@ -233,19 +201,19 @@ return (
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
-                        <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-5%, 145%)'}}>
-                            <img src="/tl-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(5%, 145%)'}}>
-                            <img src="/tr-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
@@ -279,8 +247,6 @@ return (
                           </div>
                         </div>
                         
-                        <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                        <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="position-relative h-100 w-100 flex-column d-flex justify-content-center align-items-center" style={{paddingBottom: '30%'}}>
                         <div className="text-center editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize: '14.4px'}}>🏵 Undangan Pernikahan 🏵</div>
@@ -298,7 +264,7 @@ return (
                           </div>
 </div>
                         {type === "1" && (
-                        <div className="image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{height: 'auto', width: 230, overflow: 'hidden', position: 'absolute', bottom: '-30px'}}>
+                        <div className="image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{height: 'auto', width: 230, overflow: 'hidden', position: 'absolute', bottom: '-120px'}}>
                           <img className="nr_render" src="/wedding_nr.webp" alt="wedding_nr.webp" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                         </div>
                         )}
@@ -308,19 +274,19 @@ return (
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
-                        <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-5%, 145%)'}}>
-                            <img src="/tl-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(5%, 145%)'}}>
-                            <img src="/tr-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
@@ -354,8 +320,7 @@ return (
                           </div>
                         </div>
                         
-                        <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                        <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
+                        
                       </div>
                       <div className="h-100 d-flex flex-column justify-content-center align-items-center">
                         <div className="animate__animated animate__fadeInDown animate__slower">
@@ -380,19 +345,19 @@ return (
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
-                        <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-5%, 145%)'}}>
-                            <img src="/tl-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(5%, 145%)'}}>
-                            <img src="/tr-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
@@ -426,8 +391,6 @@ return (
                           </div>
                         </div>
                         
-                        <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                        <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="d-flex justify-content-center align-items-center" style={{height: '100%'}}>
                         <div>
@@ -463,19 +426,19 @@ return (
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
-                        <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-5%, 145%)'}}>
-                            <img src="/tl-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(5%, 145%)'}}>
-                            <img src="/tr-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
@@ -509,8 +472,6 @@ return (
                           </div>
                         </div>
                         
-                        <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                        <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="d-flex justify-content-center flex-column align-items-center" style={{height: '100%'}}>
                         <div className="animate__animated animate__fadeInDown animate__slower">
@@ -542,19 +503,19 @@ return (
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
-                        <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-5%, 145%)'}}>
-                            <img src="/tl-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(5%, 145%)'}}>
-                            <img src="/tr-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
@@ -588,8 +549,6 @@ return (
                           </div>
                         </div>
                         
-                        <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                        <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="d-flex justify-content-center flex-column align-items-center" style={{height: '100%'}}>
                         <div className="animate__animated animate__fadeInDown animate__slower">
@@ -621,19 +580,19 @@ return (
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
-                        <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-5%, 145%)'}}>
-                            <img src="/tl-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(5%, 145%)'}}>
-                            <img src="/tr-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
@@ -667,8 +626,6 @@ return (
                           </div>
                         </div>
                         
-                        <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                        <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="d-flex justify-content-center align-items-center" style={{height: '100%'}}>
                         <div style={{width: '100%'}}>
@@ -710,19 +667,19 @@ return (
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
-                        <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-5%, 145%)'}}>
-                            <img src="/tl-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(5%, 145%)'}}>
-                            <img src="/tr-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
@@ -756,8 +713,6 @@ return (
                           </div>
                         </div>
                         
-                        <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                        <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="d-flex justify-content-center align-items-center" style={{height: '100%'}}>
                         <div style={{width: '100%'}}>
@@ -908,19 +863,19 @@ return (
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
-                        <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-5%, 145%)'}}>
-                            <img src="/tl-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(5%, 145%)'}}>
-                            <img src="/tr-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
@@ -954,8 +909,6 @@ return (
                           </div>
                         </div>
                         
-                        <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                        <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="d-flex justify-content-center align-items-center" style={{height: '100%'}}>
                         <div className="text-center" style={{width: '100%'}}>
@@ -1033,19 +986,19 @@ return (
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
-                        <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-5%, 145%)'}}>
-                            <img src="/tl-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(5%, 145%)'}}>
-                            <img src="/tr-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
                           </div>
                         </div>
                         <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
@@ -1079,8 +1032,6 @@ return (
                           </div>
                         </div>
                         
-                        <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                        <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                       </div>
                       <div className="watermark d-flex flex-column" style={{height: '100%'}}>
                         <div className="mt-auto" style={{width: '100%'}}>
