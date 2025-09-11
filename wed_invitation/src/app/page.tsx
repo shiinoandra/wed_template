@@ -40,7 +40,7 @@ export default function Home() {
   const [wishes, setWishes] = useState<Wish[]>([]);
 
   // Function to generate avatar background color based on name
-  const getAvatarColor = (name: String) => {
+  const getAvatarColor = (name: string) => {
     const colors = [
       '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
       '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9'
@@ -76,7 +76,7 @@ export default function Home() {
   };
   
   // Function to get first letter of name
-  const getInitial = (name: String) => {
+  const getInitial = (name: string) => {
     return name ? name.charAt(0).toUpperCase() : 'U';
   };
 
