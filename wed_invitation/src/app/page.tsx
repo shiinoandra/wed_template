@@ -85,7 +85,7 @@ return (
               <div className="wedstyle_track">
                 <ul className="wedstyle_list">
                   <li className="wedstyle_slide wedstyle_list" style={{}}>
-                    <div className="container-mobile cover" style={{backgroundImage: 'url("bg.png")'}}>
+                    <div className="container-mobile cover" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -127,7 +127,7 @@ return (
                     </div>
                   </li>
                   <li className="wedstyle_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -200,7 +200,7 @@ return (
                     </div>
                   </li>
                   <li className="wedstyle_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -271,7 +271,7 @@ return (
                     </div>
                   </li>
                   <li className="wedstyle_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -352,7 +352,7 @@ return (
                     </div>
                   </li>
                   <li className="wedstyle_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -429,7 +429,7 @@ return (
                     </div>
                   </li>
                   <li className="wedstyle_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -506,7 +506,7 @@ return (
                     </div>
                   </li>
                   <li className="wedstyle_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -592,7 +592,7 @@ return (
                     </div>
                   </li>
                   <li className="wedstyle_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -663,7 +663,7 @@ return (
                     </div>
                   </li>
                   <li className="wedstyle_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -757,7 +757,7 @@ return (
                     </div>
                   </li>
                   <li className="wedstyle_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
