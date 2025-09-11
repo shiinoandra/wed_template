@@ -263,7 +263,7 @@ return (
                               <div className="editable color-accent font-accent" style={{lineHeight:1,fontSize:"40px"}}>Rahadian</div>
                           </div>
 </div>
-                        {invitationType !== "1" && (
+                        {invitationType === "3" && (
                         <div className="image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{height: 'auto', width: 230, overflow: 'hidden', position: 'absolute', bottom: '-120px'}}>
                           <img className="nr_render" src="/wedding_nr.webp" alt="wedding_nr.webp" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                         </div>
@@ -859,6 +859,8 @@ return (
                         </div>
                       </li>
                       {/* END PESAN SECTION */}
+                  {invitationType !== "1" && (
+                  <>
                   {/* BEGIN GIFT SECTION */}
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
@@ -983,6 +985,8 @@ return (
                     </div>
                   </li>
                   {/* END GIFT SECTION */}
+                  </>
+                  )}
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.png")'}}>
                       <div className="frame">
