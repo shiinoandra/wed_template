@@ -1,6 +1,8 @@
 @import url("../fonts/brittany_signature/BrittanySignature.css");
 @import url("../fonts/photograph_signature/fonts.css");
 @import url("../fonts/heatwood/Heatwood.css");
+@import url("../fonts/indoscript/style.css");
+
 .font-brittany-signature {
     font-family: "Brittany Signature";
     line-height: 1.6 !important;
@@ -12,4 +14,7 @@
 .font-heatwood {
     font-family: "Heatwood";
     line-height: 3 !important;
+}
+.black-stroke {
+    -webkit-text-stroke: 2px black;
 }

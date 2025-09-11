@@ -147,7 +147,7 @@ return (
     <div id="loader" className="loader-wrapper" style={{display: 'none'}}>
       <span className="loader"><span className="loader-inner" /></span>
     </div>
-    <audio id="music" loop autoPlay><source src="https://assets.satumomen.com/musics/jawa-happy-javanese-backsound-mp3cutnet.mp3" /></audio> 
+    <audio id="music" loop autoPlay><source src="/bgm.mp3" /></audio> 
 
     <div id="workspace-container" className="position-fixed h-100 w-100" style={{overflow: 'hidden'}}>
       <div id="panZoom" className="position-fixed h-100 w-100" style={{inset: 0, transformOrigin: '50% 50%', transform: 'scale(1.68886) translate(0px, 0px)'}}>
@@ -161,9 +161,6 @@ return (
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
-                        <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
-                          <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
-                        </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
                           <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
                             <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
@@ -176,13 +173,37 @@ return (
                         </div>
                         
                       </div>
-                      <div className="d-flex justify-content-center align-items-center" style={{height: '100%', width: '100%', backgroundSize: 'cover', zIndex: 2, position: 'relative'}}>
+                      {/* <div className="d-flex justify-content-center align-items-center" 
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        backgroundSize: "cover",
+                        zIndex: 2,
+                        position: "relative",
+                        border: "2px solid var(--inv-border)",
+                        WebkitBackdropFilter: "blur(2px)",
+                        backdropFilter: "blur(2px)",
+                        backgroundColor: "rgba(249, 249, 249, .64)",
+                        borderRadius: "1rem"
+                      }}> */}
+                      <div className="d-flex justify-content-center align-items-center" 
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        backgroundSize: "cover",
+                        zIndex: 2,
+                        position: "relative",
+                      }}>
+                        
+                        <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
+                          <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
+                        </div>
                         <div className="w-100 pt-5">
                           <div className="text-center animate__animated animate__zoomIn animate__slower mt-5 mb-3" style={{lineHeight: 1}}>
                             <div className="editable mb-2" style={{fontSize: '14.4px'}}>The Wedding Of</div>
-                            <div className="color-accent editable font-latin" style={{fontSize: 80}}>Nuri</div>
+                            <div className="color-accent editable font-latin black-stroke" style={{fontSize: 80}}>Nuri</div>
                             <div className="editable font-latin mb-2" style={{fontSize: 30}}>&amp;</div>
-                            <div className="color-accent editable mb-2 font-latin" style={{fontSize: 80}}>Rahadian</div>
+                            <div className="color-accent editable mb-2 font-latin black-stroke" style={{fontSize: 80 }}>Rahadian</div>
                           </div>
                           <div className="text-center mx-auto" style={{maxWidth: 280}}>
                             <div className="text-center mb-3 py-3 px-2 animate__animated animate__zoomIn animate__slower" style={{backgroundColor: 'rgba(225, 219, 203, 0.67)', border: '2px solid var(--inv-border)', borderRadius: '0.5rem'}}>
@@ -203,9 +224,6 @@ return (
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
-                        <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
-                          <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
-                        </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
                           <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
                             <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
@@ -256,11 +274,11 @@ return (
                         </div>
                         <div className="w-100 d-flex flex-column align-items-center justify-content-center">
                           <div className="text-center animate__animated animate__fadeInUp animate__slower" style={{animationDelay:"1500ms"}}>
-                              <div className="editable color-accent font-accent" style={{fontSize:"40px",lineHeight:1}}>Nuri</div>
+                              <div className="editable color-accent font-indo" style={{fontSize:"40px",lineHeight:1}}>Nuri</div>
                           </div>
                           <div className="editable font-latin animate__animated animate__zoomIn animate__slower" style={{margin:"-10px",fontSize:"40px",animationDelay:"500ms"}}>&amp;</div>
                           <div className="text-center animate__animated animate__fadeInDown animate__slower" style={{animationDelay:"1500ms"}}>
-                              <div className="editable color-accent font-accent" style={{lineHeight:1,fontSize:"40px"}}>Rahadian</div>
+                              <div className="editable color-accent font-indo" style={{lineHeight:1,fontSize:"40px"}}>Rahadian</div>
                           </div>
 </div>
                         {invitationType === "3" && (
@@ -399,7 +417,7 @@ return (
                               <img src="/cpw.jpg" alt="cpw.jpg" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
                             </div>
                             <div className="text-center animate__animated animate__fadeInLeft animate__slower" style={{position: 'relative'}}>
-                              <div className="editable color-accent h4 mb-2 font-accent" style={{fontSize: 24}}>Nuri Handayani S.Hum, MM</div>
+                              <div className="editable color-accent h4 mb-2 font-indo" style={{fontSize: 24}}>Nuri Handayani S.Hum, MM</div>
                               <div className="editable" style={{fontSize: '14.4px'}}>
                                 Putri dari<br />
                                 Bapak Ir. Sudarmadi, MM<br />
@@ -408,7 +426,7 @@ return (
                             </div>
                             <div className="editable mb-3 text-center animate__animated animate__fadeIn animate__slower font-photograph-signature" style={{fontSize: 30}}>dengan</div>
                             <div className="text-center animate__animated animate__fadeInRight animate__slower" style={{position: 'relative'}}>
-                              <div className="editable color-accent h4 mb-2 font-accent" style={{fontSize: 24}}>Rahadian Adinegoro, S.Kom, B.InfTech</div>
+                              <div className="editable color-accent h4 mb-2 font-indo" style={{fontSize: 24}}>Rahadian Adinegoro, S.Kom, B.InfTech</div>
                               <div className="editable mb-1" style={{fontSize: '14.4px'}}>
                                 Putra dari<br />
                                 Bapak Rosichin, SE, MM, M.Si<br />
@@ -485,7 +503,7 @@ return (
                         </div>
                         <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
-                          <div className="editable color-accent font-accent" style={{fontSize: 50, lineHeight: '1.2'}}>12.10.25</div>
+                          <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.Okt.25</div>
                         </div>
                         <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
@@ -562,7 +580,7 @@ return (
                         </div>
                         <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
-                          <div className="editable color-accent font-accent" style={{fontSize: 50, lineHeight: '1.2'}}>12.10.25</div>
+                          <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.Okt.25</div>
                         </div>
                         <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
@@ -794,19 +812,19 @@ return (
                             </div> */}
                                 {/* <div className="editable mb-3 animate__animated animate__fadeInDown animate__slower font-italic" style={{fontSize: 16}}>Wassalamualaikum Warahmatullahi Wabarakatuh</div> */}
 
-                                <div className="text-center d-flex align-items-center justify-content-center animate__animated animate__fadeInDown animate__slow" style={{ gap: 14, lineHeight: '1.2' }}>
+                                <div className="text-center d-flex align-items-center justify-content-center" style={{ gap: 14, lineHeight: '1.2' }}>
                                   <div className="comment card  mt-2 py-2 pr-2" style={{ border: "0 !important", height: "100%" }}>
                                     <div className="card-body mt-0 p-0 text-left" style={{ width: "100%", height: "100%", overflow: "hidden" }}>
                                       <div style={{ height: "100%", maxHeight: "550px", overflowY: "auto", padding: "10px", }} className="wishes has-animate" data-anim="zoom-in-up" id="wishes-container" data-load-animation="true">
                                         {loading ? (
-                                          <p className="font-latin color-accent h4 m-5 editable animate__animated animate__fadeInDown animate__slower"
+                                          <p className="font-latin color-accent h4 m-5 editable "
                                             style={{ textAlign: "center", fontSize: "1.5rem" }}>
                                             Memuat pesan...
                                           </p>
                                         ) : (
                                           <>
                                             {wishes.length === 0 && (
-                                              <p className="font-latin color-accent h4 m-5 editable animate__animated animate__fadeInDown animate__slower"
+                                              <p className="font-latin color-accent h4 m-5 editable "
                                                 style={{ textAlign: "center", fontSize: "1.5rem" }}>
                                                 Belum ada pesan
                                               </p>
@@ -1187,8 +1205,8 @@ return (
 
 <div id="rsvpModal" tabIndex={-1} role="dialog" aria-labelledby="rsvpModal" className="modal fade">
       <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content p-4" style={{height: '60%'}}>
-        <button type="button" className="close-rsvp-btn btn" style={{position:"relative",left:"380px",width:"60px"}}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>          
+        <div className="modal-content p-4" style={{height: '80%'}}>
+        <button type="button" className="close-rsvp-btn btn" style={{position:"relative",left:"83%",width:"60px"}}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>          
         {/* Error Banner */}
           {submitState === 'error' && (
             <div className="alert alert-danger alert-dismissible mb-3" role="alert">
@@ -1228,7 +1246,7 @@ return (
             </div>
           ) : (
           <div className="rsvp-form show">
-            <div className="mb-4"><div className="font-accent h4 text-center">RSVP</div></div>
+            <div className="mb-4"><div className="font-indo h4 text-center">RSVP</div></div>
             <form className="pt-2" onSubmit={handleSubmit}>
             <div>
                 <div className="form-group mb-2">

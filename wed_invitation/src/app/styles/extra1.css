@@ -15,7 +15,11 @@
     --font-base: "Louis George", sans-serif;
     --font-accent: "Laraboyok", serif;
     --font-latin: "Javassoul", serif;
+    --font-indo: "indoscript", serif;
+
 }
+
+.font-indo{font-family:var(--font-indo)}
 
 @keyframes wave-left {
     0% {
