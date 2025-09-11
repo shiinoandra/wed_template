@@ -740,11 +740,11 @@ return (
                     <li className="wedstyle_slide" style={{ display: 'none' }}>
                         <div className="container-mobile" style={{ backgroundImage: 'url("bg.png")' }}>
                           <div className="frame">
-                            <img src="/tl.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                            <img src="/tr.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
-                            <div className="frame-tl w-100 only-cover" style={{ transform: 'scale(1.2)', transformOrigin: 'center top' }}>
-                              <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{ animationDelay: '1.5s' }} />
-                            </div>
+                          <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                          <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                          <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
+                            <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
+                          </div>
                             <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
                           <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
                             <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
@@ -785,9 +785,6 @@ return (
                             <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
                           </div>
                         </div>
-
-                            <img src="/bl-2.webp" alt="frame" className="frame-bl animate__animated animate__fadeInLeft animate__slower" />
-                            <img src="/br-2.webp" alt="frame" className="frame-br animate__animated animate__fadeInRight animate__slower" />
                           </div>
                           <div className="watermark d-flex flex-column" style={{ height: '100%' }}>
                             <div className="mt-auto" style={{ width: '100%', height: "100%" }}>
