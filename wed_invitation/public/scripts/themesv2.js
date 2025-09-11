@@ -755,7 +755,7 @@ var eventDown = function eventDown(e) {
 // autoplay invitation
 var autoPlay;
 var invitationPlaying = false;
-// var btnAutoplay = document.getElementById("btnAutoplay");
+var btnAutoplay = document.getElementById("btnAutoplay");
 var playInvitation = function playInvitation() {
   if (!invitationPlaying) {
     invitationPlaying = true;
@@ -772,16 +772,16 @@ var pauseInvitation = function pauseInvitation() {
     btnAutoplay.classList.remove("playing");
   }
 };
-// btnAutoplay.addEventListener("click", function (e) {
-//   if (e.cancelable) e.preventDefault();
-//   if (invitationPlaying) {
-//     pauseInvitation();
-//   } else if (!invitationPlaying && !invitationOpened) {
-//     openInvitation();
-//   } else {
-//     playInvitation();
-//   }
-// }, false);
+btnAutoplay.addEventListener("click", function (e) {
+  if (e.cancelable) e.preventDefault();
+  if (invitationPlaying) {
+    pauseInvitation();
+  } else if (!invitationPlaying && !invitationOpened) {
+    openInvitation();
+  } else {
+    playInvitation();
+  }
+}, false);
 document.addEventListener("visibilitychange", function () {
   if (document.hidden) {
     // Pause invitation saat pengguna meninggalkan tab
