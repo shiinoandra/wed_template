@@ -19,6 +19,8 @@
 
 }
 
+.font-indo{font-family:var(--font-indo)}
+
 @keyframes wave-left {
     0% {
         transform: rotate(-10deg);

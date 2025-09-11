@@ -1,4 +1,4 @@
 @font-face {
     font-family: 'indoscript';
-    src: url('Indonesia Script.otf');
+    src: url('Indonesia Script.otf')  format('opentype');;
 }
