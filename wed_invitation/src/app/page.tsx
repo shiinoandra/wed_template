@@ -173,7 +173,7 @@ return (
                         </div>
                         
                       </div>
-                      <div className="d-flex justify-content-center align-items-center" 
+                      {/* <div className="d-flex justify-content-center align-items-center" 
                       style={{
                         height: "100%",
                         width: "100%",
@@ -185,7 +185,16 @@ return (
                         backdropFilter: "blur(2px)",
                         backgroundColor: "rgba(249, 249, 249, .64)",
                         borderRadius: "1rem"
+                      }}> */}
+                      <div className="d-flex justify-content-center align-items-center" 
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        backgroundSize: "cover",
+                        zIndex: 2,
+                        position: "relative",
                       }}>
+                        
                         <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
                           <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
                         </div>
@@ -194,7 +203,7 @@ return (
                             <div className="editable mb-2" style={{fontSize: '14.4px'}}>The Wedding Of</div>
                             <div className="color-accent editable font-latin" style={{fontSize: 80}}>Nuri</div>
                             <div className="editable font-latin mb-2" style={{fontSize: 30}}>&amp;</div>
-                            <div className="color-accent editable mb-2 font-latin" style={{fontSize: 80}}>Rahadian</div>
+                            <div className="color-accent editable mb-2 font-latin" style={{fontSize: 80 }}>Rahadian</div>
                           </div>
                           <div className="text-center mx-auto" style={{maxWidth: 280}}>
                             <div className="text-center mb-3 py-3 px-2 animate__animated animate__zoomIn animate__slower" style={{backgroundColor: 'rgba(225, 219, 203, 0.67)', border: '2px solid var(--inv-border)', borderRadius: '0.5rem'}}>
@@ -1204,8 +1213,8 @@ return (
 
 <div id="rsvpModal" tabIndex={-1} role="dialog" aria-labelledby="rsvpModal" className="modal fade">
       <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content p-4" style={{height: '60%'}}>
-        <button type="button" className="close-rsvp-btn btn" style={{position:"relative",left:"380px",width:"60px"}}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>          
+        <div className="modal-content p-4" style={{height: '80%'}}>
+        <button type="button" className="close-rsvp-btn btn" style={{position:"relative",left:"83%", top:"-5%",width:"60px"}}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>          
         {/* Error Banner */}
           {submitState === 'error' && (
             <div className="alert alert-danger alert-dismissible mb-3" role="alert">
