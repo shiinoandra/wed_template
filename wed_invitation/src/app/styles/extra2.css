@@ -1,4 +1,4 @@
-/* @import url("../fonts/brittany_signature/BrittanySignature.css");
+@import url("../fonts/brittany_signature/BrittanySignature.css");
 @import url("../fonts/photograph_signature/fonts.css");
 @import url("../fonts/heatwood/Heatwood.css");
 .font-brittany-signature {
@@ -12,4 +12,4 @@
 .font-heatwood {
     font-family: "Heatwood";
     line-height: 3 !important;
-} */
+}

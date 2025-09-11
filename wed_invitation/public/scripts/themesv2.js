@@ -78,19 +78,20 @@ var initCoreInvitation = function initCoreInvitation() {
     // Trigger event yang bisa ditangkap dari luar
     document.dispatchEvent(new Event("showGiftEvent"));
   };
-  var giftContainer = document.getElementsByClassName('gift-container');
-  for (var i = 0; i < giftContainer.length; i++) {
-    giftContainer[i].style.display = "none";
-  }
-  var btnGift = document.getElementsByClassName('btn-gift');
-  var _loop = function _loop(_i) {
-    btnGift[_i].onclick = function () {
-      showGift(_i);
-    };
-  };
-  for (var _i = 0; _i < btnGift.length; _i++) {
-    _loop(_i);
-  }
+
+  // var giftContainer = document.getElementsByClassName('gift-container');
+  // for (var i = 0; i < giftContainer.length; i++) {
+  //   giftContainer[i].style.display = "none";
+  // }
+  // var btnGift = document.getElementsByClassName('btn-gift');
+  // var _loop = function _loop(_i) {
+  //   btnGift[_i].onclick = function () {
+  //     showGift(_i);
+  //   };
+  // };
+  // for (var _i = 0; _i < btnGift.length; _i++) {
+  //   _loop(_i);
+  // }
 
   // modal
   var body = document.getElementsByTagName("BODY")[0];
@@ -173,17 +174,17 @@ var initCoreInvitation = function initCoreInvitation() {
     }, 2000);
   };
 
-  // copy rekening
-  var accountNumber = document.getElementsByClassName('account-number');
-  for (var _i3 = 0; _i3 < accountNumber.length; _i3++) {
-    if (accountNumber[_i3].innerHTML) {
-      if (lang == 'id') {
-        accountNumber[_i3].insertAdjacentHTML("afterend", "<button type='button' class='btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5' data-text='".concat(accountNumber[_i3].innerText, "' onclick='copyText(event)' style='font-family: sans-serif; border-radius: 4px'>Salin Rekening</button>"));
-      } else {
-        accountNumber[_i3].insertAdjacentHTML("afterend", "<button type='button' class='btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5' data-text='".concat(accountNumber[_i3].innerText, "' onclick='copyText(event)' style='font-family: sans-serif; border-radius: 4px'>Copy to Clipboard</button>"));
-      }
-    }
-  }
+  // // copy rekening
+  // var accountNumber = document.getElementsByClassName('account-number');
+  // for (var _i3 = 0; _i3 < accountNumber.length; _i3++) {
+  //   if (accountNumber[_i3].innerHTML) {
+  //     if (lang == 'id') {
+  //       accountNumber[_i3].insertAdjacentHTML("afterend", "<button type='button' class='btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5' data-text='".concat(accountNumber[_i3].innerText, "' onclick='copyText(event)' style='font-family: sans-serif; border-radius: 4px'>Salin Rekening</button>"));
+  //     } else {
+  //       accountNumber[_i3].insertAdjacentHTML("afterend", "<button type='button' class='btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5' data-text='".concat(accountNumber[_i3].innerText, "' onclick='copyText(event)' style='font-family: sans-serif; border-radius: 4px'>Copy to Clipboard</button>"));
+  //     }
+  //   }
+  // }
 
   // copy alamat
   var addressText = document.getElementsByClassName('copy-address');
