@@ -147,7 +147,7 @@ return (
     <div id="loader" className="loader-wrapper" style={{display: 'none'}}>
       <span className="loader"><span className="loader-inner" /></span>
     </div>
-    <audio id="music" loop autoPlay><source src="https://assets.satumomen.com/musics/jawa-happy-javanese-backsound-mp3cutnet.mp3" /></audio> 
+    <audio id="music" loop autoPlay><source src="/bgm.mp3" /></audio> 
 
     <div id="workspace-container" className="position-fixed h-100 w-100" style={{overflow: 'hidden'}}>
       <div id="panZoom" className="position-fixed h-100 w-100" style={{inset: 0, transformOrigin: '50% 50%', transform: 'scale(1.68886) translate(0px, 0px)'}}>
@@ -201,9 +201,9 @@ return (
                         <div className="w-100 pt-5">
                           <div className="text-center animate__animated animate__zoomIn animate__slower mt-5 mb-3" style={{lineHeight: 1}}>
                             <div className="editable mb-2" style={{fontSize: '14.4px'}}>The Wedding Of</div>
-                            <div className="color-accent editable font-latin" style={{fontSize: 80}}>Nuri</div>
+                            <div className="color-accent editable font-latin black-stroke" style={{fontSize: 80}}>Nuri</div>
                             <div className="editable font-latin mb-2" style={{fontSize: 30}}>&amp;</div>
-                            <div className="color-accent editable mb-2 font-latin" style={{fontSize: 80 }}>Rahadian</div>
+                            <div className="color-accent editable mb-2 font-latin black-stroke" style={{fontSize: 80 }}>Rahadian</div>
                           </div>
                           <div className="text-center mx-auto" style={{maxWidth: 280}}>
                             <div className="text-center mb-3 py-3 px-2 animate__animated animate__zoomIn animate__slower" style={{backgroundColor: 'rgba(225, 219, 203, 0.67)', border: '2px solid var(--inv-border)', borderRadius: '0.5rem'}}>
