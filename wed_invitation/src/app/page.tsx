@@ -35,6 +35,7 @@ export default function Home() {
   const searchParams = useSearchParams();
   const name = searchParams.get("name") || "Tamu Undangan"; // default if no param
   const type = searchParams.get("type") || "1";
+  const [copiedAccount, setCopiedAccount] = useState("");
 
   const [wishes, setWishes] = useState<Wish[]>([]);
 
@@ -48,7 +49,32 @@ export default function Home() {
     return colors[index];
   };
 
+  const bankAccounts = [
+    {
+      id: 'bca',
+      name: 'BCA',
+      accountNumber: '5540807703',
+      accountHolder: 'Nuri Handayani',
+      logo: '/BCA_logo.png',
+      color: '#1f4e79'
+    },
+    {
+      id: 'bni',
+      name: 'BNI',
+      accountNumber: '0346961267',
+      accountHolder: 'Nuri Handayani',
+      logo: '/BNI_logo.webp',
+      color: '#f57c00'
+    }
+  ];
 
+  const copyToClipboard = (text: string, bankName:string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedAccount(bankName);
+      setTimeout(() => setCopiedAccount(""), 2000);
+    });
+  };
+  
   // Function to get first letter of name
   const getInitial = (name: String) => {
     return name ? name.charAt(0).toUpperCase() : 'U';
@@ -938,39 +964,67 @@ return (
                             Terima kasih telah menambah semangat kegembiraan pernikahan kami dengan kehadiran dan hadiah indah Anda.
                           </div>
                           <div className="gift-container mt-3 p-4 rounded animate__animated animate__zoomIn animate__slow">
-                            <div className="d-flex">
-                              <div className="mx-auto">
-                                <div className="d-flex align-items-center mb-3">
-                                  <div className="image-editable bg-white rounded" style={{width: 80, height: 50, overflow: 'hidden'}}>
-                                    <img src="/BCA_logo.png" alt="no-image.jpg" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
-                                  </div>
-                                  <div className="text-left pl-2">
-                                    <div className="editable account-number font-weight-bold h5 mb-0">5540807703</div>
-                                    {/* <button type="button" className="btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5" data-text={12345678} onClick="copyText(event)" style={{fontFamily: 'sans-serif', borderRadius: 4}}> */}
-                                    <button type="button" className="btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5"  style={{fontFamily: 'sans-serif', borderRadius: 4}}>
+                                  <div className="bank-accounts-wrapper">
+        {bankAccounts.map((bank, index) => (
+          <div 
+            key={bank.id}
+            className={`bank-account-card ${index > 0 ? 'mt-4' : ''}`}
+          >
+            {/* Bank Logo */}
+            <div className="bank-logo-container">
+              <div className="bank-logo bg-white rounded shadow-sm">
+                <img 
+                  src={bank.logo} 
+                  alt={`${bank.name} logo`}
+                  className="logo-image"
+                />
+              </div>
+            </div>
 
-                                      Salin Rekening
-                                    </button>
-                                    <div className="editable" style={{fontSize: '14.4px'}}>BCA : a/n Nuri Handayani</div>
-                                  </div>
-                                </div>
-                                <div className="d-flex align-items-center">
-                                  <div className="image-editable bg-white rounded" style={{width: 80, height: 50, overflow: 'hidden'}}>
-                                    <img src="/BNI_logo.webp" alt="no-image.jpg" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
-                                  </div>
-                                  <div className="text-left pl-2">
-                                    <div className="editable account-number font-weight-bold h5 mb-0" style={{fontSize: 18}}>0346961267</div>
-                                    {/* <button type="button" className="btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5" data-text={12345678} onclick="copyText(event)" style={{fontFamily: 'sans-serif', borderRadius: 4}}> */}
-                                    <button type="button" className="btn btn-sm btn-primary mt-2 mb-2 animate__animated animate__fadeInUp animate__slow delay-5" data-text={12345678}  style={{fontFamily: 'sans-serif', borderRadius: 4}}>
+            {/* Account Information */}
+            <div className="account-info">
+              {/* Account Holder Name - Emphasized */}
+              <div className="account-holder-name">
+                {bank.accountHolder}
+              </div>
+              
+              {/* Bank Name */}
+              <div className="bank-name">
+                {bank.name}
+              </div>
 
-                                      Salin Rekening
-                                    </button>
-                                    <div className="editable" style={{fontSize: '14.4px'}}>BNI : a/n Nuri Handayani</div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+              {/* Account Number with Copy Button */}
+              <div className="account-number-section">
+                <div className="account-number">
+                  {bank.accountNumber}
+                </div>
+                
+                <button
+                  type="button"
+                  className={`copy-btn ${copiedAccount === bank.name ? 'copied' : ''}`}
+                  onClick={() => copyToClipboard(bank.accountNumber, bank.name)}
+                  
+                >
+                  {copiedAccount === bank.name ? (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polyline points="20,6 9,17 4,12"></polyline>
+                    </svg>
+                  ) : (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  )}
+                  <span className="copy-text">
+                    {copiedAccount === bank.name ? 'Tersalin' : 'Salin'}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
                         </div>
                       </div>
                     </div>
@@ -1090,7 +1144,7 @@ return (
             </div>
             <div className="floating-action d-flex align-items-end flex-column">
               {/* <button id="btnQrModal" onclick="if (!window.__cfRLUnblockHandlers) return false; showModal(qrModal)" className="btn btn-float"> */}
-              <button id="btnQrModal" className="btn btn-float">
+              {/* <button id="btnQrModal" className="btn btn-float">
 
                 <svg xmlns="http://www.w3.org/2000/svg" width={28} height={28} fill="currentColor" viewBox="0 0 256 256">
                   <rect x={40} y={40} width={80} height={80} rx={16} />
@@ -1100,7 +1154,7 @@ return (
                   <path d="M208,152H184v-8a8,8,0,0,0-16,0v56H144a8,8,0,0,0,0,16h32a8,8,0,0,0,8-8V168h24a8,8,0,0,0,0-16Z" />
                   <path d="M208,184a8,8,0,0,0-8,8v16a8,8,0,0,0,16,0V192A8,8,0,0,0,208,184Z" />
                 </svg>
-              </button>
+              </button> */}
               {/* <button id="btnMusic" onclick="if (!window.__cfRLUnblockHandlers) return false; playMusic()" className="btn btn-float playing"> */}
               <button id="btnMusic"  className="btn btn-float playing">
 
@@ -1111,14 +1165,14 @@ return (
                   <path d="M160,32V224a8,8,0,0,1-12.91,6.31L77.25,176H32a16,16,0,0,1-16-16V96A16,16,0,0,1,32,80H77.25l69.84-54.31A8,8,0,0,1,160,32Zm32,64a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V104A8,8,0,0,0,192,96Zm32-16a8,8,0,0,0-8,8v80a8,8,0,0,0,16,0V88A8,8,0,0,0,224,80Z" />
                 </svg>
               </button>
-              <button id="btnAutoplay" className="btn btn-float">
+              {/* <button id="btnAutoplay" className="btn btn-float">
                 <svg xmlns="http://www.w3.org/2000/svg" width={28} height={28} fill="currentColor" viewBox="0 0 256 256" className="play">
                   <path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm36.44,110.66-48,32A8.05,8.05,0,0,1,112,168a8,8,0,0,1-8-8V96a8,8,0,0,1,12.44-6.66l48,32a8,8,0,0,1,0,13.32Z" />
                 </svg>
                 <svg xmlns="http://www.w3.org/2000/svg" width={28} height={28} fill="currentColor" viewBox="0 0 256 256" className="pause">
                   <path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24ZM112,160a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0Zm48,0a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0Z" />
                 </svg>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
