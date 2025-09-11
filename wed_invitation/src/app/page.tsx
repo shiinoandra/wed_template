@@ -161,9 +161,6 @@ return (
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
-                        <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
-                          <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
-                        </div>
                         <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
                           <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
                             <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
