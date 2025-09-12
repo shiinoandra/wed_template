@@ -1003,14 +1003,6 @@ return (
                             </div>
                           </div>
                         </div>
-                        <div className="watermark-placeholder text-center mb-auto mb-5 pb-5">
-                          <div id="waterMark" className="mt-5" style={{display: 'inherit'}}>
-                            <div className="wm-music mt-3 text-center animate__animated animate__fadeInUp animate__slower animate__delay-1s" style={{fontSize: '60%'}}>
-                              <div style={{opacity: '0.5'}}><strong>Music:</strong></div>
-                              <div style={{opacity: '0.5'}}>Jawa - Happy Javanese Backsound</div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </li>
