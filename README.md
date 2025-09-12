@@ -1,15 +1,19 @@
-07/09/2025
-first commit, barely working
+08/09/2025
+new branch after UI update and asset change
 
 working:
 - landing page
-- menus
+- background music
+- mute button
 - animation
 - webp and image assets
+- rsvp saving to csv
+- name in param
+- icon
+- map
 
 not working
-- background music
-- map
-- RSVP
-- icon
+- RSVP still need work
 - custom fonts
+- rekening
+- qr

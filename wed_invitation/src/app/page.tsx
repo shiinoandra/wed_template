@@ -147,7 +147,7 @@ return (
     <div id="loader" className="loader-wrapper" style={{display: 'none'}}>
       <span className="loader"><span className="loader-inner" /></span>
     </div>
-    <audio id="music" loop autoPlay><source src="/bgm.mp3" /></audio> 
+    <audio id="music" loop autoPlay><source src="/bgm2.mp3" /></audio> 
 
     <div id="workspace-container" className="position-fixed h-100 w-100" style={{overflow: 'hidden'}}>
       <div id="panZoom" className="position-fixed h-100 w-100" style={{inset: 0, transformOrigin: '50% 50%', transform: 'scale(1.68886) translate(0px, 0px)'}}>
@@ -497,13 +497,18 @@ return (
                             <img src="/gunungan-isi.png" alt="gunungan-isi.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                           </div>
                         </div>
-                        <div className="text-center animate__animated animate__fadeInDown animate__slower">
-                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Akad Nikah 🏵</div>
-                          <div className="editable" style={{fontSize: 14}}>Pukul 07.00 - 08.30 WIB</div>
-                        </div>
                         <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
                           <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.Okt.25</div>
+                        </div>
+                        <div className="text-center animate__animated animate__fadeInDown animate__slower">
+                          <div className="editable color-accent font-weight-bold" style={{fontSize: 18}}>🏵 Akad Nikah 🏵</div>
+                          <div className="editable" style={{fontSize: 18}}>Pukul 07.00 - 08.30 WIB</div>
+                        </div>
+                        <div className="mb-4"></div>
+                        <div className="text-center animate__animated animate__fadeInDown animate__slower">
+                          <div className="editable color-accent font-weight-bold" style={{fontSize: 16}}>🏵 Resepsi 🏵</div>
+                          <div className="editable" style={{fontSize: 16}}>Pukul 11.00 - 13.00 WIB</div>
                         </div>
                         <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
                           <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
@@ -512,86 +517,7 @@ return (
                             Pasar Minggu, Jakarta Selatan
                           </div>
                         </div>
-                        <div className="mt-3 image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{height: 'auto', width: 130, overflow: 'hidden'}}>
-                          <img src="/simple_house.png" alt="simple_house.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="wedstyle_slide" style={{display: 'none'}}>
-                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
-                      <div className="frame">
-                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
-                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
-                        <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
-                          <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
-                        </div>
-                        <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
-                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
-                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
-                          </div>
-                        </div>
-                        <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
-                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
-                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
-                          <div className="animate-left" style={{transform: 'translate(-29%, -85%)'}}>
-                            <img src="/bl-1.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.2s'}}>
-                          <div className="animate-left" style={{transform: 'translate(-27%, -87%)'}}>
-                            <img src="/sinta.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '100ms'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
-                          <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
-                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
-                          <div className="animate-right" style={{transform: 'translate(29%, -85%)'}}>
-                            <img src="/br-1.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.2s'}}>
-                          <div className="animate-right" style={{transform: 'translate(27%, -87%)'}}>
-                            <img src="/rama.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '100ms'}} />
-                          </div>
-                        </div>
-                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
-                          <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
-                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
-                          </div>
-                        </div>
-                        
-                      </div>
-                      <div className="d-flex justify-content-center flex-column align-items-center" style={{height: '100%'}}>
-                        <div className="animate__animated animate__fadeInDown animate__slower">
-                          <div className="image-editable" style={{width: 158, height: 89, margin: 'auto', overflow: 'hidden', paddingBottom: 20}}>
-                            <img src="/gunungan-isi.png" alt="gunungan-isi.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
-                          </div>
-                        </div>
-                        <div className="text-center animate__animated animate__fadeInDown animate__slower">
-                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Resepsi 🏵</div>
-                          <div className="editable" style={{fontSize: 14}}>Pukul 11.00 - 13.00 WIB</div>
-                        </div>
-                        <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
-                          <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
-                          <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.Okt.25</div>
-                        </div>
-                        <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
-                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
-                          <div className="editable" style={{fontSize: 14}}>
-                            Jl. Harsono RM No.3 Ragunan<br />
-                            Pasar Minggu, Jakarta Selatan
-                          </div>
-                        </div>
-                        <div className="mt-3 image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{height: 'auto', width: 130, overflow: 'hidden'}}>
-                          <img src="/simple_house.png" alt="simple_house.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
-                        </div>
+
                       </div>
                     </div>
                   </li>
@@ -1097,8 +1023,7 @@ return (
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-star-and-crescent" style={{color: 'currentcolor'}} /> <span>Greeting</span></li>
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-article" style={{color: 'currentcolor'}} /> <span>Quotes</span></li>
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-heart" style={{color: 'currentcolor'}} /> <span>Mempelai</span></li>
-                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-clock" style={{color: 'currentcolor'}} /> <span>Akad</span></li>
-                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-clock" style={{color: 'currentcolor'}} /> <span>Resepsi</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-clock" style={{color: 'currentcolor'}} /> <span>Acara</span></li>
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}>
                   <svg width={24} height={24} fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd" d="M8.532 2.937a6.89 6.89 0 0 1 7.034.058C17.71 4.327 19.012 6.705 19 9.26c-.05 2.54-1.447 4.929-3.193 6.775a18.727 18.727 0 0 1-3.358 2.82 1.173 1.173 0 0 1-.408.144.82.82 0 0 1-.39-.119 18.515 18.515 0 0 1-4.839-4.547A9.28 9.28 0 0 1 5 9.134c-.001-2.562 1.347-4.928 3.532-6.197Zm1.262 7.258a2.378 2.378 0 0 0 2.198 1.497 2.339 2.339 0 0 0 1.683-.701c.446-.454.696-1.07.694-1.713a2.423 2.423 0 0 0-1.462-2.243 2.346 2.346 0 0 0-2.594.52 2.455 2.455 0 0 0-.519 2.64Z" fill="currentColor" />
