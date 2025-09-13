@@ -274,8 +274,8 @@ export default function Home() {
                             <div className="w-100 pt-5">
                               <div className="text-center animate__animated animate__zoomIn animate__slower mt-5 mb-3" style={{ lineHeight: 1 }}>
                                 <div className="editable mb-2" style={{ fontSize: '14.4px' }}>The Wedding Of</div>
-                                <div className="color-accent editable font-aksara white-stroke" style={{ fontSize: 80 }}>Nuri</div>
-                                <div className="editable font-latin mb-2" style={{ fontSize: 30 }}>&amp;</div>
+                                <div className="color-accent editable mb-2 font-aksara white-stroke" style={{ fontSize: 80 }}>Nuri</div>
+                                <div className="editable font-latin mt-3" style={{ fontSize: 30 }}>&amp;</div>
                                 <div className="color-accent editable mb-2 font-aksara white-stroke" style={{ fontSize: 80 }}>Rahadian</div>
                               </div>
                               <div className="text-center mx-auto" style={{ maxWidth: 280 }}>
@@ -422,7 +422,7 @@ export default function Home() {
                             <div className="text-center">
                               <div className="editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{ fontSize: '14.4px' }}>✤ Ar-Rum : 21 ✤</div>
                               <div className="color-accent editable quotes mb-3 animate__animated animate__zoomIn animate__slower" style={{ fontSize: 20 }}>
-                                وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ ۝٢١
+                                وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
                               </div>
                               <div className="editable quotes animate__animated animate__fadeInUp animate__slower" style={{ fontSize: 13 }}>
                                 Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
@@ -1206,13 +1206,16 @@ export default function Home() {
                                     </div>
                                   </div>
                                 </div>
+                                <div className="editable mb-3 animate__animated animate__fadeInDown animate__slower font-italic" style={{ fontSize: 16 }}>
+                                  <img src="/simple_house.png" alt="frame" className="" style={{ width: '30%', transformOrigin: 'right bottom', animationDelay: '300ms' }} />
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </li>
 
-                      {/* END OF TTERIMA KASIH */}
+                      {/* END OF TERIMA KASIH */}
                     </ul>
 
 
@@ -1340,7 +1343,7 @@ export default function Home() {
 
         <div id="rsvpModal" tabIndex={-1} role="dialog" aria-labelledby="rsvpModal" className="modal fade">
           <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content p-4" style={{ height: '80%' }}>
+            <div className="modal-content p-4">
               <button type="button" className="close-rsvp-btn btn" style={{ position: "relative", left: "83%", width: "60px" }}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>
               {/* Error Banner */}
               {submitState === 'error' && (
@@ -1376,7 +1379,7 @@ export default function Home() {
                   </div>
                   <h4 className="font-accent text-success mb-3">Terima Kasih!</h4>
                   <p className="text-muted">
-                    Terima kasih untuk konfirmasi kedatangan dan pesannya
+                    Terima kasih untuk pesannya
                   </p>
                 </div>
               ) : (
