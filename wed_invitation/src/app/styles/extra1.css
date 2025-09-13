@@ -2,6 +2,8 @@
 @import url("../fonts/javassoul/style.css");
 @import url("../fonts/laraboyok/style.css");
 @import url("../fonts/louis/louis.css");
+@import url("../fonts/aksara/style.css");
+
 
 :root {
     --inv-bg: #f7f7f7;
@@ -16,7 +18,7 @@
     --font-accent: "Laraboyok", serif;
     --font-latin: "Javassoul", serif;
     --font-indo: "indoscript", serif;
-    --font-indo: "Aksara", serif;
+    --font-aksara: "Aksara", serif;
 
 
 }
