@@ -363,17 +363,17 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: white;
-    color: #374151;
+    background-color: transparent;
+    color: white;
     padding: 8px;
-    border-radius: 50%;
-    border: 1px solid #d1d5db;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   }
   
   .nav-button:hover {

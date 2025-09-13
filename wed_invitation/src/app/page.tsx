@@ -1055,7 +1055,7 @@ export default function Home() {
                             </div>
 
                           </div>
-                          <div className="w-full h-full flex items-center justify-content-center p-4 carousel-container">
+                          <div className="w-full h-full flex items-center justify-content-center p-0 carousel-container">
                           <div className="w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm carousel-wrapper">
                             {/* Main Carousel Container */}
                             <div className="relative h-80 md:h-96 overflow-hidden carousel-main">
@@ -1074,16 +1074,6 @@ export default function Home() {
 
                                     {/* Simple overlay for text readability */}
                                     <div className="slide-overlay"></div>
-
-                                    {/* Minimal content overlay */}
-                                    <div className="slide-content">
-                                      <h3 className="slide-title">
-                                        {pic.title}
-                                      </h3>
-                                      <p className="slide-description">
-                                        {pic.description}
-                                      </p>
-                                    </div>
                                   </div>
                                 ))}
                               </div>
@@ -1106,22 +1096,46 @@ export default function Home() {
                                   </button>
                               
                             </div>
+                          </div>
+                          <div className="w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm carousel-wrapper">
+                            {/* Main Carousel Container */}
+                            <div className="relative h-80 md:h-96 overflow-hidden carousel-main">
+                              {/* Slides */}
+                              <div
+                                className="slides-container"
+                                style={{ transform: `translateX(-${currentCaroIndex * 100}%)` }}
+                              >
+                                {pics.map((pic, index) => (
+                                  <div key={pic.id} className="slide">
+                                    <img
+                                      src={pic.image}
+                                      alt={pic.title}
+                                      className="slide-image"
+                                    />
 
-                            {/* Dot indicators */}
-                            <div className="indicators-container">
-                            {pics.map((_, index) => (
-                                <button
-                                  key={index}
-                                  onClick={() => goToSlide(index)}
-                                  className={`w-2 h-2 mx-1 rounded-full transition-colors duration-200 focus:outline-none ${
-                                    index === currentCaroIndex
-                                      ? 'bg-gray-800'
-                                      : 'bg-gray-300 hover:bg-gray-400'
-                                  }`}
-                                  aria-label={`Go to slide ${index + 1}`}
-                                >
-                                </button>
-                              ))}
+                                    {/* Simple overlay for text readability */}
+                                    <div className="slide-overlay"></div>
+                                  </div>
+                                ))}
+                              </div>
+
+                                  {/* Navigation Arrows */}
+                                  <button
+                                    onClick={goToPrevious}
+                                    className="nav-button nav-button-left"
+                                    aria-label="Previous slide"
+                                  >
+                                    <ChevronLeft size={20} />
+                                  </button>
+
+                                  <button
+                                    onClick={goToNext}
+                                    className="nav-button nav-button-right"
+                                    aria-label="Next slide"
+                                  >
+                                    <ChevronRight size={20} />
+                                  </button>
+                              
                             </div>
                           </div>
                         </div>
