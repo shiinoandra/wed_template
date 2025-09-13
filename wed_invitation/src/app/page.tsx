@@ -815,7 +815,7 @@ export default function Home() {
                                 {/* <div className="editable mb-3 animate__animated animate__fadeInDown animate__slower font-italic" style={{fontSize: 16}}>Wassalamualaikum Warahmatullahi Wabarakatuh</div> */}
 
                                 <div className="text-center d-flex align-items-center justify-content-center" style={{ gap: 14, lineHeight: '1.2' }}>
-                                  <div className="comment card  mt-2 py-2 pr-2" style={{ border: "0 !important", height: "100%" }}>
+                                  <div className="comment card  mt-2 py-2 pr-2 gift-container" style={{ height: "100%" }}>
                                     <div className="card-body mt-0 p-0 text-left" style={{ width: "100%", height: "100%", overflow: "hidden" }}>
                                       <div style={{ height: "100%", maxHeight: "550px", overflowY: "auto", padding: "10px", }} className="wishes has-animate" data-anim="zoom-in-up" id="wishes-container" data-load-animation="true">
                                         {loading ? (
