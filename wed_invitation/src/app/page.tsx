@@ -201,9 +201,9 @@ return (
                         <div className="w-100 pt-5">
                           <div className="text-center animate__animated animate__zoomIn animate__slower mt-5 mb-3" style={{lineHeight: 1}}>
                             <div className="editable mb-2" style={{fontSize: '14.4px'}}>The Wedding Of</div>
-                            <div className="color-accent editable font-latin white-stroke" style={{fontSize: 80}}>Nuri</div>
+                            <div className="color-accent editable font-aksara white-stroke" style={{fontSize: 80}}>Nuri</div>
                             <div className="editable font-latin mb-2" style={{fontSize: 30}}>&amp;</div>
-                            <div className="color-accent editable mb-2 font-latin white-stroke" style={{fontSize: 80 }}>Rahadian</div>
+                            <div className="color-accent editable mb-2 font-aksara white-stroke" style={{fontSize: 80 }}>Rahadian</div>
                           </div>
                           <div className="text-center mx-auto" style={{maxWidth: 280}}>
                             <div className="text-center mb-3 py-3 px-2 animate__animated animate__zoomIn animate__slower" style={{backgroundColor: 'rgba(225, 219, 203, 0.67)', border: '2px solid var(--inv-border)', borderRadius: '0.5rem'}}>

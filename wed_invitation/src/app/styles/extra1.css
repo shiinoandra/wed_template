@@ -16,10 +16,14 @@
     --font-accent: "Laraboyok", serif;
     --font-latin: "Javassoul", serif;
     --font-indo: "indoscript", serif;
+    --font-indo: "Aksara", serif;
+
 
 }
 
 .font-indo{font-family:var(--font-indo)}
+.font-aksara{font-family:var(--font-aksara)}
+
 
 @keyframes wave-left {
     0% {
