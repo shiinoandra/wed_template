@@ -1055,80 +1055,74 @@ export default function Home() {
                             </div>
 
                           </div>
-                          <div className="mt-auto" style={{ width: '100%', height: "100%" }}>
-                            <div className="text-center">
+                          <div className="w-full h-full flex items-center justify-content-center p-4">
+                          <div className="w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm">
+                            {/* Main Carousel Container */}
+                            <div className="relative h-80 md:h-96 overflow-hidden">
+                              {/* Slides */}
+                              <div
+                                className="flex transition-transform duration-500 ease-out h-full"
+                                style={{ transform: `translateX(-${currentCaroIndex * 100}%)` }}
+                              >
+                                {pics.map((pic, index) => (
+                                  <div key={pic.id} className="min-w-full h-full relative">
+                                    <img
+                                      src={pic.image}
+                                      alt={pic.title}
+                                      className="w-full h-full object-cover"
+                                    />
 
+                                    {/* Simple overlay for text readability */}
+                                    <div className="absolute inset-0 bg-black bg-opacity-20"></div>
 
-                              <div className="text-center d-flex align-items-center justify-content-center" style={{ gap: 14, lineHeight: '1.2' }}>                      <div className="comment card  mt-2 py-2 pr-2" style={{ border: "0 !important", height: "100%" }}>
-                                <div className="relative w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100">
-                                  {/* Main Carousel Container */}
-                                  <div className="relative h-80 md:h-96 overflow-hidden">
-                                    {/* Slides */}
-                                    <div
-                                      className="flex transition-transform duration-500 ease-out h-full"
-                                      style={{ transform: `translateX(-${currentCaroIndex * 100}%)` }}
-                                    >
-                                      {pics.map((pic, index) => (
-                                        <div key={pic.id} className="min-w-full h-full relative">
-                                          <img
-                                            src={pic.image}
-                                            alt={pic.title}
-                                            className="w-full h-full object-cover"
-                                          />
-
-                                          {/* Simple overlay for text readability */}
-                                          <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-
-                                          {/* Minimal content overlay */}
-                                          <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-95 p-4">
-                                            <h3 className="text-lg font-medium text-gray-900 mb-1">
-                                              {pic.title}
-                                            </h3>
-                                            <p className="text-sm text-gray-600">
-                                              {pic.description}
-                                            </p>
-                                          </div>
-                                        </div>
-                                      ))}
+                                    {/* Minimal content overlay */}
+                                    <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-95 p-4">
+                                      <h3 className="text-lg font-medium text-gray-900 mb-1">
+                                        {pic.title}
+                                      </h3>
+                                      <p className="text-sm text-gray-600">
+                                        {pic.description}
+                                      </p>
                                     </div>
-
-                                    {/* Simple Navigation Arrows */}
-                                    <button
-                                      onClick={goToPrevious}
-                                      className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-700 p-2 rounded-full border border-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300"
-                                      aria-label="Previous slide"
-                                    >
-                                      <ChevronLeft size={20} />
-                                    </button>
-
-                                    <button
-                                      onClick={goToNext}
-                                      className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-700 p-2 rounded-full border border-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300"
-                                      aria-label="Next slide"
-                                    >
-                                      <ChevronRight size={20} />
-                                    </button>
                                   </div>
+                                ))}
+                              </div>
 
-                                  {/* Simple dot indicators */}
-                                  <div className="flex justify-center items-center py-4 bg-gray-50">
-                                    {pics.map((_, index) => (
-                                      <button
-                                        key={index}
-                                        onClick={() => goToSlide(index)}
-                                        className={`w-2 h-2 mx-1 rounded-full transition-colors duration-200 focus:outline-none ${index === currentCaroIndex
-                                            ? 'bg-gray-800'
-                                            : 'bg-gray-300 hover:bg-gray-400'
-                                          }`}
-                                        aria-label={`Go to slide ${index + 1}`}
-                                      />
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                              </div>
+                              {/* Navigation Arrows */}
+                              <button
+                                onClick={goToPrevious}
+                                className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-700 p-2 rounded-full border border-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 z-10"
+                                aria-label="Previous slide"
+                              >
+                                <ChevronLeft size={20} />
+                              </button>
+
+                              <button
+                                onClick={goToNext}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-700 p-2 rounded-full border border-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 z-10"
+                                aria-label="Next slide"
+                              >
+                                <ChevronRight size={20} />
+                              </button>
+                            </div>
+
+                            {/* Dot indicators */}
+                            <div className="flex justify-center items-center py-4 bg-gray-50">
+                              {pics.map((_, index) => (
+                                <button
+                                  key={index}
+                                  onClick={() => goToSlide(index)}
+                                  className={`w-2 h-2 mx-1 rounded-full transition-colors duration-200 focus:outline-none ${
+                                    index === currentCaroIndex
+                                      ? 'bg-gray-800'
+                                      : 'bg-gray-300 hover:bg-gray-400'
+                                  }`}
+                                  aria-label={`Go to slide ${index + 1}`}
+                                />
+                              ))}
                             </div>
                           </div>
+                        </div>
                         </div>
                       </li>
 
