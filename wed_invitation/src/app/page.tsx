@@ -1055,32 +1055,32 @@ export default function Home() {
                             </div>
 
                           </div>
-                          <div className="w-full h-full flex items-center justify-content-center p-4">
-                          <div className="w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm">
+                          <div className="w-full h-full flex items-center justify-content-center p-4 carousel-container">
+                          <div className="w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm carousel-wrapper">
                             {/* Main Carousel Container */}
-                            <div className="relative h-80 md:h-96 overflow-hidden">
+                            <div className="relative h-80 md:h-96 overflow-hidden carousel-main">
                               {/* Slides */}
                               <div
-                                className="flex transition-transform duration-500 ease-out h-full"
+                                className="slides-container"
                                 style={{ transform: `translateX(-${currentCaroIndex * 100}%)` }}
                               >
                                 {pics.map((pic, index) => (
-                                  <div key={pic.id} className="min-w-full h-full relative">
+                                  <div key={pic.id} className="slide">
                                     <img
                                       src={pic.image}
                                       alt={pic.title}
-                                      className="w-full h-full object-cover"
+                                      className="slide-image"
                                     />
 
                                     {/* Simple overlay for text readability */}
-                                    <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                                    <div className="slide-overlay"></div>
 
                                     {/* Minimal content overlay */}
-                                    <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-95 p-4">
-                                      <h3 className="text-lg font-medium text-gray-900 mb-1">
+                                    <div className="slide-content">
+                                      <h3 className="slide-title">
                                         {pic.title}
                                       </h3>
-                                      <p className="text-sm text-gray-600">
+                                      <p className="slide-description">
                                         {pic.description}
                                       </p>
                                     </div>
@@ -1088,27 +1088,28 @@ export default function Home() {
                                 ))}
                               </div>
 
-                              {/* Navigation Arrows */}
-                              <button
-                                onClick={goToPrevious}
-                                className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-700 p-2 rounded-full border border-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 z-10"
-                                aria-label="Previous slide"
-                              >
-                                <ChevronLeft size={20} />
-                              </button>
+                                  {/* Navigation Arrows */}
+                                  <button
+                                    onClick={goToPrevious}
+                                    className="nav-button nav-button-left"
+                                    aria-label="Previous slide"
+                                  >
+                                    <ChevronLeft size={20} />
+                                  </button>
 
-                              <button
-                                onClick={goToNext}
-                                className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-700 p-2 rounded-full border border-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 z-10"
-                                aria-label="Next slide"
-                              >
-                                <ChevronRight size={20} />
-                              </button>
+                                  <button
+                                    onClick={goToNext}
+                                    className="nav-button nav-button-right"
+                                    aria-label="Next slide"
+                                  >
+                                    <ChevronRight size={20} />
+                                  </button>
+                              
                             </div>
 
                             {/* Dot indicators */}
-                            <div className="flex justify-center items-center py-4 bg-gray-50">
-                              {pics.map((_, index) => (
+                            <div className="indicators-container">
+                            {pics.map((_, index) => (
                                 <button
                                   key={index}
                                   onClick={() => goToSlide(index)}
@@ -1118,7 +1119,8 @@ export default function Home() {
                                       : 'bg-gray-300 hover:bg-gray-400'
                                   }`}
                                   aria-label={`Go to slide ${index + 1}`}
-                                />
+                                >
+                                </button>
                               ))}
                             </div>
                           </div>
