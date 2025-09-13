@@ -806,13 +806,7 @@ export default function Home() {
                               </div>
                             </div>
                           </div>
-                          <div className="watermark d-flex flex-column" style={{ height: '100%' }}>
-                            <div className="mt-auto" style={{ width: '100%', height: "100%" }}>
-                              <div className="text-center">
-                                {/* <div className="editable mb-2 animate__animated animate__fadeInDown animate__slower" style={{fontSize: 14}}>
-                              Pesan
-                            </div> */}
-                                {/* <div className="editable mb-3 animate__animated animate__fadeInDown animate__slower font-italic" style={{fontSize: 16}}>Wassalamualaikum Warahmatullahi Wabarakatuh</div> */}
+                    
 
                                 <div className="text-center d-flex align-items-center justify-content-center" style={{ gap: 14, lineHeight: '1.2' }}>
                                   <div className="comment card  mt-2 py-2 pr-2 gift-container" style={{ height: "100%" }}>
@@ -870,9 +864,6 @@ export default function Home() {
 
                                 </div>
 
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </li>
                       {/* END PESAN SECTION */}
@@ -1055,7 +1046,8 @@ export default function Home() {
                             </div>
 
                           </div>
-                          <div className="w-full h-full flex items-center justify-content-center p-0 carousel-container">
+                          <div className="w-full h-full flex items-center justify-content-center p-4 ">
+                          <div className="carousel-container">
                           <div className="w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm carousel-wrapper">
                             {/* Main Carousel Container */}
                             <div className="relative h-80 md:h-96 overflow-hidden carousel-main">
@@ -1137,6 +1129,7 @@ export default function Home() {
                                   </button>
                               
                             </div>
+                          </div>
                           </div>
                         </div>
                         </div>

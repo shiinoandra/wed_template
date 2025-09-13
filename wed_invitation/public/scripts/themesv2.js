@@ -441,19 +441,19 @@ var initMusic = function initMusic() {
   document.addEventListener("DOMContentLoaded", function () {
     // Mulai dengan muted autoplay
     playMusic(true);
-    if (music && !userPausedMusic) {
-      music.muted = false;
-      var currentVolume = 0;
-      var targetVolume = 1; // volume penuh
-      var volumeInterval = setInterval(function () {
-        currentVolume += 0.1;
-        if (currentVolume >= targetVolume) {
-          currentVolume = targetVolume;
-          clearInterval(volumeInterval);
-        }
-        music.volume = currentVolume;
-      }, 100);
-    }
+    // if (music && !userPausedMusic) {
+    //   music.muted = false;
+    //   var currentVolume = 0;
+    //   var targetVolume = 1; // volume penuh
+    //   var volumeInterval = setInterval(function () {
+    //     currentVolume += 0.1;
+    //     if (currentVolume >= targetVolume) {
+    //       currentVolume = targetVolume;
+    //       clearInterval(volumeInterval);
+    //     }
+    //     music.volume = currentVolume;
+    //   }, 100);
+    // }
   });
 
   // Catat interaksi pengguna pertama dengan halaman
@@ -808,22 +808,22 @@ document.addEventListener("visibilitychange", function () {
 // Menggunakan listeners
 document.addEventListener("showModalEvent", function () {
   window.removeEventListener(events[deviceType].down, eventDown, false);
-  pauseInvitation();
+  //pauseInvitation();
 });
 document.addEventListener("closeModalEvent", function () {
   window.addEventListener(events[deviceType].down, eventDown, false);
-  playInvitation();
+ // playInvitation();
 });
 document.addEventListener("showLightBoxEvent", function () {
   window.removeEventListener(events[deviceType].down, eventDown, false);
-  pauseInvitation();
+  //pauseInvitation();
 });
 document.addEventListener("closeLightBoxEvent", function () {
   window.addEventListener(events[deviceType].down, eventDown, false);
-  playInvitation();
+ // playInvitation();
 });
 document.addEventListener("showGiftEvent", function () {
-  pauseInvitation();
+ // pauseInvitation();
 });
 
 // open invitation
@@ -838,7 +838,7 @@ var openInvitation = function openInvitation(event) {
 
   // play music
   playMusic(true);
-  playInvitation();
+  //playInvitation();
 
   // check fullscreen
   if (navigator.userAgent.indexOf("UCBrowser") != -1 || navigator.userAgent.indexOf("MiuiBrowser") != -1 || navigator.userAgent.includes("OppoBrowser") || navigator.userAgent.includes("HeyTapBrowser")) {
@@ -849,7 +849,7 @@ var openInvitation = function openInvitation(event) {
   document.querySelector(".not-open").classList.remove("not-open");
 
   // start event gesture
-  window.addEventListener(events[deviceType].down, eventDown, false);
+  // window.addEventListener(events[deviceType].down, eventDown, false);
   swipeUp();
 };
 
