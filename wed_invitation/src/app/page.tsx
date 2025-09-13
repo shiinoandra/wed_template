@@ -157,7 +157,7 @@ return (
               <div className="wedstyle_track">
                 <ul className="wedstyle_list">
                   <li className="wedstyle_slide wedstyle_list" style={{}}>
-                    <div className="container-mobile cover" style={{backgroundImage: 'url("bg.jpg")'}}>
+                    <div className="container-mobile cover" style={{backgroundImage: 'url("bg-1.png")'}}>
                       <div className="frame">
                         <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                         <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -201,9 +201,9 @@ return (
                         <div className="w-100 pt-5">
                           <div className="text-center animate__animated animate__zoomIn animate__slower mt-5 mb-3" style={{lineHeight: 1}}>
                             <div className="editable mb-2" style={{fontSize: '14.4px'}}>The Wedding Of</div>
-                            <div className="color-accent editable font-latin black-stroke" style={{fontSize: 80}}>Nuri</div>
+                            <div className="color-accent editable font-latin white-stroke" style={{fontSize: 80}}>Nuri</div>
                             <div className="editable font-latin mb-2" style={{fontSize: 30}}>&amp;</div>
-                            <div className="color-accent editable mb-2 font-latin black-stroke" style={{fontSize: 80 }}>Rahadian</div>
+                            <div className="color-accent editable mb-2 font-latin white-stroke" style={{fontSize: 80 }}>Rahadian</div>
                           </div>
                           <div className="text-center mx-auto" style={{maxWidth: 280}}>
                             <div className="text-center mb-3 py-3 px-2 animate__animated animate__zoomIn animate__slower" style={{backgroundColor: 'rgba(225, 219, 203, 0.67)', border: '2px solid var(--inv-border)', borderRadius: '0.5rem'}}>
@@ -347,14 +347,12 @@ return (
                           </div>
                         </div>
                         <div className="text-center">
-                          <div className="editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize: '14.4px'}}>✤ Adz-Dzariyat : 49 ✤</div>
-                          <div className="color-accent editable quotes mb-3 animate__animated animate__zoomIn animate__slower" style={{fontSize: 40}}>
-                            وَمِنْ كُلِّ شَيْءٍ خَلَقْنَا<br />
-                            زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُوْنَ
+                          <div className="editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize: '14.4px'}}>✤ Ar-Rum : 21 ✤</div>
+                          <div className="color-accent editable quotes mb-3 animate__animated animate__zoomIn animate__slower" style={{fontSize: 20}}>
+                            وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ ۝٢١
                           </div>
                           <div className="editable quotes animate__animated animate__fadeInUp animate__slower" style={{fontSize: 13}}>
-                            Mahasuci Allah yang menciptakan makhluk-<br />
-                            Nya berpasang-pasangan
+                            Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
                           </div>
                         </div>
                       </div>
@@ -497,25 +495,30 @@ return (
                             <img src="/gunungan-isi.png" alt="gunungan-isi.png" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                           </div>
                         </div>
-                        <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
-                          <div className="editable font-latin" style={{fontSize: 50, lineHeight: '1.2'}}>Minggu</div>
-                          <div className="editable color-accent font-indo" style={{fontSize: 50, lineHeight: '1.2'}}>12.Okt.25</div>
-                        </div>
                         <div className="text-center animate__animated animate__fadeInDown animate__slower">
-                          <div className="editable color-accent font-weight-bold" style={{fontSize: 18}}>🏵 Akad Nikah 🏵</div>
-                          <div className="editable" style={{fontSize: 18}}>Pukul 07.00 - 08.30 WIB</div>
+                          <div className="editable color-accent font-weight-bold" style={{fontSize: 25}}>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
                         </div>
-                        <div className="mb-4"></div>
+                        <div className="mt-3 text-center animate__animated animate__zoomIn animate__slower">
+                          <div className="editable font-latin" style={{fontSize: 40, lineHeight: '1.2'}}>Minggu</div>
+                          <div className="editable color-accent font-indo" style={{fontSize: 30, lineHeight: '1.2'}}>12 Oktober 2025</div>
+                        </div>
+                        <div className="mb-3"></div>
+                        <div className="text-center animate__animated animate__fadeInDown animate__slower">
+                          <div className="editable color-accent font-weight-bold" style={{fontSize: 16}}>🏵 Akad Nikah 🏵</div>
+                          <div className="editable" style={{fontSize: 16}}>Pukul 07.00 - 08.30 WIB</div>
+                        </div>
+                        <div className="mb-2"></div>
                         <div className="text-center animate__animated animate__fadeInDown animate__slower">
                           <div className="editable color-accent font-weight-bold" style={{fontSize: 16}}>🏵 Resepsi 🏵</div>
                           <div className="editable" style={{fontSize: 16}}>Pukul 11.00 - 13.00 WIB</div>
                         </div>
+                        <div className="mb-2"></div>
                         <div className="mt-2 text-center animate__animated animate__zoomIn animate__slower">
-                          <div className="editable color-accent font-weight-bold" style={{fontSize: 14}}>🏵 Auditorium Departemen Pertanian 🏵</div>
-                          <div className="editable" style={{fontSize: 14}}>
+                          <div className="editable color-accent font-weight-bold" style={{fontSize: 16}}>🏵 Auditorium Departemen Pertanian 🏵</div>
+                          {/* <div className="editable" style={{fontSize: 14}}>
                             Jl. Harsono RM No.3 Ragunan<br />
                             Pasar Minggu, Jakarta Selatan
-                          </div>
+                          </div> */}
                         </div>
 
                       </div>
@@ -672,8 +675,8 @@ return (
                               <br />
                               HR. Abu Daud
                             </div>
-                            <div className="editable mb-4 animate__animated animate__fadeInUp animate__slower">Tekan tombol dibawah ini untuk mengirim ucapan dan konfirmasi kehadiran</div>
-                            <button className="btn-rsvp btn btn-primary rounded-pill mb-4 animate__animated animate__fadeInUp animate__slow" style={{fontSize: 20}}>Konfirmasi &amp; Kirim Ucapan</button>
+                            {/* <div className="editable mb-4 animate__animated animate__fadeInUp animate__slower">Tekan tombol dibawah ini untuk mengirim ucapan</div> */}
+                            <button className="btn-rsvp btn btn-primary rounded-pill mb-4 animate__animated animate__fadeInUp animate__slow" style={{fontSize: 20}}>Kirim Ucapan</button>
                           </div>
                         </div>
                       </div>
@@ -682,7 +685,7 @@ return (
                   {/* END RSVP SECTION */}
                     {/* BEGIN PESAN SECTION  */}
                     <li className="wedstyle_slide" style={{ display: 'none' }}>
-                        <div className="container-mobile" style={{ backgroundImage: 'url("bg.png")' }}>
+                        <div className="container-mobile" style={{ backgroundImage: 'url("bg.jpg")' }}>
                           <div className="frame">
                           <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                           <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
@@ -979,13 +982,16 @@ return (
                         
                       </div>
                       <div className="watermark d-flex flex-column" style={{height: '100%'}}>
-                        <div className="mt-auto" style={{width: '100%'}}>
+                        <div className="" style={{width: '100%', marginBottom: '1rem'}}>
                           <div className="text-center">
+                            <div className="editable mb-3 animate__animated animate__fadeInDown animate__slower font-italic" style={{fontSize: 16}}>
+                              <img src="/tengs.jpg" alt="frame" className="" style={{width: '90%', marginTop: '1rem', marginBottom: '1rem', transformOrigin: 'right bottom', animationDelay: '300ms', borderRadius: '5%'}} />
+                            </div>
                             <div className="editable mb-2 animate__animated animate__fadeInDown animate__slower" style={{fontSize: 14}}>
                               Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan doa restu kepada kedua mempelai.
                             </div>
                             <div className="editable mb-3 animate__animated animate__fadeInDown animate__slower font-italic" style={{fontSize: 16}}>Wassalamualaikum Warahmatullahi Wabarakatuh</div>
-                            <div className="text-center d-flex align-items-center justify-content-center animate__animated animate__fadeInDown animate__slow" style={{gap: 14, lineHeight: '1.2'}}>
+                            <div className="text-center d-flex align-items-center justify-content-center animate__animated animate__fadeInDown animate__slow" style={{gap: 14, lineHeight: '2'}}>
                               <div>
                                 <div className="editable" style={{textDecoration: 'underline', fontSize: 13}}>Keluarga</div>
                                 <div className="editable font-weight-bold" style={{fontSize: 13}}>
@@ -1023,7 +1029,7 @@ return (
                   </svg>
                   <span>Maps</span>
                 </li>
-                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-chat-circle-text" style={{color: 'currentcolor'}} /> <span>RSVP</span></li>
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-chat-circle-text" style={{color: 'currentcolor'}} /> <span>Ucapan</span></li>
                 <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-book-open-text" style={{ color: 'currentcolor' }} /> <span>Pesan</span></li>
                 {invitationType !== "1" && (
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-gift" style={{color: 'currentcolor'}} /> <span>Gift</span></li>
@@ -1171,7 +1177,7 @@ return (
             </div>
           ) : (
           <div className="rsvp-form show">
-            <div className="mb-4"><div className="font-indo h4 text-center">RSVP</div></div>
+            <div className="mb-4"><div className="font-indo h4 text-center">Ucapan</div></div>
             <form className="pt-2" onSubmit={handleSubmit}>
             <div>
                 <div className="form-group mb-2">
@@ -1179,13 +1185,13 @@ return (
                   <input ref={nameRef} aria-hidden="false" id="inputname" type="text" placeholder="Nama" required className="form-control" />
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <div className="form-group mb-2">
                   <label htmlFor="inputphone" className="small mb-1">No WhatsApp</label> 
                   <input ref={phoneRef}  aria-hidden="false" id="inputphone" type="number" required placeholder="No WhatsApp" className="form-control"  />
                 </div>
-              </div>
-              <div>
+              </div> */}
+              {/* <div>
                 <div className="form-group mb-2">
                   <label htmlFor="inputattendance" className="small mb-1">Kehadiran</label>
                   <select ref={attendRef}  id="inputattendance" defaultValue="Hadir" required className="form-control">
@@ -1197,7 +1203,7 @@ return (
                     </option>
                   </select>
                 </div>
-              </div>
+              </div> */}
               <div>
               </div>
               <div>                      </div>
