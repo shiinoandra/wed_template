@@ -307,7 +307,7 @@
   
   @media (min-width: 768px) {
     .carousel-main {
-      height: 384px;
+      height: 50%;
     }
   }
   

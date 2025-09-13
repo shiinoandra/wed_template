@@ -1,13 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
-import { useState } from "react";
-import { useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-
-
 import Script from 'next/script'
 import FormModal from "./rsvpForm";
 import { useSearchParams } from "next/navigation";
@@ -114,30 +109,34 @@ export default function Home() {
     }
   ];
 
+  
+
 
   // Function to get first letter of name
   const getInitial = (name: string) => {
     return name ? name.charAt(0).toUpperCase() : 'U';
   };
 
+
+  const fetchWishes = useCallback(async () => {
+    try {
+      setLoading(true);
+      const res = await fetch("/api/save-rsvp", { cache: "no-store" });
+      const json = await res.json();
+      if (json.success) {
+        setWishes(json.data);
+      }
+    } catch (error) {
+      console.error("Error fetching wishes:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+  
   // Fetch pesan
   useEffect(() => {
-    async function fetchWishes() {
-      try {
-        setLoading(true);
-        const res = await fetch("/api/save-rsvp", { cache: "no-store" });
-        const json = await res.json();
-        if (json.success) {
-          setWishes(json.data);  // ✅ use API response
-        }
-      } catch (error) {
-        console.error("Error fetching wishes:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
     fetchWishes();
-  }, []);
+  }, [fetchWishes]);
 
 
 
@@ -166,10 +165,11 @@ export default function Home() {
       if (phoneRef.current) phoneRef.current.value = "";
       if (attendRef.current) attendRef.current.value = "Hadir";
       if (commentRef.current) commentRef.current.value = "";
+      await fetchWishes();
     } catch (err) {
       console.error(err);
-      setSubmitState('error');
-      setErrorMessage('Gagal mengirim RSVP. Silakan coba lagi.');
+      setSubmitState("error");
+      setErrorMessage("Gagal mengirim RSVP. Silakan coba lagi.");
     } finally {
       setLoading(false);
     }
