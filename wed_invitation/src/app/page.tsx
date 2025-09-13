@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 
 
 import Script from 'next/script'
@@ -21,23 +23,34 @@ type Wish = {
 
 
 export default function Home() {
-
+  //submit form flag
   const [submitState, setSubmitState] = useState('form'); // 'form', 'success', 'error'
   const [errorMessage, setErrorMessage] = useState('');
-
+  //form data
   const nameRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const attendRef = useRef<HTMLSelectElement>(null);
   const commentRef = useRef<HTMLTextAreaElement>(null);
-
+  //loading sate submit
   const [loading, setLoading] = useState(false);
-
+  //parameter get
   const searchParams = useSearchParams();
   const name = searchParams.get("name") || "Tamu Undangan"; // default if no param
   const invitationType = searchParams.get("type") || "1";
+  //kopi rekening
   const [copiedAccount, setCopiedAccount] = useState("");
-
+  const copyToClipboard = (text: string, bankName:string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedAccount(bankName);
+      setTimeout(() => setCopiedAccount(""), 2000);
+    });
+  };
+  
+  //pesan
   const [wishes, setWishes] = useState<Wish[]>([]);
+  //carousell state
+  const [currentCaroIndex, setCurrentCaroIndex] = useState(0);
+  const [isCaroAutoPlaying, setIsCaroAutoPlaying] = useState(true);
 
   // Function to generate avatar background color based on name
   const getAvatarColor = (name: string) => {
@@ -48,7 +61,7 @@ export default function Home() {
     const index = name.charCodeAt(0) % colors.length;
     return colors[index];
   };
-
+  //data rekening
   const bankAccounts = [
     {
       id: 'bca',
@@ -67,14 +80,41 @@ export default function Home() {
       color: '#f57c00'
     }
   ];
+  //data pic untuk carousell
+  const pics = [
+    {
+      id: 1,
+      image: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&h=600&fit=crop",
+      title: "Wedding Celebration",
+      description: "Beautiful moments captured"
+    },
+    {
+      id: 2,
+      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop",
+      title: "Engagement Party",
+      description: "Love in the air"
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop",
+      title: "Anniversary Dinner",
+      description: "Celebrating milestones"
+    },
+    {
+      id: 4,
+      image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=600&fit=crop",
+      title: "Birthday Bash",
+      description: "Making memories"
+    },
+    {
+      id: 5,
+      image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop",
+      title: "Corporate Event",
+      description: "Professional gatherings"
+    }
+  ];
 
-  const copyToClipboard = (text: string, bankName:string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopiedAccount(bankName);
-      setTimeout(() => setCopiedAccount(""), 2000);
-    });
-  };
-  
+ 
   // Function to get first letter of name
   const getInitial = (name: string) => {
     return name ? name.charAt(0).toUpperCase() : 'U';
@@ -98,6 +138,8 @@ export default function Home() {
       }
       fetchWishes();
     }, []);
+
+    
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -135,6 +177,36 @@ export default function Home() {
   const resetModalState = () => {
     setSubmitState('form');
     setErrorMessage('');
+  };
+
+  //function for carousell
+  useEffect(() => {
+    if (isCaroAutoPlaying) {
+      const interval = setInterval(() => {
+        setCurrentCaroIndex((prevIndex) => 
+          prevIndex === pics.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 4000);
+      return () => clearInterval(interval);
+    }
+  }, [isCaroAutoPlaying, pics.length]);
+
+  const goToPrevious = () => {
+    setIsCaroAutoPlaying(false);
+    setCurrentCaroIndex(currentCaroIndex === 0 ? pics.length - 1 : currentCaroIndex - 1);
+    setTimeout(() => setIsCaroAutoPlaying(true), 5000);
+  };
+
+  const goToNext = () => {
+    setIsCaroAutoPlaying(false);
+    setCurrentCaroIndex(currentCaroIndex === pics.length - 1 ? 0 : currentCaroIndex + 1);
+    setTimeout(() => setIsCaroAutoPlaying(true), 5000);
+  };
+
+  const goToSlide = (index: number) => {
+    setIsCaroAutoPlaying(false);
+    setCurrentCaroIndex(index);
+    setTimeout(() => setIsCaroAutoPlaying(true), 5000);
   };
 
 
@@ -931,6 +1003,132 @@ return (
                   {/* END GIFT SECTION */}
                   </>
                   )}
+                  {/* BEGIN OF GALLERY SECTION  */}
+                    <li className="wedstyle_slide" style={{display: 'none'}}>
+                    <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
+                      <div className="frame">
+                        <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
+                        <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
+                        <div className="frame-tl w-100 only-cover" style={{transform: 'scale(1.2)', transformOrigin: 'center top'}}>
+                          <img src="/gunungan.webp" alt="frame" className="w-100 animate__animated animate__zoomIn animate__slower" style={{animationDelay: '1.5s'}} />
+                        </div>
+                        <div className="frame-tl animate__animated animate__fadeInTopLeft animate__slow">
+                          <div className="animate-left" style={{transform: 'translate(-25%, 105%)'}}>
+                            <img src="/flol-2.webp" alt="frame" className="w-100"  style={{transformOrigin: 'left bottom', animationDelay: '120ms'}} />
+                          </div>
+                        </div>
+                        <div className="frame-tr animate__animated animate__fadeInTopRight animate__slow">
+                          <div className="animate-right" style={{transform: 'translate(25%, 105%)'}}>
+                            <img src="/flor-2.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '120ms'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.5s'}}>
+                          <div className="animate-left" style={{transform: 'translate(-29%, -85%)'}}>
+                            <img src="/bl-1.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2.2s'}}>
+                          <div className="animate-left" style={{transform: 'translate(-27%, -87%)'}}>
+                            <img src="/sinta.webp" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '100ms'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{animationDelay: '2s'}}>
+                          <div className="animate-left" style={{transform: 'translate(-16%, -70%)'}}>
+                            <img src="/flol-3.png" alt="frame" className="w-100" style={{transformOrigin: 'left bottom', animationDelay: '300ms'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.5s'}}>
+                          <div className="animate-right" style={{transform: 'translate(29%, -85%)'}}>
+                            <img src="/br-1.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2.2s'}}>
+                          <div className="animate-right" style={{transform: 'translate(27%, -87%)'}}>
+                            <img src="/rama.webp" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '100ms'}} />
+                          </div>
+                        </div>
+                        <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{animationDelay: '2s'}}>
+                          <div className="animate-right" style={{transform: 'translate(16%, -70%)'}}>
+                            <img src="/flor-3.png" alt="frame" className="w-100" style={{transformOrigin: 'right bottom', animationDelay: '300ms'}} />
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div className="watermark d-flex flex-column" style={{height: '100%'}}>
+                        <div className="" style={{width: '100%', marginBottom: '1rem'}}>
+                        <div className="relative w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100">
+                            {/* Main Carousel Container */}
+                            <div className="relative h-80 md:h-96 overflow-hidden">
+                              {/* Slides */}
+                              <div 
+                                className="flex transition-transform duration-500 ease-out h-full"
+                                style={{ transform: `translateX(-${currentCaroIndex * 100}%)` }}
+                              >
+                                {pics.map((pic, index) => (
+                                  <div key={pic.id} className="min-w-full h-full relative">
+                                    <img
+                                      src={pic.image}
+                                      alt={pic.title}
+                                      className="w-full h-full object-cover"
+                                    />
+                                    
+                                    {/* Simple overlay for text readability */}
+                                    <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                                    
+                                    {/* Minimal content overlay */}
+                                    <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-95 p-4">
+                                      <h3 className="text-lg font-medium text-gray-900 mb-1">
+                                        {pic.title}
+                                      </h3>
+                                      <p className="text-sm text-gray-600">
+                                        {pic.description}
+                                      </p>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+
+                              {/* Simple Navigation Arrows */}
+                              <button
+                                onClick={goToPrevious}
+                                className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-700 p-2 rounded-full border border-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                                aria-label="Previous slide"
+                              >
+                                <ChevronLeft size={20} />
+                              </button>
+
+                              <button
+                                onClick={goToNext}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-700 p-2 rounded-full border border-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                                aria-label="Next slide"
+                              >
+                                <ChevronRight size={20} />
+                              </button>
+                            </div>
+
+                            {/* Simple dot indicators */}
+                            <div className="flex justify-center items-center py-4 bg-gray-50">
+                              {pics.map((_, index) => (
+                                <button
+                                  key={index}
+                                  onClick={() => goToSlide(index)}
+                                  className={`w-2 h-2 mx-1 rounded-full transition-colors duration-200 focus:outline-none ${
+                                    index === currentCaroIndex
+                                      ? 'bg-gray-800'
+                                      : 'bg-gray-300 hover:bg-gray-400'
+                                  }`}
+                                  aria-label={`Go to slide ${index + 1}`}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                                              </div>
+                      </div>
+                    </div>
+                  </li>
+
+
+                  {/* BEGIN OF TERIMAKASIH */}
                   <li className="wedstyle_slide" style={{display: 'none'}}>
                     <div className="container-mobile" style={{backgroundImage: 'url("bg.jpg")'}}>
                       <div className="frame">
@@ -1012,7 +1210,11 @@ return (
                       </div>
                     </div>
                   </li>
+
+                  {/* END OF TTERIMA KASIH */}
                 </ul>
+
+
               </div>
             </div>
             <div id="smMenu" className="wedstyle_menu">
@@ -1034,6 +1236,7 @@ return (
                 {invitationType !== "1" && (
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-gift" style={{color: 'currentcolor'}} /> <span>Gift</span></li>
                 )}
+                <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-image-square" style={{color: 'currentcolor'}} /> <span>Gallery</span></li>
                 <li className="wedstyle_menu_item" style={{maxWidth: '82.8px'}}><i className="icon ph ph-mosque" style={{color: 'currentcolor'}} /> <span>Thanks</span></li>
               </ul>
             </div>
