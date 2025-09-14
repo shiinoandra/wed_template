@@ -30,8 +30,25 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   //parameter get
   const searchParams = useSearchParams();
-  const name = searchParams.get("name") || "Tamu Undangan"; // default if no param
-  const invitationType = searchParams.get("type") || "1";
+  const name = searchParams.get("n") || "Tamu Undangan"; // default if no param
+  const paramVariable = searchParams.get("p") || "" ;
+  var invOptions: string[]=[]
+  if (paramVariable !== "") {
+      invOptions = paramVariable.split("")
+  }
+
+  const isCaricature = invOptions[0]|| "0";
+  const isGift = invOptions[1]|| "0";
+  const musicType = invOptions[2]|| "1";
+
+  const musicMap: Record<string, string> = {
+    "1": "bgm_true.mp3",
+    "2": "bgm_sunda.mp3",
+    "3": "bgm_jawa.mp3",
+  };
+  const musicFile = musicMap[musicType] || "bgm_jawa.mp3";
+
+
   //kopi rekening
   const [copiedAccount, setCopiedAccount] = useState("");
   const copyToClipboard = (text: string, bankName: string) => {
@@ -220,7 +237,7 @@ export default function Home() {
         <div id="loader" className="loader-wrapper" style={{ display: 'none' }}>
           <span className="loader"><span className="loader-inner" /></span>
         </div>
-        <audio id="music" loop autoPlay><source src="/bgm2.mp3" /></audio>
+        <audio id="music" loop autoPlay>src={`/${musicFile}`} </audio>
 
         <div id="workspace-container" className="position-fixed h-100 w-100" style={{ overflow: 'hidden' }}>
           <div id="panZoom" className="position-fixed h-100 w-100" style={{ inset: 0, transformOrigin: '50% 50%', transform: 'scale(1.68886) translate(0px, 0px)' }}>
@@ -354,7 +371,7 @@ export default function Home() {
                                 <div className="editable color-accent font-indo" style={{ lineHeight: 1, fontSize: "40px" }}>Rahadian</div>
                               </div>
                             </div>
-                            {invitationType === "3" && (
+                            {isCaricature === "1" && (
                               <div className="image-editable mx-auto animate__animated animate__fadeInUp animate__slower" style={{ height: 'auto', width: 230, overflow: 'hidden', position: 'absolute', bottom: '-120px' }}>
                                 <img className="nr_render" src="/wedding_nr.webp" alt="wedding_nr.webp" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                               </div>
@@ -867,7 +884,7 @@ export default function Home() {
                         </div>
                       </li>
                       {/* END PESAN SECTION */}
-                      {invitationType !== "1" && (
+                      {isGift === "1" && (
                         <>
                           {/* BEGIN GIFT SECTION */}
                           <li className="wedstyle_slide" style={{ display: 'none' }}>
@@ -1245,7 +1262,7 @@ export default function Home() {
                     </li>
                     <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-chat-circle-text" style={{ color: 'currentcolor' }} /> <span>Ucapan</span></li>
                     <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-book-open-text" style={{ color: 'currentcolor' }} /> <span>Pesan</span></li>
-                    {invitationType !== "1" && (
+                    {isGift === "1" && (
                       <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-gift" style={{ color: 'currentcolor' }} /> <span>Gift</span></li>
                     )}
                     <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-image-square" style={{ color: 'currentcolor' }} /> <span>Gallery</span></li>
