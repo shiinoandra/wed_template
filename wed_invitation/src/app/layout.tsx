@@ -50,9 +50,13 @@ export default function RootLayout({
         <meta name="description" content="Undangan Wedding Nuri & Rahadian" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nurirahadian.photo-frame.com/" />
         <meta property="og:title" content="Wedding - Nuri & Rahadian" />
         <meta property="og:description" content="Undangan Wedding Nuri & Rahadian" />
         <meta property="og:image" content="https://nurirahadian.photo-frame.com/tengs.jpg" />
+        <meta property="og:image:width" content="713" />
+        <meta property="og:image:height" content="505" />
+        <meta property="og:image:type" content="image/jpeg" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/"  />
