@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Script from 'next/script'
 import FormModal from "./rsvpForm";
 import { useSearchParams } from "next/navigation";
+import ScrollableGridGallery from "./gallery";
 
 
 type Wish = {
@@ -31,10 +32,12 @@ export default function Home() {
   //parameter get
   const searchParams = useSearchParams();
   const name = searchParams.get("n") || "Tamu Undangan"; // default if no param
-  
+
   const paramVariable = searchParams.get("p") || "";
 
   const invOptions = paramVariable.split(""); // ["1","0","3"]
+
+  console.log(invOptions);
   
   const isCaricature = invOptions[0] ?? "0";
   const isGift = invOptions[1] ?? "0";
@@ -59,9 +62,6 @@ export default function Home() {
 
   //pesan
   const [wishes, setWishes] = useState<Wish[]>([]);
-  //carousell state
-  const [currentCaroIndex, setCurrentCaroIndex] = useState(0);
-  const [isCaroAutoPlaying, setIsCaroAutoPlaying] = useState(true);
 
   // Function to generate avatar background color based on name
   const getAvatarColor = (name: string) => {
@@ -91,37 +91,27 @@ export default function Home() {
       color: '#f57c00'
     }
   ];
-  //data pic untuk carousell
+  //data pic untuk gallery
   const pics = [
     {
       id: 1,
       image: "https://lh3.googleusercontent.com/d/1FXfsIOgqeJn11BnYMmkxgHgT2gOg0VEB",
-      title: "Wedding Celebration",
-      description: "Beautiful moments captured"
     },
     {
       id: 2,
       image: "https://lh3.googleusercontent.com/d/14uo1KbYzNzvfydMWJLIjpS_QCDSkuvtA",
-      title: "Engagement Party",
-      description: "Love in the air"
     },
     {
       id: 3,
       image: "https://lh3.googleusercontent.com/d/1p0u549FicjkeKqS6XXA7ddQfYUm7QckD",
-      title: "Anniversary Dinner",
-      description: "Celebrating milestones"
     },
     {
       id: 4,
       image: "https://lh3.googleusercontent.com/d/1vJccEVOnucDsaDxa3DmUzkhw4dGywe6C",
-      title: "Birthday Bash",
-      description: "Making memories"
     },
     {
       id: 5,
       image: "https://lh3.googleusercontent.com/d/1NI3YTk4vRbV4Xrl5p9De8e0ayL68JWTI",
-      title: "Corporate Event",
-      description: "Professional gatherings"
     }
   ];
 
@@ -196,35 +186,7 @@ export default function Home() {
     setErrorMessage('');
   };
 
-  //function for carousell
-  useEffect(() => {
-    if (isCaroAutoPlaying) {
-      const interval = setInterval(() => {
-        setCurrentCaroIndex((prevIndex) =>
-          prevIndex === pics.length - 1 ? 0 : prevIndex + 1
-        );
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [isCaroAutoPlaying, pics.length]);
 
-  const goToPrevious = () => {
-    setIsCaroAutoPlaying(false);
-    setCurrentCaroIndex(currentCaroIndex === 0 ? pics.length - 1 : currentCaroIndex - 1);
-    setTimeout(() => setIsCaroAutoPlaying(true), 5000);
-  };
-
-  const goToNext = () => {
-    setIsCaroAutoPlaying(false);
-    setCurrentCaroIndex(currentCaroIndex === pics.length - 1 ? 0 : currentCaroIndex + 1);
-    setTimeout(() => setIsCaroAutoPlaying(true), 5000);
-  };
-
-  const goToSlide = (index: number) => {
-    setIsCaroAutoPlaying(false);
-    setCurrentCaroIndex(index);
-    setTimeout(() => setIsCaroAutoPlaying(true), 5000);
-  };
 
 
 
@@ -1065,91 +1027,7 @@ export default function Home() {
 
                           </div>
                           <div className="w-full h-full flex items-center justify-content-center p-2 ">
-                          <div className="carousel-container">
-                          <div className="text-center editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize:"14.4px"}}>🏵 Momen Terindah 🏵</div>
-                          <div className="w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm carousel-wrapper">
-                            {/* Main Carousel Container */}
-                            <div className="relative h-80 md:h-96 overflow-hidden carousel-main">
-                              {/* Slides */}
-                              <div
-                                className="slides-container"
-                                style={{ transform: `translateX(-${currentCaroIndex * 100}%)` }}
-                              >
-                                {pics.map((pic, index) => (
-                                  <div key={pic.id} className="slide">
-                                    <img
-                                      src={pic.image}
-                                      alt={pic.title}
-                                      className="slide-image"
-                                    />
-
-                                    {/* Simple overlay for text readability */}
-                                    <div className="slide-overlay"></div>
-                                  </div>
-                                ))}
-                              </div>
-
-                                  {/* Navigation Arrows */}
-                                  <button
-                                    onClick={goToPrevious}
-                                    className="nav-button nav-button-left"
-                                    aria-label="Previous slide"
-                                  >
-                                    <ChevronLeft size={20} />
-                                  </button>
-
-                                  <button
-                                    onClick={goToNext}
-                                    className="nav-button nav-button-right"
-                                    aria-label="Next slide"
-                                  >
-                                    <ChevronRight size={20} />
-                                  </button>
-                              
-                            </div>
-                          </div>
-                          <div className="w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm carousel-wrapper">
-                            {/* Main Carousel Container */}
-                            <div className="relative h-80 md:h-96 overflow-hidden carousel-main">
-                              {/* Slides */}
-                              <div
-                                className="slides-container"
-                                style={{ transform: `translateX(-${currentCaroIndex * 100}%)` }}
-                              >
-                                {pics.map((pic, index) => (
-                                  <div key={pic.id} className="slide">
-                                    <img
-                                      src={pic.image}
-                                      alt={pic.title}
-                                      className="slide-image"
-                                    />
-
-                                    {/* Simple overlay for text readability */}
-                                    <div className="slide-overlay"></div>
-                                  </div>
-                                ))}
-                              </div>
-
-                                  {/* Navigation Arrows */}
-                                  <button
-                                    onClick={goToPrevious}
-                                    className="nav-button nav-button-left"
-                                    aria-label="Previous slide"
-                                  >
-                                    <ChevronLeft size={20} />
-                                  </button>
-
-                                  <button
-                                    onClick={goToNext}
-                                    className="nav-button nav-button-right"
-                                    aria-label="Next slide"
-                                  >
-                                    <ChevronRight size={20} />
-                                  </button>
-                              
-                            </div>
-                          </div>
-                          </div>
+                          <ScrollableGridGallery />
                         </div>
                         </div>
                       </li>
