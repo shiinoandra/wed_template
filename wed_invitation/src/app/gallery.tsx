@@ -40,7 +40,7 @@ const ScrollableGridGallery = () => {
   };
 
   return (
-    <div className="gallery-container">
+    <div className="gallery-container p-2 animate__animated animate__fadeInDown animate__slower">
       <div className="gallery-wrapper">
         
         {/* Grid Container */}

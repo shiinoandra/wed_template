@@ -278,226 +278,225 @@
     }
   }
 
+/* Gallery Container */
+.gallery-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
 
-  .gallery-container {
-    min-height: 100vh;
-    background-color: #f9fafb;
-    padding: 1.5rem;
+.gallery-wrapper {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.gallery-title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Masonry Grid Layout */
+.gallery-grid {
+  column-count: 1;
+  column-gap: 1rem;
+  column-fill: balance;
+}
+
+/* Responsive columns */
+@media (min-width: 640px) {
+  .gallery-grid {
+    column-count: 2;
   }
-  
-  .gallery-wrapper {
-    max-width: 80rem;
-    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .gallery-grid {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1280px) {
+  .gallery-grid {
+    column-count: 4;
+  }
+}
+
+/* Gallery Item */
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+/* Image Container */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background-color: white;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.image-container:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: scale(1.02);
+}
+
+/* Gallery Image */
+.gallery-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-image.loading {
+  opacity: 0;
+}
+
+.gallery-image.loaded {
+  opacity: 1;
+}
+
+/* Loading Placeholder */
+.loading-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 4px solid #3b82f6;
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Hover Overlay */
+.hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container:hover .hover-overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Hover Icon */
+.hover-icon {
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .hover-icon {
+  opacity: 1;
+}
+
+/* Load More Section */
+.load-more-container {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.load-more-button {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.load-more-button:hover {
+  background-color: #1d4ed8;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.load-more-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+/* Keyframe Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 639px) {
+  .gallery-container {
+    padding: 0.25rem;
   }
   
   .gallery-title {
-    font-size: 1.875rem;
-    font-weight: bold;
-    color: #1f2937;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  /* Masonry Grid Layout */
-  .gallery-grid {
-    column-count: 1;
-    column-gap: 1rem;
-    column-fill: balance;
-  }
-  
-  /* Responsive columns */
-  @media (min-width: 640px) {
-    .gallery-grid {
-      column-count: 2;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .gallery-grid {
-      column-count: 3;
-    }
-  }
-  
-  @media (min-width: 1280px) {
-    .gallery-grid {
-      column-count: 4;
-    }
-  }
-  
-  /* Gallery Item */
-  .gallery-item {
-    break-inside: avoid;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
-    cursor: pointer;
   }
   
-  /* Image Container */
-  .image-container {
-    position: relative;
-    overflow: hidden;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    background-color: white;
-    transition: all 0.3s ease;
-    transform-origin: center;
+  .gallery-grid {
+    column-gap: 0.125rem;
   }
   
-  .image-container:hover {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    transform: scale(1.02);
+  .gallery-item {
+    margin-bottom: 0.125rem;
   }
-  
-  /* Gallery Image */
-  .gallery-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
-  }
-  
-  .gallery-image.loading {
-    opacity: 0;
-  }
-  
-  .gallery-image.loaded {
-    opacity: 1;
-  }
-  
-  /* Loading Placeholder */
-  .loading-placeholder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #e5e7eb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-  
-  /* Loading Spinner */
-  .loading-spinner {
-    width: 2rem;
-    height: 2rem;
-    border: 4px solid #3b82f6;
-    border-top: 4px solid transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-  
-  /* Hover Overlay */
-  .hover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .image-container:hover .hover-overlay {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Hover Icon */
-  .hover-icon {
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .image-container:hover .hover-icon {
-    opacity: 1;
-  }
-  
-  /* Load More Section */
-  .load-more-container {
-    text-align: center;
-    margin-top: 3rem;
-  }
-  
+}
+
+/* For better performance on mobile */
+@media (prefers-reduced-motion: reduce) {
+  .image-container,
+  .gallery-image,
+  .hover-overlay,
+  .hover-icon,
   .load-more-button {
-    background-color: #2563eb;
-    color: white;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: none;
   }
   
-  .load-more-button:hover {
-    background-color: #1d4ed8;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  .loading-placeholder {
+    animation: none;
   }
   
-  .load-more-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+  .loading-spinner {
+    animation: none;
   }
-  
-  /* Keyframe Animations */
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
-  }
-  
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  /* Additional responsive adjustments */
-  @media (max-width: 639px) {
-    .gallery-container {
-      padding: 1rem;
-    }
-    
-    .gallery-title {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .gallery-grid {
-      column-gap: 0.75rem;
-    }
-    
-    .gallery-item {
-      margin-bottom: 0.75rem;
-    }
-  }
-  
-  /* For better performance on mobile */
-  @media (prefers-reduced-motion: reduce) {
-    .image-container,
-    .gallery-image,
-    .hover-overlay,
-    .hover-icon,
-    .load-more-button {
-      transition: none;
-    }
-    
-    .loading-placeholder {
-      animation: none;
-    }
-    
-    .loading-spinner {
-      animation: none;
-    }
-  }
+}

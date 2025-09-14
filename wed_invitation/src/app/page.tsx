@@ -954,7 +954,7 @@ export default function Home() {
                       {/* BEGIN OF GALLERY SECTION  */}
                       <li className="wedstyle_slide" style={{ display: 'none' }}>
                         <div className="container-mobile" style={{ backgroundImage: 'url("bg.jpg")' }}>
-                          <div className="">
+                          <div className="frame">
                             <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                             <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                             <div className="frame-tl w-100 only-cover" style={{ transform: 'scale(1.2)', transformOrigin: 'center top' }}>
