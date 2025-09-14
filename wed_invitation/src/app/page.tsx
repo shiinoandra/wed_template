@@ -692,9 +692,9 @@ export default function Home() {
                               </div>
                             </div>
                           </div>
-                    
-                                <div className="h-100 d-flex flex-column align-items-center" style={{ gap: 14, lineHeight: '1.2' }}>
-                                  <div className="comment card  mt-2 py-2 pr-2 gift-container" style={{ height: "100%" }}>
+                          <div className="h-100 d-flex flex-column justify-content-center align-items-center p-2" style={{height:"100%"}}>
+                            <div className="text-center">
+                            <div className="comment card  mt-2 mb-2 pr-2 gift-container" style={{ height: "100%" }}>
                                     <div className="card-body mt-0 p-0 text-left" style={{ width: "100%", height: "100%", overflow: "hidden" }}>
                                       <div style={{ height: "100%", maxHeight: "550px", overflowY: "auto", padding: "10px", }} className="wishes has-animate" data-anim="zoom-in-up" id="wishes-container" data-load-animation="true">
                                         {loading ? (
@@ -746,8 +746,12 @@ export default function Home() {
                                       </div>
                                     </div>
                                   </div>
+                          </div>
+                        </div>
+                    
+                                {/* <div className="h-100 d-flex flex-column align-items-center" style={{ gap: 14, lineHeight: '1.2' }}> */}
 
-                                </div>
+
 
                         </div>
                       </li>
@@ -1136,7 +1140,7 @@ export default function Home() {
         <div id="rsvpModal" tabIndex={-1} role="dialog" aria-labelledby="rsvpModal" className="modal fade">
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content p-4">
-              <button type="button" className="close-rsvp-btn btn" style={{ position: "relative", left: "83%", width: "60px" }}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>
+              <button type="button" className="close-rsvp-btn btn" style={{ position: "relative", left: "45%", width: "60px" }}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>
               {/* Error Banner */}
               {submitState === 'error' && (
                 <div className="alert alert-danger alert-dismissible mb-3" role="alert">
