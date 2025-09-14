@@ -22,19 +22,19 @@ const ScrollableGridGallery = () => {
       src: "https://lh3.googleusercontent.com/d/1qfwXvfs0H3rOwizPKbotJhlrK9uEGw57",
     },
     {
-      id: 5,
+      id: 3,
       src: "https://lh3.googleusercontent.com/d/1FXfsIOgqeJn11BnYMmkxgHgT2gOg0VEB",
     },
     {
-      id: 6,
+      id: 4,
       src: "https://lh3.googleusercontent.com/d/14uo1KbYzNzvfydMWJLIjpS_QCDSkuvtA",
     },
     {
-      id: 3,
+      id: 5,
       src: "https://lh3.googleusercontent.com/d/1zHbst7X5BFzHkGiMWF29FIXomY0Qn0c4",
     },
     {
-      id: 4,
+      id: 6,
       src: "https://lh3.googleusercontent.com/d/1Fuy07dFcPNuBPBpxTSpreQRYbzhidGp9",
     },
     {
