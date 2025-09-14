@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 
@@ -35,11 +35,15 @@ const ScrollableGridGallery = () => {
     }
   ];
 
+  const hasCheckedCachedImages = useRef(false);
+
 
   const emptyImage: ImageType ={
     id: 0,
     src: '',
   };
+
+  const checkedImages = useRef(new Set<number>());
 
   const [images, setImages] = useState(pics);
   const [loadedImages, setLoadedImages] = useState(new Set());
@@ -48,8 +52,11 @@ const ScrollableGridGallery = () => {
     src: '',
   });
 
-  const handleImageLoad = (imageId: number, imgElement?: HTMLImageElement) => {
-    setLoadedImages(prev => new Set([...prev, imageId]));
+  const handleImageLoad = (imageId: number) => {
+    if (!checkedImages.current.has(imageId)) {
+      checkedImages.current.add(imageId);
+      setLoadedImages(prev => new Set([...prev, imageId]));
+    }
   };
 
   const handleImageError = (imageId: number) => {
@@ -81,6 +88,26 @@ const ScrollableGridGallery = () => {
     };
   }, [selectedImage]);
 
+  useEffect(() => {
+    if (hasCheckedCachedImages.current) return; // Only run once
+    
+    const timer = setTimeout(() => {
+      const imgElements = document.querySelectorAll('.gallery-image');
+      imgElements.forEach((img) => {
+        const htmlImg = img as HTMLImageElement;
+        if (htmlImg.complete && htmlImg.naturalHeight !== 0) {
+          const matchingImage = images.find(image => image.src === htmlImg.src);
+          if (matchingImage) {
+            handleImageLoad(matchingImage.id);
+          }
+        }
+      });
+      hasCheckedCachedImages.current = true;
+    }, 100);
+  
+    return () => clearTimeout(timer);
+  }, [images]);
+
   return (
     <div className="gallery-container p-2 animate__animated animate__fadeInDown animate__slower">
       <div className="gallery-wrapper">
@@ -104,8 +131,8 @@ const ScrollableGridGallery = () => {
                     onLoad={() => handleImageLoad(image.id)}
                     onError={() => handleImageError(image.id)}
                     ref={(img) => {
-                        // Check if image is already loaded when ref is set
-                        if (img && img.complete && img.naturalHeight !== 0) {
+                        // Only check once per image
+                        if (img && img.complete && img.naturalHeight !== 0 && !checkedImages.current.has(image.id)) {
                         handleImageLoad(image.id);
                         }
                     }}
