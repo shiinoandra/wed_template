@@ -32,7 +32,7 @@ export default function Home() {
   const searchParams = useSearchParams();
   const name = searchParams.get("n") || "Tamu Undangan"; // default if no param
   const paramVariable = searchParams.get("p") || "" ;
-  var invOptions: string[]=[]
+  let invOptions: string[]=[]
   if (paramVariable !== "") {
       invOptions = paramVariable.split("")
   }
