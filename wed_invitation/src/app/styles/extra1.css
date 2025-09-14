@@ -83,7 +83,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    min-width: 0;
+    min-width: 320px;
     word-wrap: break-word;
     background-clip: border-box;
 
