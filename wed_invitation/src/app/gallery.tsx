@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+
 
 const ScrollableGridGallery = () => {
   // Sample images with different aspect ratios
@@ -119,7 +121,8 @@ const ScrollableGridGallery = () => {
       </div>
      {/* Modal */}
 
-      {(selectedImage.src !=="") && (
+
+     {selectedImage && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <img
