@@ -528,7 +528,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.78);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -599,8 +599,8 @@
   }
   
   .modal-close {
-    top: -10px;
-    right: -10px;
+    top: 15px;
+    right: 20px;
     width: 35px;
     height: 35px;
     font-size: 20px;
