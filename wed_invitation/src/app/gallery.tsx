@@ -119,7 +119,7 @@ const ScrollableGridGallery = () => {
       </div>
      {/* Modal */}
 
-      {selectedImage && (
+      {(selectedImage.src !=="") && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <img
