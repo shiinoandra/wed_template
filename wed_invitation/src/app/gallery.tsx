@@ -31,7 +31,7 @@ const ScrollableGridGallery = () => {
     },
     {
       id: 5,
-      src: "https://lh3.googleusercontent.com/d/1zHbst7X5BFzHkGiMWF29FIXomY0Qn0c4",
+      src: "https://lh3.googleusercontent.com/d/1NI3YTk4vRbV4Xrl5p9De8e0ayL68JWTI",
     },
     {
       id: 6,
@@ -39,7 +39,7 @@ const ScrollableGridGallery = () => {
     },
     {
       id: 7,
-      src: "https://lh3.googleusercontent.com/d/1NI3YTk4vRbV4Xrl5p9De8e0ayL68JWTI",
+      src: "https://lh3.googleusercontent.com/d/1zHbst7X5BFzHkGiMWF29FIXomY0Qn0c4",
     },
     {
       id: 8,
