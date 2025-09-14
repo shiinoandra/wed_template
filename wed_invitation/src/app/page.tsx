@@ -39,9 +39,9 @@ export default function Home() {
 
   console.log(invOptions);
   
-  const isCaricature = invOptions[0] ?? "0";
-  const isGift = invOptions[1] ?? "0";
-  const musicType = invOptions[2] ?? "3";
+  const isCaricature = invOptions[1] ?? "0";
+  const isGift = invOptions[2] ?? "0";
+  const musicType = invOptions[3] ?? "3";
 
   const musicMap: Record<string, string> = {
     "1": "bgm_true.mp3",
