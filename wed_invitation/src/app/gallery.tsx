@@ -32,7 +32,28 @@ const ScrollableGridGallery = () => {
     {
       id: 5,
       src: "https://lh3.googleusercontent.com/d/1NI3YTk4vRbV4Xrl5p9De8e0ayL68JWTI",
-    }
+    },
+    {
+        id: 6,
+        src: "https://lh3.googleusercontent.com/d/1FXfsIOgqeJn11BnYMmkxgHgT2gOg0VEB",
+      },
+      {
+        id: 7,
+        src: "https://lh3.googleusercontent.com/d/14uo1KbYzNzvfydMWJLIjpS_QCDSkuvtA",
+      },
+      {
+        id: 8,
+        src: "https://lh3.googleusercontent.com/d/1p0u549FicjkeKqS6XXA7ddQfYUm7QckD",
+      },
+      {
+        id: 9,
+        src: "https://lh3.googleusercontent.com/d/1vJccEVOnucDsaDxa3DmUzkhw4dGywe6C",
+      },
+      {
+        id: 10,
+        src: "https://lh3.googleusercontent.com/d/1NI3YTk4vRbV4Xrl5p9De8e0ayL68JWTI",
+      },
+
   ];
 
   const hasCheckedCachedImages = useRef(false);

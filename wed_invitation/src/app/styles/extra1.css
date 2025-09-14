@@ -280,7 +280,7 @@
 
 /* Gallery Container */
 .gallery-container {
-  max-height: 100%; /* Prevents extending beyond viewport */
+  height:32rem; /* Prevents extending beyond viewport */
   overflow-y: auto;  /* Enables vertical scrolling */
   overflow-x: hidden; /* Prevents horizontal scrolling */
 }
@@ -290,7 +290,7 @@
   margin: 0 auto; */
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
 }
 
 .gallery-title {
@@ -306,7 +306,7 @@
   column-count: 2;
   column-gap: 0.25rem;
   column-fill: balance;
-  overflow-y: auto; /* Scrollable content area */
+  overflow:visible;
 
 }
 
@@ -558,8 +558,8 @@
 
 .modal-close {
   position: absolute;
-  top: -15px;
-  right: -15px;
+  top: 20;
+  right: 20px;
   width: 40px;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.1);
