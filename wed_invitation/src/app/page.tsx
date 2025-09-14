@@ -79,31 +79,31 @@ export default function Home() {
   const pics = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&h=600&fit=crop",
+      image: "https://lh3.googleusercontent.com/d/1FXfsIOgqeJn11BnYMmkxgHgT2gOg0VEB",
       title: "Wedding Celebration",
       description: "Beautiful moments captured"
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop",
+      image: "https://lh3.googleusercontent.com/d/14uo1KbYzNzvfydMWJLIjpS_QCDSkuvtA",
       title: "Engagement Party",
       description: "Love in the air"
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop",
+      image: "https://lh3.googleusercontent.com/d/1p0u549FicjkeKqS6XXA7ddQfYUm7QckD",
       title: "Anniversary Dinner",
       description: "Celebrating milestones"
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=600&fit=crop",
+      image: "https://lh3.googleusercontent.com/d/1vJccEVOnucDsaDxa3DmUzkhw4dGywe6C",
       title: "Birthday Bash",
       description: "Making memories"
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop",
+      image: "https://lh3.googleusercontent.com/d/1NI3YTk4vRbV4Xrl5p9De8e0ayL68JWTI",
       title: "Corporate Event",
       description: "Professional gatherings"
     }
@@ -1046,9 +1046,10 @@ export default function Home() {
                             </div>
 
                           </div>
-                          <div className="w-full h-full flex items-center justify-content-center p-4 ">
+                          <div className="w-full h-full flex items-center justify-content-center p-2 ">
                           <div className="carousel-container">
                           <div className="w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm carousel-wrapper">
+                          <div className="editable font-latin color-accent h4 animate__animated animate__fadeInDown animate__slower" style={{fontSize:"28.8px"}}>Kenangan Terindah</div>
                             {/* Main Carousel Container */}
                             <div className="relative h-80 md:h-96 overflow-hidden carousel-main">
                               {/* Slides */}
