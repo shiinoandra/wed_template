@@ -31,15 +31,14 @@ export default function Home() {
   //parameter get
   const searchParams = useSearchParams();
   const name = searchParams.get("n") || "Tamu Undangan"; // default if no param
-  const paramVariable = searchParams.get("p") || "" ;
-  let invOptions: string[]=[]
-  if (paramVariable !== "") {
-      invOptions = paramVariable.split("")
-  }
+  
+  const paramVariable = searchParams.get("p") || "";
 
-  const isCaricature = invOptions[0]|| "0";
-  const isGift = invOptions[1]|| "0";
-  const musicType = invOptions[2]|| "1";
+  const invOptions = paramVariable.split(""); // ["1","0","3"]
+  
+  const isCaricature = invOptions[0] ?? "0";
+  const isGift = invOptions[1] ?? "0";
+  const musicType = invOptions[2] ?? "3";
 
   const musicMap: Record<string, string> = {
     "1": "bgm_true.mp3",
@@ -237,7 +236,9 @@ export default function Home() {
         <div id="loader" className="loader-wrapper" style={{ display: 'none' }}>
           <span className="loader"><span className="loader-inner" /></span>
         </div>
-        <audio id="music" loop autoPlay>src={`/${musicFile}`} </audio>
+        <audio id="music" loop autoPlay> 
+        <source src={`/${musicFile}`} type="audio/mpeg" />
+        </audio>
 
         <div id="workspace-container" className="position-fixed h-100 w-100" style={{ overflow: 'hidden' }}>
           <div id="panZoom" className="position-fixed h-100 w-100" style={{ inset: 0, transformOrigin: '50% 50%', transform: 'scale(1.68886) translate(0px, 0px)' }}>
