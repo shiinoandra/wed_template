@@ -1230,7 +1230,7 @@ export default function Home() {
         <div id="rsvpModal" tabIndex={-1} role="dialog" aria-labelledby="rsvpModal" className="modal fade">
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content p-4">
-              <button type="button" className="close-rsvp-btn btn" style={{ position: "relative", left: "83%", width: "60px" }}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>
+              <button type="button" className="close-rsvp-btn btn" style={{ position: "relative", left: "45%", width: "60px" }}><svg xmlns="http://www.w3.org/2000/svg" height="35" width="35" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12"></path></svg></button>
               {/* Error Banner */}
               {submitState === 'error' && (
                 <div className="alert alert-danger alert-dismissible mb-3" role="alert">
