@@ -91,31 +91,7 @@ export default function Home() {
       color: '#f57c00'
     }
   ];
-  //data pic untuk gallery
-  const pics = [
-    {
-      id: 1,
-      image: "https://lh3.googleusercontent.com/d/1FXfsIOgqeJn11BnYMmkxgHgT2gOg0VEB",
-    },
-    {
-      id: 2,
-      image: "https://lh3.googleusercontent.com/d/14uo1KbYzNzvfydMWJLIjpS_QCDSkuvtA",
-    },
-    {
-      id: 3,
-      image: "https://lh3.googleusercontent.com/d/1p0u549FicjkeKqS6XXA7ddQfYUm7QckD",
-    },
-    {
-      id: 4,
-      image: "https://lh3.googleusercontent.com/d/1vJccEVOnucDsaDxa3DmUzkhw4dGywe6C",
-    },
-    {
-      id: 5,
-      image: "https://lh3.googleusercontent.com/d/1NI3YTk4vRbV4Xrl5p9De8e0ayL68JWTI",
-    }
-  ];
 
-  
 
 
   // Function to get first letter of name
@@ -978,7 +954,7 @@ export default function Home() {
                       {/* BEGIN OF GALLERY SECTION  */}
                       <li className="wedstyle_slide" style={{ display: 'none' }}>
                         <div className="container-mobile" style={{ backgroundImage: 'url("bg.jpg")' }}>
-                          <div className="frame">
+                          <div className="">
                             <img src="/trel-1.webp" alt="frame" className="frame-tl animate__animated animate__fadeInTopLeft animate__slower" />
                             <img src="/trer-1.webp" alt="frame" className="frame-tr animate__animated animate__fadeInTopRight animate__slower" />
                             <div className="frame-tl w-100 only-cover" style={{ transform: 'scale(1.2)', transformOrigin: 'center top' }}>

@@ -2,22 +2,33 @@ import React, { useState, useEffect } from 'react';
 
 const ScrollableGridGallery = () => {
   // Sample images with different aspect ratios
-  const sampleImages = [
-    { id: 1, src: '/api/placeholder/400/300', alt: 'Landscape image' },
-    { id: 2, src: '/api/placeholder/300/400', alt: 'Portrait image' },
-    { id: 3, src: '/api/placeholder/400/400', alt: 'Square image' },
-    { id: 4, src: '/api/placeholder/500/300', alt: 'Wide landscape' },
-    { id: 5, src: '/api/placeholder/300/500', alt: 'Tall portrait' },
-    { id: 6, src: '/api/placeholder/350/350', alt: 'Square image 2' },
-    { id: 7, src: '/api/placeholder/450/300', alt: 'Wide image' },
-    { id: 8, src: '/api/placeholder/300/450', alt: 'Tall image' },
-    { id: 9, src: '/api/placeholder/400/250', alt: 'Banner style' },
-    { id: 10, src: '/api/placeholder/250/400', alt: 'Narrow portrait' },
-    { id: 11, src: '/api/placeholder/380/380', alt: 'Square image 3' },
-    { id: 12, src: '/api/placeholder/420/280', alt: 'Landscape 2' },
+  //data pic untuk gallery
+  const pics = [
+    {
+      id: 1,
+      src: "https://lh3.googleusercontent.com/d/1FXfsIOgqeJn11BnYMmkxgHgT2gOg0VEB",
+    },
+    {
+      id: 2,
+      src: "https://lh3.googleusercontent.com/d/14uo1KbYzNzvfydMWJLIjpS_QCDSkuvtA",
+    },
+    {
+      id: 3,
+      src: "https://lh3.googleusercontent.com/d/1p0u549FicjkeKqS6XXA7ddQfYUm7QckD",
+    },
+    {
+      id: 4,
+      src: "https://lh3.googleusercontent.com/d/1vJccEVOnucDsaDxa3DmUzkhw4dGywe6C",
+    },
+    {
+      id: 5,
+      src: "https://lh3.googleusercontent.com/d/1NI3YTk4vRbV4Xrl5p9De8e0ayL68JWTI",
+    }
   ];
 
-  const [images, setImages] = useState(sampleImages);
+  
+
+  const [images, setImages] = useState(pics);
   const [loadedImages, setLoadedImages] = useState(new Set());
 
   const handleImageLoad = (imageId: number) => {
@@ -31,13 +42,10 @@ const ScrollableGridGallery = () => {
   return (
     <div className="gallery-container">
       <div className="gallery-wrapper">
-        <h1 className="gallery-title">
-          Scrollable Grid Gallery
-        </h1>
         
         {/* Grid Container */}
         <div className="gallery-grid">
-          {images.map((image) => (
+          {pics.map((image) => (
             <div key={image.id} className="gallery-item">
               <div className="image-container">
                 {/* Loading placeholder */}
@@ -50,7 +58,6 @@ const ScrollableGridGallery = () => {
                 {/* Image */}
                 <img
                   src={image.src}
-                  alt={image.alt}
                   className={`gallery-image ${loadedImages.has(image.id) ? 'loaded' : 'loading'}`}
                   onLoad={() => handleImageLoad(image.id)}
                   onError={() => handleImageError(image.id)}
@@ -69,21 +76,6 @@ const ScrollableGridGallery = () => {
           ))}
         </div>
 
-        {/* Load More Button */}
-        <div className="load-more-container">
-          <button
-            onClick={() => {
-              const newImages = sampleImages.map((img, index) => ({
-                ...img,
-                id: images.length + index + 1,
-              }));
-              setImages(prev => [...prev, ...newImages]);
-            }}
-            className="load-more-button"
-          >
-            Load More Images
-          </button>
-        </div>
       </div>
     </div>
   );
