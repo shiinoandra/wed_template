@@ -81,25 +81,6 @@ const ScrollableGridGallery = () => {
     };
   }, [selectedImage]);
 
-  useEffect(() => {
-    // Check if any images are already loaded (cached)
-    const timer = setTimeout(() => {
-      const imgElements = document.querySelectorAll('.gallery-image');
-      imgElements.forEach((img) => {
-        const htmlImg = img as HTMLImageElement;
-        if (htmlImg.complete && htmlImg.naturalHeight !== 0) {
-          // Find the image ID from the src
-          const matchingImage = images.find(image => image.src === htmlImg.src);
-          if (matchingImage) {
-            handleImageLoad(matchingImage.id);
-          }
-        }
-      });
-    }, 100);
-  
-    return () => clearTimeout(timer);
-  }, [images]);
-
   return (
     <div className="gallery-container p-2 animate__animated animate__fadeInDown animate__slower">
       <div className="gallery-wrapper">
