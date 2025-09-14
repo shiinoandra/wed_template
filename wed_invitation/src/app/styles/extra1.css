@@ -298,14 +298,10 @@
 
 /* Masonry Grid Layout */
 .gallery-grid {
-  /* column-count: 2;
+  column-count: 2;
   column-gap: 0.25rem;
   column-fill: balance;
-  overflow:visible; */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  gap: 0.25rem;
-
+  overflow:visible;
 }
 
 /* Responsive columns */
