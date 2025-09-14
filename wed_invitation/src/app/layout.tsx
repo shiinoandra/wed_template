@@ -44,6 +44,7 @@ export default function RootLayout({
         <meta name="color-scheme" content="light only" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="google" content="notranslate" />
+        <meta itemProp="image" content="https://nurirahadian.photo-frame.com/tengs.jpg" />
         <title>Wedding - Nuri & Rahadian</title>
         <meta name="title" content="Wedding - Nuri & Rahadian" />
         <meta name="description" content="Undangan Wedding Nuri & Rahadian" />
