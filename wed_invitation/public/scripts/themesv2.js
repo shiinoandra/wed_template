@@ -743,25 +743,49 @@ var events = {
     up: "touchend"
   }
 };
-var initialY = 0,
-  newY = 0;
+// var initialY = 0,
+//   newY = 0;
+// var eventMove = function eventMove(e) {
+//   var newY = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
+//   if (initialY - 50 > newY) {
+//     pauseInvitation();
+//     swipeUp();
+//   }
+//   if (initialY < newY - 50) {
+//     swipeDown();
+//     pauseInvitation();
+//   }
+// };
+
+var initialX = 0, initialY = 0;
+
 var eventMove = function eventMove(e) {
-  var newY = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
-  if (initialY - 50 > newY) {
-    pauseInvitation();
-    swipeUp();
-  }
-  if (initialY < newY - 50) {
-    swipeDown();
-    pauseInvitation();
+  var currentX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
+  var currentY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
+  var deltaX = currentX - initialX;
+  var deltaY = currentY - initialY;
+
+  // Only trigger if horizontal movement is at least 2x vertical movement
+  if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > 2 * Math.abs(deltaY)) {
+    if (deltaX < 0) {
+      pauseInvitation();
+      swipeUp();
+    } else {
+      swipeDown();
+      pauseInvitation();
+    }
+    window.removeEventListener(events[deviceType].move, eventMove, false);
   }
 };
+
 var eventUp = function eventUp(e) {
   window.removeEventListener(events[deviceType].move, eventMove, false);
 };
+
 var eventDown = function eventDown(e) {
   if (e.cancelable) e.preventDefault();
-  initialY = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
+  initialX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
+  initialY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
   window.addEventListener(events[deviceType].up, eventUp, false);
   window.addEventListener(events[deviceType].move, eventMove, false);
 };
