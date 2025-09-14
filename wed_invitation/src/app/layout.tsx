@@ -54,9 +54,13 @@ export default function RootLayout({
         <meta property="og:title" content="Wedding - Nuri & Rahadian" />
         <meta property="og:description" content="Undangan Wedding Nuri & Rahadian" />
         <meta property="og:image" content="https://nurirahadian.photo-frame.com/tengs.jpg" />
+        <meta property="og:image:secure_url" content="https://nurirahadian.photo-frame.com/tengs.jpg" />
         <meta property="og:image:width" content="713" />
         <meta property="og:image:height" content="505" />
         <meta property="og:image:type" content="image/jpeg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Wedding - Nuri & Rahadian" />
+        <meta name="twitter:image" content="https://nurirahadian.photo-frame.com/tengs.jpg" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/"  />
