@@ -303,7 +303,7 @@
 
 /* Masonry Grid Layout */
 .gallery-grid {
-  column-count: 1;
+  column-count: 2;
   column-gap: 0.25rem;
   column-fill: balance;
   overflow-y: auto; /* Scrollable content area */
