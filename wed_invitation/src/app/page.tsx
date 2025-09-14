@@ -782,11 +782,6 @@ export default function Home() {
                                     <img src="/bl-1.webp" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom' }} />
                                   </div>
                                 </div>
-                                <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{ animationDelay: '2.2s' }}>
-                                  <div className="animate-left" style={{ transform: 'translate(-27%, -87%)' }}>
-                                    <img src="/sinta.webp" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom', animationDelay: '100ms' }} />
-                                  </div>
-                                </div>
                                 <div className="only-cover frame-bl animate__animated animate__fadeInBottomLeft animate__slow" style={{ animationDelay: '2s' }}>
                                   <div className="animate-left" style={{ transform: 'translate(-16%, -70%)' }}>
                                     <img src="/flol-3.png" alt="frame" className="w-100" style={{ transformOrigin: 'left bottom', animationDelay: '300ms' }} />
@@ -795,11 +790,6 @@ export default function Home() {
                                 <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{ animationDelay: '2.5s' }}>
                                   <div className="animate-right" style={{ transform: 'translate(29%, -85%)' }}>
                                     <img src="/br-1.webp" alt="frame" className="w-100" style={{ transformOrigin: 'right bottom' }} />
-                                  </div>
-                                </div>
-                                <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{ animationDelay: '2.2s' }}>
-                                  <div className="animate-right" style={{ transform: 'translate(27%, -87%)' }}>
-                                    <img src="/rama.webp" alt="frame" className="w-100" style={{ transformOrigin: 'right bottom', animationDelay: '100ms' }} />
                                   </div>
                                 </div>
                                 <div className="only-cover frame-br animate__animated animate__fadeInBottomRight animate__slow" style={{ animationDelay: '2s' }}>
