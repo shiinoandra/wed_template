@@ -1048,8 +1048,8 @@ export default function Home() {
                           </div>
                           <div className="w-full h-full flex items-center justify-content-center p-2 ">
                           <div className="carousel-container">
+                          <div className="text-center editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize:"14.4px"}}>🏵 Momen Terindah 🏵</div>
                           <div className="w-full max-w-5xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm carousel-wrapper">
-                          <div className="editable font-latin color-accent h4 animate__animated animate__fadeInDown animate__slower" style={{fontSize:"28.8px"}}>Kenangan Terindah</div>
                             {/* Main Carousel Container */}
                             <div className="relative h-80 md:h-96 overflow-hidden carousel-main">
                               {/* Slides */}

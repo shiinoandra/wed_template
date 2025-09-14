@@ -301,13 +301,13 @@
   
   .carousel-main {
     position: relative;
-    height: 50%;
+    height: 22vh;
     overflow: hidden;
   }
   
   @media (min-width: 768px) {
     .carousel-main {
-      height: 50%;
+      height: 22vh;
     }
   }
   
