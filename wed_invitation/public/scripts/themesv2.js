@@ -761,7 +761,7 @@ var eventUp = function eventUp(e) {
 };
 var eventDown = function eventDown(e) {
   if (e.cancelable) e.preventDefault();
-  initialY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
+  initialY = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
   window.addEventListener(events[deviceType].up, eventUp, false);
   window.addEventListener(events[deviceType].move, eventMove, false);
 };
