@@ -122,23 +122,24 @@ const ScrollableGridGallery = () => {
      {/* Modal */}
 
 
-     {selectedImage && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={selectedImage.src}
-              className="modal-image"
-            />
-            <button
-              className="modal-close"
-              onClick={closeModal}
-              aria-label="Close modal"
-            >
-              ×
-            </button>
-          </div>
-        </div>
-      )}
+     {(selectedImage.src !== "")  && createPortal(
+  <div className="modal-overlay" onClick={closeModal}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <img
+        src={selectedImage.src}
+        className="modal-image"
+      />
+      <button
+        className="modal-close"
+        onClick={closeModal}
+        aria-label="Close modal"
+      >
+        ×
+      </button>
+    </div>
+  </div>,
+  document.body // Renders directly to body, bypassing parent constraints
+)}
     </div>
   );
 };
