@@ -281,7 +281,6 @@
 /* Gallery Container */
 .gallery-container {
   min-height: 100vh;
-  background-color: #f9fafb;
 }
 
 .gallery-wrapper {
@@ -300,7 +299,7 @@
 /* Masonry Grid Layout */
 .gallery-grid {
   column-count: 1;
-  column-gap: 1rem;
+  column-gap: 0.25rem;
   column-fill: balance;
 }
 
@@ -326,7 +325,7 @@
 /* Gallery Item */
 .gallery-item {
   break-inside: avoid;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
   cursor: pointer;
 }
 
