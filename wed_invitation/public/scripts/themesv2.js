@@ -774,20 +774,20 @@ var eventMove = function eventMove(e) {
       swipeDown();
       pauseInvitation();
     }
-    window.removeEventListener(events[deviceType].move, eventMove, false);
+    window.removeEventListener(events[deviceType].move, eventMove, { passive: false });
   }
 };
 
 var eventUp = function eventUp(e) {
-  window.removeEventListener(events[deviceType].move, eventMove, false);
+  window.removeEventListener(events[deviceType].move, eventMove, { passive: false });
 };
 
 var eventDown = function eventDown(e) {
   if (e.cancelable) e.preventDefault();
   initialX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
   initialY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
-  window.addEventListener(events[deviceType].up, eventUp, false);
-  window.addEventListener(events[deviceType].move, eventMove, false);
+  window.addEventListener(events[deviceType].up, eventUp, { passive: false });
+  window.addEventListener(events[deviceType].move, eventMove, { passive: false });
 };
 
 // autoplay invitation
