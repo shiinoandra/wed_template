@@ -762,9 +762,9 @@ export default function Home() {
                               </div>
                             </div>
                           </div>
-                    
-                                <div className="h-100 d-flex flex-column align-items-center" style={{ gap: 14, lineHeight: '1.2' }}>
-                                  <div className="comment card  mt-2 py-2 pr-2 gift-container" style={{ height: "100%" }}>
+                          <div className="h-100 d-flex flex-column justify-content-center align-items-center p-2" style={{height:"100%"}}>
+                            <div className="text-center">
+                            <div className="comment card  mt-2 py-2 pr-2 gift-container" style={{ height: "100%" }}>
                                     <div className="card-body mt-0 p-0 text-left" style={{ width: "100%", height: "100%", overflow: "hidden" }}>
                                       <div style={{ height: "100%", maxHeight: "550px", overflowY: "auto", padding: "10px", }} className="wishes has-animate" data-anim="zoom-in-up" id="wishes-container" data-load-animation="true">
                                         {loading ? (
@@ -816,8 +816,12 @@ export default function Home() {
                                       </div>
                                     </div>
                                   </div>
+                          </div>
+                        </div>
+                    
+                                {/* <div className="h-100 d-flex flex-column align-items-center" style={{ gap: 14, lineHeight: '1.2' }}> */}
 
-                                </div>
+
 
                         </div>
                       </li>
