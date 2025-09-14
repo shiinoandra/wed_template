@@ -917,7 +917,7 @@ export default function Home() {
                           </div>
                           <div className="h-100 d-flex flex-column justify-content-center align-items-center p-2" style={{height:"100%"}}>
                             <div className="text-center">
-                          <div className="editable mt-2 animate__animated animate__fadeInDown animate__slower" style={{fontSize:"16.4px"}}>✤ Kenangan Terindah ✤</div>
+                          <div className="editable mt-2 animate__animated animate__fadeInDown animate__slower" style={{fontSize:"16.4px"}}>✤ Momen Terindah ✤</div>
                           <ScrollableGridGallery />
                           </div>
                         </div>

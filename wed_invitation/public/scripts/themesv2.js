@@ -746,7 +746,7 @@ var events = {
 var initialY = 0,
   newY = 0;
 var eventMove = function eventMove(e) {
-  var newY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
+  var newY = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
   if (initialY - 50 > newY) {
     pauseInvitation();
     swipeUp();
