@@ -15,7 +15,7 @@ const ScrollableGridGallery = () => {
   const pics = [
     {
       id: 1,
-      src: "https://lh3.googleusercontent.com/d/1Col1Xp3m6JhqVNt6a8a8_zL3pDaQ12vV",
+      src: "https://lh3.googleusercontent.com/d/1zHbst7X5BFzHkGiMWF29FIXomY0Qn0c4",
     },
     {
       id: 2,
@@ -31,15 +31,15 @@ const ScrollableGridGallery = () => {
     },
     {
       id: 5,
-      src: "https://lh3.googleusercontent.com/d/1NI3YTk4vRbV4Xrl5p9De8e0ayL68JWTI",
+      src: "https://lh3.googleusercontent.com/d/1vJccEVOnucDsaDxa3DmUzkhw4dGywe6C",
     },
     {
       id: 6,
-      src: "https://lh3.googleusercontent.com/d/1Fuy07dFcPNuBPBpxTSpreQRYbzhidGp9",
+      src: "https://lh3.googleusercontent.com/d/1Col1Xp3m6JhqVNt6a8a8_zL3pDaQ12vV",
     },
     {
       id: 7,
-      src: "https://lh3.googleusercontent.com/d/1zHbst7X5BFzHkGiMWF29FIXomY0Qn0c4",
+      src: "https://lh3.googleusercontent.com/d/1Fuy07dFcPNuBPBpxTSpreQRYbzhidGp9",
     },
     {
       id: 8,
@@ -47,7 +47,7 @@ const ScrollableGridGallery = () => {
     },
     {
       id: 9,
-      src: "https://lh3.googleusercontent.com/d/1vJccEVOnucDsaDxa3DmUzkhw4dGywe6C",
+      src: "https://lh3.googleusercontent.com/d/1NI3YTk4vRbV4Xrl5p9De8e0ayL68JWTI",
     }
 
   ];
