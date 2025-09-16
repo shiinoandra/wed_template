@@ -600,3 +600,28 @@
     font-size: 20px;
   }
 }
+
+
+.wedstyle_menu {
+  /* This parent container will hide the overflowing content */
+  overflow: hidden;
+}
+.wedstyle_menu_list {
+  /* Allow the list to overflow horizontally */
+  overflow-x: auto;
+  /* Prevent items from wrapping to the next line */
+  white-space: nowrap;
+  /* Remove the JS transform as it will conflict with scrolling */
+  transform: none !important; 
+  /* Add some padding so the last item isn't cut off */
+  padding-right: 20px;
+
+  /* Hide the scrollbar for a cleaner look on desktop */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.wedstyle_menu_list::-webkit-scrollbar {
+  display: none;
+}
