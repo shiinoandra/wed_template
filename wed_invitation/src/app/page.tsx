@@ -1007,8 +1007,15 @@ export default function Home() {
 
                   </div>
                 </div>
-                <div id="smMenu" className="wedstyle_menu">
-                  <ul className="wedstyle_menu_list">
+                <div className="menu-container wedstyle_menu">
+                <button id="menu-toggle" className="menu-toggle">
+                      <div className="menu-toggle-indicator"></div>
+                      <span>MENU</span>
+                    </button>
+                <div id="smMenu" className="">
+                    {/* ===== START: NEW MENU TOGGLE BUTTON ===== */}
+   
+                    <ul className="wedstyle_menu_list">
                     <li className="wedstyle_menu_item active" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-envelope" style={{ color: 'currentcolor' }} /> <span>Opening</span></li>
                     <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-star-and-crescent" style={{ color: 'currentcolor' }} /> <span>Greeting</span></li>
                     <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-article" style={{ color: 'currentcolor' }} /> <span>Quotes</span></li>
@@ -1029,6 +1036,7 @@ export default function Home() {
                     <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-image-square" style={{ color: 'currentcolor' }} /> <span>Gallery</span></li>
                     <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-mosque" style={{ color: 'currentcolor' }} /> <span>Thanks</span></li>
                   </ul>
+                </div>
                 </div>
                 <div className="floating-action d-flex align-items-end flex-column">
                   {/* <button id="btnQrModal" onclick="if (!window.__cfRLUnblockHandlers) return false; showModal(qrModal)" className="btn btn-float"> */}
