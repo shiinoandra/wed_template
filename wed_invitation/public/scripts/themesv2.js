@@ -441,19 +441,19 @@ var initMusic = function initMusic() {
   document.addEventListener("DOMContentLoaded", function () {
     // Mulai dengan muted autoplay
     playMusic(true);
-    // if (music && !userPausedMusic) {
-    //   music.muted = false;
-    //   var currentVolume = 0;
-    //   var targetVolume = 1; // volume penuh
-    //   var volumeInterval = setInterval(function () {
-    //     currentVolume += 0.1;
-    //     if (currentVolume >= targetVolume) {
-    //       currentVolume = targetVolume;
-    //       clearInterval(volumeInterval);
-    //     }
-    //     music.volume = currentVolume;
-    //   }, 100);
-    // }
+    if (music && !userPausedMusic) {
+      music.muted = false;
+      var currentVolume = 0;
+      var targetVolume = 1; // volume penuh
+      var volumeInterval = setInterval(function () {
+        currentVolume += 0.1;
+        if (currentVolume >= targetVolume) {
+          currentVolume = targetVolume;
+          clearInterval(volumeInterval);
+        }
+        music.volume = currentVolume;
+      }, 100);
+    }
   });
 
   // Catat interaksi pengguna pertama dengan halaman
@@ -743,49 +743,48 @@ var events = {
     up: "touchend"
   }
 };
-// var initialY = 0,
-//   newY = 0;
-// var eventMove = function eventMove(e) {
-//   var newY = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
-//   if (initialY - 50 > newY) {
-//     pauseInvitation();
-//     swipeUp();
-//   }
-//   if (initialY < newY - 50) {
-//     swipeDown();
-//     pauseInvitation();
-//   }
-// };
 
 var initialX = 0, initialY = 0;
 
 var eventMove = function eventMove(e) {
+  // [FIXED] Correctly get the current vertical position
   var currentX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
   var currentY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
+  
+  // [FIXED] Calculate change in both X and Y
   var deltaX = currentX - initialX;
   var deltaY = currentY - initialY;
 
-  // Only trigger if horizontal movement is at least 2x vertical movement
-  if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > 2 * Math.abs(deltaY)) {
-    if (deltaX < 0) {
+  // [FIXED] Logic now prioritizes VERTICAL movement.
+  // It triggers only if the vertical swipe is significant (80px) AND
+  // is at least twice as long as any accidental horizontal movement.
+  if (Math.abs(deltaY) > 80 && Math.abs(deltaY) > 2 * Math.abs(deltaX)) {
+    
+    // A negative deltaY means the finger moved UP the screen
+    if (deltaY < 0) {
       pauseInvitation();
-      swipeUp();
+      swipeUp(); // Go to next slide
     } else {
-      swipeDown();
-      pauseInvitation();
+      swipeDown(); // Go to previous slide
     }
+    // Important: remove the listener after a successful swipe to prevent multiple triggers
     window.removeEventListener(events[deviceType].move, eventMove, { passive: false });
   }
 };
-
 var eventUp = function eventUp(e) {
   window.removeEventListener(events[deviceType].move, eventMove, { passive: false });
 };
 
 var eventDown = function eventDown(e) {
+  if (e.target.closest('.no-swipe')) {
+    return;
+  }
+
   if (e.cancelable) e.preventDefault();
+  // [FIXED] We need to record the starting point for both axes
   initialX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
   initialY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
+  
   window.addEventListener(events[deviceType].up, eventUp, { passive: false });
   window.addEventListener(events[deviceType].move, eventMove, { passive: false });
 };
@@ -873,9 +872,23 @@ var openInvitation = function openInvitation(event) {
   document.querySelector(".not-open").classList.remove("not-open");
 
   // start event gesture
-  // window.addEventListener(events[deviceType].down, eventDown, false);
+  window.addEventListener(events[deviceType].down, eventDown, false);
   swipeUp();
 };
+
+
+// ===============================================
+// NEW: Collapsible Menu Logic
+// ===============================================
+var smMenuContainer = document.getElementsByClassName("menu-container")[0];
+var menuToggle = document.getElementById("menu-toggle");
+
+if (smMenuContainer && menuToggle) {
+  menuToggle.addEventListener("click", function() {
+    smMenuContainer.classList.toggle("menu-expanded");
+  });
+}
+
 
 // buka undangan
 var btnOpenInvitation = document.getElementsByClassName("btn-open-invitation");
