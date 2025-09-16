@@ -698,3 +698,15 @@
 .frame{
   bottom:0px !important;
 }
+
+.invitation-container {
+  /* Start hidden */
+  opacity: 0;
+  /* Define the transition effect */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.invitation-container.visible {
+  /* Fade to full visibility */
+  opacity: 1;
+}
