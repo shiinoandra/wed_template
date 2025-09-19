@@ -197,8 +197,8 @@ export default function Invitation() {
       container.removeEventListener('mouseup', onMouseUp);
       container.removeEventListener('mouseleave', onMouseLeave);
       container.removeEventListener('mousemove', onMouseMove);
-      container.removeEventListener('touchstart', onTouchStart as any);
-      container.removeEventListener('touchmove', onTouchMove as any);
+      container.removeEventListener('touchstart', onTouchStart );
+      container.removeEventListener('touchmove', onTouchMove );
     };
   }, [menuRef.current]);
 
