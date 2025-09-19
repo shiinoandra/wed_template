@@ -640,10 +640,16 @@
   scrollbar-width: none;  /* Firefox */
 }
 
+
+.wedstyle_menu_list { cursor: grab; }
+.wedstyle_menu_list.dragging { cursor: grabbing; user-select: none; }
+
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .wedstyle_menu_list::-webkit-scrollbar {
   display: none;
 }
+
 
 #smMenu {
   background-color: var(--menu-bg);

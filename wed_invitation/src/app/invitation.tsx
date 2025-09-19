@@ -15,7 +15,7 @@ const criticalAssets = [
   "./bg-1.png",
   "./bg.jpg",
   "./gunungan.webp",
-  "./gunungan-isi.webp",
+  "./gunungan-isi.png",
   "./wedding_nr.webp",
   "./cpw.jpg",
   "./cpp.jpg",
@@ -64,6 +64,7 @@ export default function Invitation() {
   const paramVariable = searchParams.get("p") || "";
 
   const invOptions = paramVariable.split(""); // ["1","0","3"]
+  const menuRef = useRef<HTMLUListElement | null>(null);
 
   console.log(invOptions);
   
@@ -148,7 +149,58 @@ export default function Invitation() {
     fetchWishes();
   }, [fetchWishes]);
 
-
+  // draggable bar on laptop
+  useEffect(() => {
+    if (!menuRef.current) return;
+    const container = menuRef.current;
+    if (!container) return;
+    console.log("container exist")
+  
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+  
+    const onMouseDown = (e: MouseEvent) => {
+      isDown = true;
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+      container.classList.add('dragging');
+    };
+    const onMouseUp = () => { isDown = false; container.classList.remove('dragging'); };
+    const onMouseLeave = onMouseUp;
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 0.7;
+      container.scrollLeft = scrollLeft - walk;
+    };
+  
+    // touch support
+    let touchStart = 0;
+    const onTouchStart = (e: TouchEvent) => { touchStart = e.touches[0].pageX; scrollLeft = container.scrollLeft; };
+    const onTouchMove = (e: TouchEvent) => {
+      const x = e.touches[0].pageX;
+      const walk = (x - touchStart) * 0.7;
+      container.scrollLeft = scrollLeft - walk;
+    };
+  
+    container.addEventListener('mousedown', onMouseDown);
+    container.addEventListener('mouseup', onMouseUp);
+    container.addEventListener('mouseleave', onMouseLeave);
+    container.addEventListener('mousemove', onMouseMove);
+    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    container.addEventListener('touchmove', onTouchMove, { passive: false });
+  
+    return () => {
+      container.removeEventListener('mousedown', onMouseDown);
+      container.removeEventListener('mouseup', onMouseUp);
+      container.removeEventListener('mouseleave', onMouseLeave);
+      container.removeEventListener('mousemove', onMouseMove);
+      container.removeEventListener('touchstart', onTouchStart as any);
+      container.removeEventListener('touchmove', onTouchMove as any);
+    };
+  }, [menuRef.current]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -194,6 +246,7 @@ export default function Invitation() {
   if (assetsAreLoading) {
     return <LoadingScreen />;
   }
+
 
 
 
@@ -1048,7 +1101,7 @@ export default function Invitation() {
                 <div id="smMenu" className="">
                     {/* ===== START: NEW MENU TOGGLE BUTTON ===== */}
    
-                    <ul className="wedstyle_menu_list">
+                    <ul className="wedstyle_menu_list"  ref={menuRef}>
                     <li className="wedstyle_menu_item active" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-envelope" style={{ color: 'currentcolor' }} /> <span>Opening</span></li>
                     <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-star-and-crescent" style={{ color: 'currentcolor' }} /> <span>Greeting</span></li>
                     <li className="wedstyle_menu_item" style={{ maxWidth: '82.8px' }}><i className="icon ph ph-article" style={{ color: 'currentcolor' }} /> <span>Quotes</span></li>
