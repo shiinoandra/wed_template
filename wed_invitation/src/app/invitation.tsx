@@ -1263,7 +1263,7 @@ export default function Invitation() {
                   </p>
                 </div>
               ) : (
-                <div className="rsvp-form show">
+                <div className="rsvp-form show" style={{width:"100%",minWidth:"100%"}}>
                   <div className="mb-4"><div className="font-indo h4 text-center">Ucapan</div></div>
                   <form className="pt-2" onSubmit={handleSubmit}>
                     <div>
