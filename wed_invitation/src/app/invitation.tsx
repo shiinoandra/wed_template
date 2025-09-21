@@ -371,7 +371,7 @@ export default function Invitation() {
                             </div>
 
                           </div>
-                          <div className="position-relative h-100 w-100 flex-column d-flex justify-content-center align-items-center" style={{ paddingBottom: '30%' }}>
+                          <div className="reduce_top position-relative h-100 w-100 flex-column d-flex justify-content-center align-items-center" style={{ paddingBottom: '30%' }}>
                             <div className="text-center editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{ fontSize: '14.4px' }}>🏵 Undangan Pernikahan 🏵</div>
                             <div className="pt-3 d-flex align-items-center justify-content-center mb-2 mx-auto animate__animated animate__zoomIn animate__slower" style={{ height: 112, width: 60, marginBottom: "25px !important", backgroundImage: 'url("/gunungan-isi.png")', backgroundRepeat: 'no-repeat', backgroundSize: 'contain', backgroundPosition: 'center center' }}>
                               <div className="editable text-left font-latin" style={{ fontSize: 60, lineHeight: 1, transform: 'translate(2px, 9px)' }}>N</div>
@@ -435,7 +435,7 @@ export default function Invitation() {
 
 
                           </div>
-                          <div className="h-100 d-flex flex-column justify-content-center align-items-center">
+                          <div className="h-100 d-flex flex-column justify-content-center align-items-center reduce_top">
                             <div className="animate__animated animate__fadeInDown animate__slower">
                               <div className="image-editable" style={{ width: 158, height: 89, margin: 'auto', overflow: 'hidden', paddingBottom: 20 }}>
                                 <img src="/gunungan-isi.png" alt="gunungan-isi.png" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
@@ -493,7 +493,7 @@ export default function Invitation() {
                             </div>
 
                           </div>
-                          <div className="d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
+                          <div className="reduce_top d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
                             <div>
                               <div>
                                 <div className="image-editable mb-3 animate__animated animate__fadeInLeft animate__slower" style={{ height: 100, width: 100, margin: 'auto', borderRadius: '100%', overflow: 'hidden' }}>
@@ -564,7 +564,7 @@ export default function Invitation() {
                             </div>
 
                           </div>
-                          <div className="d-flex justify-content-center flex-column align-items-center" style={{ height: '100%' }}>
+                          <div className=" reduce_top d-flex justify-content-center flex-column align-items-center" style={{ height: '100%' }}>
                             <div className="animate__animated animate__fadeInDown animate__slower">
                               <div className="image-editable" style={{ width: 158, height: 89, margin: 'auto', overflow: 'hidden', paddingBottom: 20 }}>
                                 <img src="/gunungan-isi.png" alt="gunungan-isi.png" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
@@ -639,7 +639,7 @@ export default function Invitation() {
                             </div>
 
                           </div>
-                          <div className="d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
+                          <div className="reduce_top d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
                             <div style={{ width: '100%' }}>
                               <div>
                                 <div
@@ -716,7 +716,7 @@ export default function Invitation() {
                             </div>
 
                           </div>
-                          <div className="d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
+                          <div className="reduce_top d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
                             <div style={{ width: '100%' }}>
                               <div className="animate__animated animate__fadeInDown animate__slower">
                                 <div className="image-editable" style={{ width: 158, height: 89, margin: 'auto', overflow: 'hidden', paddingBottom: 20 }}>
@@ -778,7 +778,7 @@ export default function Invitation() {
                               </div>
                             </div>
                           </div>
-                          <div className="h-100 d-flex flex-column justify-content-center align-items-center p-2" style={{height:"100%"}}>
+                          <div className="reduce_top h-100 d-flex flex-column justify-content-center align-items-center p-2" style={{height:"100%"}}>
                             <div className="text-center no-swipe">
                             <div className="comment card  mt-2 mb-2 pr-2 gift-container" style={{ height: "100%" }}>
                                     <div className="card-body mt-0 p-0 text-left" style={{ width: "100%", height: "100%", overflow: "hidden" }}>
@@ -885,7 +885,7 @@ export default function Invitation() {
                                 </div>
 
                               </div>
-                              <div className="d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
+                              <div className="reduce_top d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
                                 <div className="text-center" style={{ width: '100%' }}>
                                   <div className="font-latin color-accent h4 mb-2 editable animate__animated animate__fadeInDown animate__slower" style={{ fontSize: '28.8px' }}>Tanda Kasih</div>
                                   <div className="editable mb-4 animate__animated animate__fadeInDown animate__slower" style={{ fontSize: '14.4px' }}>
@@ -1001,7 +1001,7 @@ export default function Invitation() {
                             </div>
 
                           </div>
-                          <div className="h-100 d-flex flex-column justify-content-center align-items-center p-2" style={{height:"100%"}}>
+                          <div className="reduce_top h-100 d-flex flex-column justify-content-center align-items-center p-2" style={{height:"100%"}}>
                             <div className="text-center no-swipe">
                           <div className="editable mt-2 animate__animated animate__fadeInDown animate__slower" style={{fontSize:"16.4px"}}>✤ Momen Terindah ✤</div>
                           <ScrollableGridGallery />

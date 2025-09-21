@@ -716,3 +716,10 @@
   /* Fade to full visibility */
   opacity: 1;
 }
+
+/* nudge top padding */
+
+.reduce_top
+{
+  transform:translateY(-10%);
+}
