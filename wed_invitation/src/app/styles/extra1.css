@@ -723,3 +723,9 @@
 {
   transform:translateY(-10%);
 }
+
+.rsvp-form-show
+{
+  min-width:100%;
+  width:100%;
+}
