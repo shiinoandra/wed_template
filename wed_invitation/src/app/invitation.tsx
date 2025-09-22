@@ -9,7 +9,7 @@ import { useSearchParams } from "next/navigation";
 import ScrollableGridGallery from "./gallery";
 import LoadingScreen from "./loading-screen";
 import { useAssetLoader } from "./hooks/useAssetLoader";
-
+import SwipeIndicator from './SwipeIndicator';
 
 const criticalAssets = [
   "./bg-1.png",
@@ -65,12 +65,18 @@ export default function Invitation() {
 
   const invOptions = paramVariable.split(""); // ["1","0","3"]
   const menuRef = useRef<HTMLUListElement | null>(null);
+  const menuToggleRef = useRef<HTMLButtonElement | null>(null);
 
-  console.log(invOptions);
   
   const isCaricature = invOptions[0] ?? "0";
   const isGift = invOptions[1] ?? "0";
   const musicType = invOptions[2] ?? "3";
+
+  const [showPageSwipeIndicator, setShowPageSwipeIndicator] = useState(false);
+  const [showMenuSwipeIndicator, setShowMenuSwipeIndicator] = useState(false);
+  const [showMenuScrollGradient, setShowMenuScrollGradient] = useState(true);
+
+  const [isFirstMenuOpen, setIsFirstMenuOpen] = useState(true);
 
   const musicMap: Record<string, string> = {
     "1": "bgm_true.mp3",
@@ -150,16 +156,49 @@ export default function Invitation() {
   }, [fetchWishes]);
 
   // draggable bar on laptop
+
+
   useEffect(() => {
     if (!menuRef.current) return;
+    if (!menuToggleRef.current) return;
+
     const container = menuRef.current;
-    if (!container) return;
-    console.log("container exist")
+    const menuToggle = menuToggleRef.current; // Get the button element
+
+    if (!container || !menuToggle) return;
+
   
     let isDown = false;
     let startX = 0;
     let scrollLeft = 0;
-  
+    
+    const handleMenuClick = () => {
+      console.log(isFirstMenuOpen);
+      if (isFirstMenuOpen) {
+
+        setShowMenuSwipeIndicator(true);
+        setTimeout(() => {
+          setShowMenuSwipeIndicator(false);
+        }, 5000);
+        setIsFirstMenuOpen(false);
+      }
+    }
+
+    
+   menuToggle.addEventListener('click', handleMenuClick);
+   const handleScroll = () => {
+    // Check if the user has scrolled to the end
+    // We add a 1px buffer for precision issues
+    const isAtEnd = container.scrollWidth - container.scrollLeft <= container.clientWidth + 1;
+    
+    // Hide the gradient if at the end, show it otherwise
+    setShowMenuScrollGradient(!isAtEnd);
+  };
+
+  container.addEventListener('scroll', handleScroll, { passive: true });
+
+  handleScroll();
+
     const onMouseDown = (e: MouseEvent) => {
       isDown = true;
       startX = e.pageX - container.offsetLeft;
@@ -199,8 +238,28 @@ export default function Invitation() {
       container.removeEventListener('mousemove', onMouseMove);
       container.removeEventListener('touchstart', onTouchStart );
       container.removeEventListener('touchmove', onTouchMove );
+      menuToggle.removeEventListener('click', handleMenuClick);
     };
-  }, [menuRef.current]);
+}, [menuRef.current, menuToggleRef.current, isFirstMenuOpen]);
+
+useEffect(() => {
+  // Define the function to run when the event is heard
+  const handleInvitationOpen = () => {
+    console.log('Invitation opened event received!'); // For debugging
+    setShowPageSwipeIndicator(true);
+    setTimeout(() => {
+      setShowPageSwipeIndicator(false);
+    }, 7000);
+  };
+
+  // Add the event listener to the document
+  document.addEventListener('invitationOpened', handleInvitationOpen);
+
+  // IMPORTANT: Clean up the event listener when the component unmounts
+  return () => {
+    document.removeEventListener('invitationOpened', handleInvitationOpen);
+  };
+}, []); // T
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -255,6 +314,7 @@ export default function Invitation() {
   return (
 
     <div>
+        <SwipeIndicator direction="up" visible={showPageSwipeIndicator} />
       <main id="app">
         <div id="modalOverlay" className="modal-backdrop fade" style={{ display: 'none' }} />
         <div id="loader" className="loader-wrapper" style={{ display: 'none' }}>
@@ -1094,11 +1154,13 @@ export default function Invitation() {
                   </div>
                 </div>
                 <div className="menu-container wedstyle_menu">
-                <button id="menu-toggle" className="menu-toggle">
+                <SwipeIndicator direction="horizontal" visible={showMenuSwipeIndicator} />
+
+                <button id="menu-toggle" className="menu-toggle" ref={menuToggleRef}>
                       <div className="menu-toggle-indicator"></div>
                       <span>MENU</span>
                     </button>
-                <div id="smMenu" className="">
+                <div id="smMenu"  className={showMenuScrollGradient ? 'show-scroll-indicator' : ''}                >
                     {/* ===== START: NEW MENU TOGGLE BUTTON ===== */}
    
                     <ul className="wedstyle_menu_list"  ref={menuRef}>

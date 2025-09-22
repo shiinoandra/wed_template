@@ -12,6 +12,8 @@ import "./styles/bootstrap-vCaDZZbr.css"
 import "./styles/themesv2-DZZF_N8v.css"
 import "./styles/extra1.css"
 import "./styles/extra2.css"
+import "./styles/swipe-indicator.css"
+
 
 
 const geistSans = Geist({

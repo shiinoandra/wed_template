@@ -126,7 +126,7 @@
     border-radius: 50px;
   }
   
-  .card .card-body .wishes .wish .wish-description {
+.card .card-body .wishes .wish .wish-description {
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
@@ -654,6 +654,28 @@
 #smMenu {
   background-color: var(--menu-bg);
 }
+
+#smMenu::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50px;
+  background: linear-gradient(to right, transparent, var(--menu-bg));
+  pointer-events: none;
+  
+  /* Start with the gradient hidden */
+  opacity: 0; 
+  
+  /* Add a smooth transition for the fade effect */
+  transition: opacity 0.2s ease-in-out;
+}
+
+#smMenu.show-scroll-indicator::after {
+  opacity: 1;
+}
+
 
 .menu-expanded {
   transform: translateY(0);

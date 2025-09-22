@@ -1,0 +1,104 @@
+/* swipe-indicator.css */
+.swipe-indicator {
+    position: absolute;
+    z-index: 9999;
+    opacity: 0;
+    /* This animation fades the entire indicator in and out over 3 seconds */
+    animation: fadeInOut 3s ease-in-out forwards;
+
+  }
+  
+  .swipe-indicator.up {
+    top: 30%;
+    left: 80%;
+    transform: translateX(-50%);
+
+  }
+  
+  .swipe-indicator.horizontal {
+    /* Nudged this up a bit to be more visible above the menu bar */
+    bottom: 10px; 
+    left:80%;
+    transform: translateX(-50%);
+
+  }
+  
+  .swipe-indicator-finger {
+    /* --- MODIFIED --- */
+    /* Set dimensions that match your arrow's aspect ratio */
+    width: 60px;
+    height: 60px;
+    /* Use your GIF as the background image */
+    background-image: url('/swipe-right.png');
+    background-repeat: no-repeat;
+    background-size: contain; /* Ensures the whole GIF is visible */
+    filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.4));
+  }
+
+  .swipe-indicator.horizontal,
+.swipe-indicator.horizontal .swipe-indicator-finger {
+  animation-delay: 0.7s;
+}
+  
+.swipe-indicator.up,
+.swipe-indicator.up .swipe-indicator-finger {
+  animation-delay: 4s;
+}
+  
+.swipe-indicator.up .swipe-indicator-finger {
+    /* This static transform sets the state of the element DURING the 5-second delay */
+    transform: rotate(-90deg);
+  
+    /* By using long-hand properties, we are explicit about every detail */
+    animation-name: swipe-up-down-animation;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 4s; /* The correct, long delay */
+  }
+  
+  /* --- Horizontal Finger Animation --- */
+  /* Let's update this one too for consistency and robustness */
+  .swipe-indicator.horizontal .swipe-indicator-finger {
+    animation-name: swipe-left-right-animation;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s; /* The correct, short delay */
+  }
+
+  
+.swipe-indicator.horizontal {
+    animation-delay: 0.5s;
+  }
+  
+  .swipe-indicator.up {
+    animation-delay: 4s;
+  }
+  
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+
+@keyframes swipe-left-right-animation {
+    0%, 100% {
+      transform: translateX(-30px);
+    }
+    50% {
+      transform: translateX(30px);
+    }
+  } 
+  @keyframes swipe-up-down-animation {
+    0%, 100% {
+      /* First, rotate the element, THEN move it along its new Y-axis */
+      transform: rotate(90deg) translateX(60px);
+    }
+    50% {
+      /* Keep the rotation constant while changing the translation */
+      transform: rotate(90deg) translateX(-60px);
+    }
+  }

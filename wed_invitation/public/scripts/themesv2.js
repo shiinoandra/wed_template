@@ -870,6 +870,7 @@ var openInvitation = function openInvitation(event) {
     // openFullScreen();
   }
   document.querySelector(".not-open").classList.remove("not-open");
+  document.dispatchEvent(new CustomEvent('invitationOpened'));
 
   // start event gesture
   window.addEventListener(events[deviceType].down, eventDown, false);
