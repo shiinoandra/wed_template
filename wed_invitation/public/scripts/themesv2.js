@@ -29,28 +29,28 @@ var initCoreInvitation = function initCoreInvitation() {
   };
 
   // watermark
-  document.addEventListener('DOMContentLoaded', function () {
-    var elements = {
-      app: document.getElementById('app'),
-      illegal: document.getElementById('illegal'),
-      wm: document.getElementById('waterMark'),
-      wmp: document.querySelector('.watermark-placeholder'),
-      nowm: document.querySelector('.no-watermark'),
-      wmLayout: document.querySelector('.watermark')
-    };
-    if (elements.wm && elements.wmp && !elements.nowm) {
-      elements.wm.style.display = "inherit";
-      elements.wmp.innerHTML = '';
-      elements.wmp.appendChild(elements.wm);
-      if (elements.illegal) elements.illegal.style.display = "none";
-    } else if (elements.wmLayout && !elements.wmp) {
-      if (elements.app) elements.app.innerHTML = "";
-      if (elements.illegal) elements.illegal.style.display = "flex";
-    } else {
-      if (elements.wm) elements.wm.style.display = "none";
-      if (elements.illegal) elements.illegal.style.display = "none";
-    }
-  });
+  // document.addEventListener('DOMContentLoaded', function () {
+  //   var elements = {
+  //     app: document.getElementById('app'),
+  //     illegal: document.getElementById('illegal'),
+  //     wm: document.getElementById('waterMark'),
+  //     wmp: document.querySelector('.watermark-placeholder'),
+  //     nowm: document.querySelector('.no-watermark'),
+  //     wmLayout: document.querySelector('.watermark')
+  //   };
+  //   if (elements.wm && elements.wmp && !elements.nowm) {
+  //     elements.wm.style.display = "inherit";
+  //     elements.wmp.innerHTML = '';
+  //     elements.wmp.appendChild(elements.wm);
+  //     if (elements.illegal) elements.illegal.style.display = "none";
+  //   } else if (elements.wmLayout && !elements.wmp) {
+  //     if (elements.app) elements.app.innerHTML = "";
+  //     if (elements.illegal) elements.illegal.style.display = "flex";
+  //   } else {
+  //     if (elements.wm) elements.wm.style.display = "none";
+  //     if (elements.illegal) elements.illegal.style.display = "none";
+  //   }
+  // });
 
   // tampilkan nama tamu
   var guestName = wedStyle.dataset.guest;
@@ -867,7 +867,7 @@ var openInvitation = function openInvitation(event) {
   if (navigator.userAgent.indexOf("UCBrowser") != -1 || navigator.userAgent.indexOf("MiuiBrowser") != -1 || navigator.userAgent.includes("OppoBrowser") || navigator.userAgent.includes("HeyTapBrowser")) {
     console.log("Browser not support portrait full screen mode");
   } else {
-    openFullScreen();
+    // openFullScreen();
   }
   document.querySelector(".not-open").classList.remove("not-open");
 
