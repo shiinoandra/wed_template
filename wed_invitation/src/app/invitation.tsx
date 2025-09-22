@@ -1062,8 +1062,8 @@ useEffect(() => {
 
                           </div>
                           <div className="reduce_top h-100 d-flex flex-column justify-content-center align-items-center p-2" style={{height:"100%"}}>
-                            <div className="text-center no-swipe">
-                          <div className="editable mt-2 animate__animated animate__fadeInDown animate__slower" style={{fontSize:"16.4px"}}>✤ Momen Terindah ✤</div>
+                            <div className="text-center no-swipe" style={{width:"100%"}}>
+                          <div className="editable mt-2 mb-4 animate__animated animate__fadeInDown animate__slower" style={{fontSize:"16.4px"}}>✤ Momen Terindah ✤</div>
                           <ScrollableGridGallery />
                           </div>
                         </div>
