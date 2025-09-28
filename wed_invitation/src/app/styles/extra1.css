@@ -95,6 +95,7 @@
     scrollbar-width: thin;  /* Firefox, Safari 18.2+, Chromium 121+ */
     filter: drop-shadow(7px 7px 10px rgba(0, 0, 0, 0.15))
   }
+  
 
   .card .card-body .wishes::-webkit-scrollbar { 
     display: none;  /* Older Safari and Chromium */
@@ -108,13 +109,25 @@
     gap: 1rem;
   }
   
-  .card .card-body .wishes {
+  /* .card .card-body .wishes {
     text-align: left;
     max-height: 32rem;
     overflow: auto;
     padding-right: 1rem;
     color: var(--color-dark);
   }
+   */
+
+
+   .card .card-body .wishes {
+    text-align: left;
+    max-height: 32rem;
+    overflow: auto;
+    padding-right: 1rem;
+    color: var(--color-dark);
+    -webkit-overflow-scrolling: touch; /* <-- ADD THIS LINE for smooth iOS scrolling */
+  }
+
   
   .card .card-body .wishes .wish .wish-badge {
     background-color: var(--color-light);
