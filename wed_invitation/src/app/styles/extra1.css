@@ -126,6 +126,7 @@
     padding-right: 1rem;
     color: var(--color-dark);
     -webkit-overflow-scrolling: touch; /* <-- ADD THIS LINE for smooth iOS scrolling */
+    touch-action: pan-y; /* <-- ADD THIS LINE */
   }
 
   

@@ -776,12 +776,16 @@ var eventUp = function eventUp(e) {
 };
 
 var eventDown = function eventDown(e) {
+  // First, check if the touch started inside an element that should NOT trigger a page swipe.
   if (e.target.closest('.no-swipe')) {
+    // If it is, do absolutely nothing. Let the browser handle its native scrolling.
     return;
   }
 
+  // If we are here, it means the touch started on a swipeable area.
+  // NOW it is safe to prevent the default behavior and set up our custom swipe logic.
   if (e.cancelable) e.preventDefault();
-  // [FIXED] We need to record the starting point for both axes
+
   initialX = !isTouchDevice() ? e.clientX : e.touches[0].clientX;
   initialY = !isTouchDevice() ? e.clientY : e.touches[0].clientY;
   
